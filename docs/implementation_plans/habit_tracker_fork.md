@@ -29,12 +29,15 @@ Pure stdlib (sqlite3 + argparse only, no Qt). Single SQLite file, WAL mode.
   (green/yellow/red). Low capacity defers heavy habits — computed at read
   time, never mutates data.
 - Telemetry: `log-reading` / `readings` / `stats` — zero-resident-cost
-  ingestion (a cron line calls the CLI, inserts one row, exits).
+  ingestion (a cron/timer line calls the CLI, inserts one row, exits).
+  Keys are free-form key/value/unit: wire whatever the site measures.
 - `watch` loop: 60 s tick, spawns the GUI when a display appears, never
   loads Qt itself. `--headless` pins it off.
-- CLI = the subagent control surface: `add list check uncheck info edit due
-  streaks mode report status log-reading readings stats watch gui selftest
-  version`, with `--json` on every machine-readable verb.
+- CLI = the agent-bot control surface (the bot fills the GUI pages):
+  `add list check uncheck info edit due streaks mode report status
+  log-reading readings stats watch gui selftest version`, with `--json`
+  on every machine-readable verb. Human lives in the GUI; GUI's Today tab
+  shows a Recent-activity feed so the human sees what the bot did.
 - **Verify**: `python3 habit_core.py selftest` green; `py_compile` clean.
 
 ## Stage 2 — Subagent workflow proof  ✅ (2026-09-10)
@@ -42,8 +45,9 @@ Pure stdlib (sqlite3 + argparse only, no Qt). Single SQLite file, WAL mode.
 - Seed representative business habits via CLI into a temp DB (not committed).
 - Exercise every verb a Hermes subagent would use day-to-day; confirm JSON
   outputs parse and checkins carry `source=agent:<name>` for audit.
-- Recipe documented in README (§ Subagent control).
-- **Verify**: end-to-end run below in build log; `habits.db` gitignored.
+- Recipe documented in README (§ Agent control).
+- **Verify**: end-to-end run in build log; live DB ships **empty** — the
+  agent bot fills the pages (no demo clutter).
 
 ## Stage 3 — GUI `habit_gui.py`  ✅ (2026-09-10)
 

@@ -1,0 +1,7 @@
+[Unit]
+Description=AWSO_BSPT telemetry ingestion (solar + battery readings)
+After=awso-habit.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/awso/telemetry_reader.sh
