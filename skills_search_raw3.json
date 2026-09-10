@@ -1,0 +1,1015 @@
+{
+ "python": [
+  {
+   "name": "jupyter-notebook",
+   "identifier": "official/data-science/jupyter-notebook",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Iterative Python via live Jupyter kernel (hamelnb)."
+  },
+  {
+   "name": "pptx-author",
+   "identifier": "official/finance/pptx-author",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Build PowerPoint decks headless with python-pptx."
+  },
+  {
+   "name": "fastmcp",
+   "identifier": "official/mcp/fastmcp",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Build, test, and deploy Python MCP servers."
+  },
+  {
+   "name": "python",
+   "identifier": "skills-sh/mindrally/skills/python",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mindrally/skills"
+  },
+  {
+   "name": "python",
+   "identifier": "skills-sh/siviter-xyz/dot-agent/python",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from siviter-xyz/dot-agent"
+  },
+  {
+   "name": "python",
+   "identifier": "skills-sh/pproenca/dot-skills/python",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from pproenca/dot-skills"
+  },
+  {
+   "name": "Python",
+   "identifier": "py",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Write reliable Python avoiding mutable defaults, import traps, and common runtime surprises."
+  },
+  {
+   "name": "python",
+   "identifier": "python3",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use Python for practical project setup, dependency install, script execution, and environment troubleshooting with safe defaults. Use when tasks involve pypr..."
+  },
+  {
+   "name": "python-anti-patterns",
+   "identifier": "skills-sh/wshobson/agents/python-anti-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshobson/agents"
+  },
+  {
+   "name": "python-appservice-deploy",
+   "identifier": "skills-sh/microsoft/azure-skills/python-appservice-deploy",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from microsoft/azure-skills"
+  },
+  {
+   "name": "python-backend",
+   "identifier": "skills-sh/jiatastic/open-python-skills/python-backend",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from jiatastic/open-python-skills"
+  },
+  {
+   "name": "python-backend-architecture-review",
+   "identifier": "skills-sh/rknall/claude-skills/python-backend-architecture-review",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from rknall/claude-skills"
+  }
+ ],
+ "performance testing": [
+  {
+   "name": "Performance Testing Toolkit",
+   "identifier": "performance-testing-toolkit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4f01\u4e1a\u7ea7\u6027\u80fd\u6d4b\u8bd5\u5de5\u5177\u5305\uff0c\u652f\u6301HTTP\u63a5\u53e3\u538b\u6d4b\u3001\u8d1f\u8f7d\u6d4b\u8bd5\u3001\u6027\u80fd\u57fa\u51c6\u6d4b\u8bd5\u548c\u62a5\u544a\u751f\u6210\u3002 Enterprise-grade performance testing toolkit supporting HTTP load testing, stress testing, benchmark testing and repo..."
+  },
+  {
+   "name": "API Health Checker",
+   "identifier": "ub2-api-health-checker",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Tests API endpoints by sending requests, validating responses, measuring performance, handling authentication, and generating detailed health reports."
+  },
+  {
+   "name": "Alibabacloud Pts Ops",
+   "identifier": "alibabacloud-pts-ops",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Alibaba Cloud PTS (Performance Testing Service) scenario-based skill for creating and managing stress testing scenarios. Supports both PTS native HTTP/HTTPS..."
+  },
+  {
+   "name": "Alibabacloud Pts Pilot",
+   "identifier": "alibabacloud-pts-pilot",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Router skill for Alibaba Cloud PTS (Performance Testing Service) operations. Resolves the user's PTS intent and delegates execution to the appropriate sub-sk..."
+  },
+  {
+   "name": "Aliyun Pts Manage",
+   "identifier": "aliyun-pts-manage",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when managing Alibaba Cloud Performance Testing Service (PTS) via OpenAPI/SDK, including scene lifecycle operations, test start/stop control, report retr..."
+  },
+  {
+   "name": "EvalScope",
+   "identifier": "skill-evalscope",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "LLM evaluation & inference performance testing via the evalscope CLI. Translates natural language requests into evalscope commands for: (1) Model accuracy ev..."
+  },
+  {
+   "name": "Performance Tester",
+   "identifier": "performance-tester",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Professional JMeter & LoadRunner performance testing career roadmap platform that generates personalized learning paths for aspiring performance engineers."
+  },
+  {
+   "name": "Testing Plus",
+   "identifier": "testing-plus",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enhanced testing with framework-specific templates, CI/CD integration, mutation testing, and performance testing. Covers unit, integration, E2E, and security..."
+  },
+  {
+   "name": "performance-tester",
+   "identifier": "ah-performance-tester",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "You are a performance testing expert with expertise in load testing, stress testing, performance monitoring, and optimization strategies. Use when: load and..."
+  }
+ ],
+ "load testing": [
+  {
+   "name": "Load Testing",
+   "identifier": "load-testing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deep load testing workflow\u2014goals and SLOs, workload modeling, scenario design, environment fidelity, execution, metrics interpretation, and bottlenecks to fi..."
+  },
+  {
+   "name": "Performance Engineering System",
+   "identifier": "afrexai-performance-engineering",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Complete performance engineering system \u2014 profiling, optimization, load testing, capacity planning, and performance culture. Use when diagnosing slow applica..."
+  },
+  {
+   "name": "Performance Profiler",
+   "identifier": "perf-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Profile and optimize application performance. Use when diagnosing slow code, measuring CPU/memory usage, generating flame graphs, benchmarking functions, load testing APIs, finding memory leaks, or optimizing database queries."
+  },
+  {
+   "name": "Performance Tester",
+   "identifier": "perf-tester",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Performance and load testing for APIs and web services. Design test scenarios, generate k6/locust/JMeter scripts, analyze response times, throughput, error r..."
+  },
+  {
+   "name": "Performance Testing Toolkit",
+   "identifier": "performance-testing-toolkit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4f01\u4e1a\u7ea7\u6027\u80fd\u6d4b\u8bd5\u5de5\u5177\u5305\uff0c\u652f\u6301HTTP\u63a5\u53e3\u538b\u6d4b\u3001\u8d1f\u8f7d\u6d4b\u8bd5\u3001\u6027\u80fd\u57fa\u51c6\u6d4b\u8bd5\u548c\u62a5\u544a\u751f\u6210\u3002 Enterprise-grade performance testing toolkit supporting HTTP load testing, stress testing, benchmark testing and repo..."
+  },
+  {
+   "name": "performance-engineer",
+   "identifier": "ah-performance-engineer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "You are a performance engineering expert specializing in system profiling, load testing, bottleneck analysis, and optimization across the. Use when: performa..."
+  },
+  {
+   "name": "performance-tester",
+   "identifier": "ah-performance-tester",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "You are a performance testing expert with expertise in load testing, stress testing, performance monitoring, and optimization strategies. Use when: load and..."
+  },
+  {
+   "name": "wrk",
+   "identifier": "wrk",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use wrk for HTTP load testing, including Lua scripting for dynamic request headers such as randomized X-Forwarded-For IPs."
+  }
+ ],
+ "sqlite optimization": [],
+ "database performance": [
+  {
+   "name": "Alibabacloud Das Agent",
+   "identifier": "alibabacloud-das-agent",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Diagnose and manage Alibaba Cloud databases through natural language. Use when users need to troubleshoot database performance issues (high CPU, slow queries..."
+  },
+  {
+   "name": "Database Operations",
+   "identifier": "database-operations",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when designing database schemas, writing migrations, optimizing SQL queries, fixing N+1 problems, creating indexes, setting up PostgreSQL, configuring EF Core, implementing caching, partitioning tables, or any database performance question."
+  },
+  {
+   "name": "Sql Optimization Patterns",
+   "identifier": "sql-optimization-patterns",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when de..."
+  },
+  {
+   "name": "dbdoctor-tools",
+   "identifier": "dbdoctor-tools",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "DBdoctor database performance diagnosis platform tools. Invoke when user needs to query database instances, slow SQL, inspection reports, performance metrics..."
+  }
+ ],
+ "memory": [
+  {
+   "name": "honcho",
+   "identifier": "official/autonomous-ai-agents/honcho",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Configure and troubleshoot Honcho memory for Hermes."
+  },
+  {
+   "name": "openclaw-migration",
+   "identifier": "official/migration/openclaw-migration",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Import an OpenClaw setup (memories, skills) into Hermes."
+  },
+  {
+   "name": "flash-attention",
+   "identifier": "official/mlops/flash-attention",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Speed up long-sequence transformer training and inference."
+  },
+  {
+   "name": "peft",
+   "identifier": "official/mlops/peft",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Fine-tune large LLMs with LoRA on limited GPU memory."
+  },
+  {
+   "name": "unsloth",
+   "identifier": "official/mlops/training/unsloth",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Unsloth: 2-5x faster LoRA/QLoRA fine-tuning, less VRAM."
+  },
+  {
+   "name": "pinecone-research",
+   "identifier": "official/research/pinecone-research",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Agent RAG and long-term memory with Pinecone."
+  },
+  {
+   "name": "memory",
+   "identifier": "skills-sh/yonatangross/orchestkit/memory",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from yonatangross/orchestkit"
+  },
+  {
+   "name": "memory",
+   "identifier": "skills-sh/johnlindquist/claude/memory",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from johnlindquist/claude"
+  },
+  {
+   "name": "Memory",
+   "identifier": "memory",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Infinite organized memory that complements your agent's built-in memory with unlimited categorize... \u6838\u5fc3\u80fd\u529b: - \u667a\u80fd\u4ee3\u7406\u9886\u57df\u7684\u4e13\u4e1a\u5316AI\u8f85\u52a9\u5de5\u5177 - \u57fa\u4e8e\u9ad8\u4eba\u6c14\u5f00\u6e90Skill\u6df1\u5ea6\u4f18\u5316\u5347\u7ea7 - \u79fb\u9664\u98ce\u9669\u4ee3\u7801,\u589e..."
+  },
+  {
+   "name": "Memory",
+   "identifier": "koompi-memory",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Structured memory architecture \u2014 hierarchical storage, daily logging, weekly compaction, proactive memory hygiene."
+  },
+  {
+   "name": "memory-analysis",
+   "identifier": "skills-sh/leokemp223/embed-ai-tool/memory-analysis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from leokemp223/embed-ai-tool"
+  },
+  {
+   "name": "memory-audit",
+   "identifier": "skills-sh/nhadaututtheky/neural-memory/memory-audit",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from nhadaututtheky/neural-memory"
+  }
+ ],
+ "profiler": [
+  {
+   "name": "CSPR Interest Profiler",
+   "identifier": "cspr-interest-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Infer and refresh cspr user preference memory from browser-history evidence, notes, and feedback."
+  },
+  {
+   "name": "Codex Profiler",
+   "identifier": "codex-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage OpenAI Codex profiles via Telegram commands for usage checks and OAuth token refresh with queued safe apply and progress updates."
+  },
+  {
+   "name": "Data Profiler",
+   "identifier": "data-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Profile construction data to understand characteristics, distributions, quality metrics, and patterns. Essential for data quality assessment and ETL planning."
+  },
+  {
+   "name": "Gateway Restart Profiler",
+   "identifier": "gateway-restart-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "OpenClaw Gateway \u91cd\u542f\u6027\u80fd\u5206\u6790\u5de5\u5177\u3002\u5206\u6790 Gateway \u91cd\u542f\u901f\u5ea6\u3001\u6392\u67e5\u542f\u52a8\u6162\u7684\u539f\u56e0\u3001\u751f\u6210\u6027\u80fd\u62a5\u544a\u3001\u8bca\u65ad\u542f\u52a8\u95ee\u9898\u3002\u652f\u6301 Windows (PowerShell) \u548c Linux (Bash) \u5e73\u53f0\u3002\u89e6\u53d1\u573a\u666f\u5305\u62ec\uff1a\u5206\u6790 gateway \u91cd\u542f\u3001\u68c0\u67e5\u542f\u52a8\u65f6\u95f4\u3001gateway \u592a\u6162\u4e86\u3001\u751f\u6210\u6027\u80fd\u62a5\u544a\u3001\u8bca\u65ad..."
+  },
+  {
+   "name": "Heap Dump & Profiler",
+   "identifier": "heap-dump",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5185\u5b58\u5feb\u7167\u5206\u6790\uff08v8 heap snapshot\uff09+ \u6027\u80fd\u5206\u6790\uff08perf_hooks\uff09"
+  },
+  {
+   "name": "Humans Fragility Profiler",
+   "identifier": "human-fragility-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Ethical cognitive-friction and adoption-resistance profiler. Agent Smith identifies psychological barriers, trust deficits, and decision bottlenecks that pre..."
+  },
+  {
+   "name": "KOL Profiler",
+   "identifier": "kol-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze physician academic influence and collaboration networks"
+  },
+  {
+   "name": "Model Resource Profiler",
+   "identifier": "model-resource-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze model training or inference resource behavior from profiler artifacts, with focus on GPU memory (VRAM) and CPU hotspots. Uses JSON/JSON.GZ artifacts..."
+  },
+  {
+   "name": "Nansen Wallet Profiler",
+   "identifier": "nansen-wallet-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Wallet profiler \u2014 balance, PnL, labels, transactions, counterparties, related wallets, batch, trace, compare. Use when analysing a specific wallet address or..."
+  },
+  {
+   "name": "Openclaw User Profiler",
+   "identifier": "openclaw-user-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Two things: (1) Build a user.md through conversation so your OpenClaw lobster knows who it's working with. (2) Recommend Claude Code Skills based on the user..."
+  },
+  {
+   "name": "Osint Personal Profiler",
+   "identifier": "osint-personal-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5f00\u6e90\u60c5\u62a5\u4e2a\u4eba\u753b\u50cf\u6536\u96c6\u5668\uff0c\u57fa\u4e8eOSINT\u65b9\u6cd5\u8bba\u4ece\u7f51\u7edc\u516c\u5f00\u4fe1\u606f\u4e2d\u7cfb\u7edf\u6027\u5730\u6536\u96c6\u3001\u5173\u8054\u3001\u63a8\u65ad\u4efb\u610f\u4e2a\u4eba\u5168\u7ef4\u5ea6\u753b\u50cf\u7684\u5b8c\u6574\u80fd\u529b\u3002\u6838\u5fc3\u80fd\u529b\uff1a\u2460\u76ee\u6807\u53d1\u73b0\u4e0e\u6e90\u6620\u5c04\uff08\u6807\u8bc6\u7b26\u5f3a\u5ea6\u5206\u7ea7\u6d88\u6b67\u21928\u7ea7\u641c\u7d22\u67e5\u8be2\u6a21\u677f[\u7cbe\u786e\u641c\u7d22/\u7528\u6237\u540d\u6d3e\u751f/\u6df1\u641c\u5df2\u6709\u6e90/\u53cd\u5411\u56fe\u7247/\u7f13\u5b58]\u2192\u4f18\u5148\u7ea7\u6392\u5e8f\uff09\u246112\u7ef4\u9010\u7ef4\u6536\u96c6\uff08\u5b9e\u4f53\u5c42\u7ef41-6\u76f4\u63a5\u4ece\u516c\u5f00\u4fe1\u606f\u63d0\u53d6+\u5de5\u5546\u8bb0\u5f55\u4ea4\u53c9\u9a8c\u8bc1\u3001\u793e\u4f1a\u5c42\u7ef47-8\u901a\u8fc7\u793e\u4ea4\u56fe\u8c31\u5206\u6790\u6784\u5efa\u3001\u62bd\u8c61\u5c42\u7ef49-12\u901a\u8fc7\u884c\u4e3a\u6a21\u5f0f\u5206\u6790+\u7b80\u5386\u6587\u672c\u5206\u6790+\u804c\u4e1a\u8f68\u8ff9\u6a21\u5f0f+\u85aa\u8d44\u5e02\u573a\u6620\u5c04\u63a8\u65ad\uff09\u2462\u8de8\u6e90\u5173\u8054\u4e0e\u7f6e\u4fe1\u5ea6\uff08\u53bb\u91cd\u2192\u51b2\u7a81\u89e3\u51b3\u2192\u7f6e\u4fe1\u5ea6\u8bc4\u5206\u2192\u7f3a\u53e3\u8bc6\u522b\uff0c\u542b5\u7c7b\u7f3a\u53e3\u539f\u56e0+\u96f6\u7ed3\u679c\u60c5\u62a5\uff09\u2463\u63a8\u65ad\u5f15\u64ce\uff08\u57fa\u4e8e\u5199\u4f5c\u98ce\u683c/\u4ee3\u7801\u6a21\u5f0f/\u7b80\u5386\u6587\u672c\u6a21\u5f0f/\u804c\u4e1a\u8f68\u8ff9/\u85aa\u8d44\u5e02\u573a\u57fa\u51c6\u63a8\u65ad\u5143\u64cd\u4f5c"
+  },
+  {
+   "name": "Perf Profiler",
+   "identifier": "perf-prof",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4f7f\u7528perf-prof\u8fdb\u884cLinux\u7cfb\u7edf\u95ee\u9898\u5206\u6790\u3002perf-prof\u662f\u57fa\u4e8eperf_event\u7684\u7cfb\u7edf\u7ea7\u5206\u6790\u5de5\u5177\uff0c\u4e8b\u4ef6\u5728\u5185\u5b58\u4e2d\u5b9e\u65f6\u5904\u7406\uff0c\u53ef\u957f\u671f\u8fd0\u884c\u3002\u89e6\u53d1\u573a\u666f\uff1a(1) CPU\u4f7f\u7528\u7387\u9ad8\u3001\u70ed\u70b9\u5206\u6790 (2) \u8fdb\u7a0b\u72b6\u6001\u5f02\u5e38(D/S\u72b6\u6001\u591a) (3) \u5ef6\u8fdf\u6296\u52a8\u3001\u54cd\u5e94\u6162 (4) \u5185\u5b58\u6cc4\u9732\u6216\u589e\u957f\u5f02\u5e38 (5) \u5757\u8bbe\u5907IO\u6162 (6) \u865a..."
+  }
+ ],
+ "refactoring": [
+  {
+   "name": "grok",
+   "identifier": "official/autonomous-ai-agents/grok",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Delegate coding to xAI Grok Build CLI (features, PRs)."
+  },
+  {
+   "name": "one-three-one-rule",
+   "identifier": "official/communication/one-three-one-rule",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Structured decision-making framework for technical proposals and trade-off analysis. When the user faces a choice between multiple approaches (architecture decisions, tool selection, refactoring strat"
+  },
+  {
+   "name": "ast-grep",
+   "identifier": "official/software-development/ast-grep",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "AST-aware structural code search and rewrite via ast-grep."
+  },
+  {
+   "name": "nemo-rl-auto-research",
+   "identifier": "NVIDIA/skills/skills/nemo-rl-auto-research",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Autonomous NeMo-RL research agent workflow for directed hypothesis testing and open-ended discovery. Guides agents through the full experiment lifecycle: understanding recipes and environments, wiring RL or NeMo-gym runs, launching reproducible baselines and iterations, analyzing results, preserving human oversight, and using git plus TSV logs as the research ledger. Do NOT use for: bug fixes, code review, documentation, refactoring, dependency updates, or single-file changes."
+  },
+  {
+   "name": "nemo-rl-docs",
+   "identifier": "NVIDIA/skills/skills/nemo-rl-docs",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Documentation conventions for NeMo-RL. Covers docs/index.md updates and docstring format. Do NOT use for: bug fixes, test fixes, dependency bumps, refactoring, CI/CD changes, performance tuning, or any task that does not involve writing or updating documentation."
+  },
+  {
+   "name": "winui-app",
+   "identifier": "openai/skills/skills/.curated/winui-app",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Bootstrap, develop, and design modern WinUI 3 desktop applications with C# and the Windows App SDK using official Microsoft guidance, WinUI Gallery patterns, Windows App SDK samples, and CommunityToolkit components. Use when creating a brand new app, preparing a machine for WinUI, reviewing, refactoring, planning, troubleshooting, environment-checking, or setting up WinUI 3 XAML, controls, navigation, windowing, theming, accessibility, responsiveness, performance, deployment, or related Windows app design and development work."
+  },
+  {
+   "name": "Refactoring",
+   "identifier": "refactoring",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deep refactoring workflow\u2014characterization tests, incremental steps, behavior preservation, design direction, and verification. Use when improving structure..."
+  },
+  {
+   "name": "refactoring-analysis",
+   "identifier": "skills-sh/pedronauck/skills/refactoring-analysis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from pedronauck/skills"
+  },
+  {
+   "name": "refactoring-patterns",
+   "identifier": "skills-sh/wondelai/skills/refactoring-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wondelai/skills"
+  },
+  {
+   "name": "refactoring-specialist",
+   "identifier": "skills-sh/charon-fan/agent-playbook/refactoring-specialist",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from charon-fan/agent-playbook"
+  },
+  {
+   "name": "refactoring-ui",
+   "identifier": "skills-sh/wondelai/skills/refactoring-ui",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wondelai/skills"
+  },
+  {
+   "name": "refactoring-specialist",
+   "identifier": "ah-refactoring-specialist",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Expert refactoring specialist mastering safe code transformation techniques and design pattern application. Specializes in improving code structure, reducing..."
+  }
+ ],
+ "technical debt": [
+  {
+   "name": "Technical Debt",
+   "identifier": "tech-debt",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Reckless versus prudent categorization, tracking the inventory, and a payoff cadence that does not freeze delivery."
+  },
+  {
+   "name": "Technical Debt Audit",
+   "identifier": "afrexai-tech-debt-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Systematically identifies, scores, and prioritizes technical debt across codebases with impact analysis and detailed remediation roadmaps for engineering teams."
+  },
+  {
+   "name": "Agent Git Oracle",
+   "identifier": "agent-git-oracle",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Advanced repository analysis and refactoring guide. Identifies technical debt and architectural anti-patterns using AI reasoning."
+  },
+  {
+   "name": "Analyzer",
+   "identifier": "analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyzes an existing project to produce a detailed, structured report on its architecture, patterns, technical debt, and key areas for downstream work."
+  },
+  {
+   "name": "Architecture Review",
+   "identifier": "architecture-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze codebase architecture and generate visual HTML reports. Use when reviewing architecture, assessing technical debt, diagnosing project health, or plan..."
+  },
+  {
+   "name": "Prioritize Dev Tasks",
+   "identifier": "prioritize-dev-tasks",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Prioritize software project backlogs, bugs, technical debt, sprint tasks, release checks, and requirement pools using business impact, dependency blocking, d..."
+  },
+  {
+   "name": "Tech Debt Ledger",
+   "identifier": "tech-debt-ledger",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Tracks technical debt as actual financial debt \u2014 with principal, interest rates, minimum payments, and compound growth. Turns vague \"we should fix that somed..."
+  },
+  {
+   "name": "Tech Debt Scanner",
+   "identifier": "tech-debt-scanner",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Scan codebases for technical debt \u2014 TODO/FIXME comments, deprecated APIs, complexity hotspots, outdated patterns, missing tests, large files \u2014 then prioritiz..."
+  },
+  {
+   "name": "Tech Debt Tracker",
+   "identifier": "cm-tech-debt-tracker",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Identify, categorize, and prioritize technical debt across a codebase \u2014 analyze TODOs, complexity hotspots, dependency age, test coverage gaps, and code dupl..."
+  }
+ ],
+ "semantic version": [
+  {
+   "name": "Semantic Version Advisor",
+   "identifier": "semantic-version-advisor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\ud83d\udc51 kingai.work \u51fa\u54c1 \u00b7 semantic-version-advisor \u00b7 \u5224\u65ad\u8be5\u5347 major/minor/patch \u00b7 \u514d\u8d39\u7248\u53ef\u7528\uff0c\u4ed8\u8d39\u7248\u89e3\u9501\u9ad8\u7ea7/\u6279\u91cf\u80fd\u529b"
+  },
+  {
+   "name": "Changelog Generator / Changelog \u751f\u6210",
+   "identifier": "changelog-gen",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Auto-generate changelogs from git history with semantic versioning. / \u4ece git \u5386\u53f2\u81ea\u52a8\u751f\u6210\u8bed\u4e49\u5316\u7248\u672c Changelog\u3002"
+  },
+  {
+   "name": "Conventional Commits",
+   "identifier": "conventional-commits",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Format commit messages using the Conventional Commits specification. Use when creating commits, writing commit messages, or when the user mentions commits, git commits, or commit messages. Ensures commits follow the standard format for automated tooling, changelog generation, and semantic versioning."
+  },
+  {
+   "name": "Git Commit Analyzer / Git\u63d0\u4ea4\u8bed\u4e49\u5206\u6790\u5668",
+   "identifier": "git-commit-analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze commit history for semantic versioning, changelog generation, and branch hygiene. / \u5206\u6790\u63d0\u4ea4\u5386\u53f2\u4ee5\u751f\u6210\u8bed\u4e49\u7248\u672c\u3001\u53d8\u66f4\u65e5\u5fd7\u5e76\u68c0\u6d4b\u5206\u652f\u536b\u751f\u3002"
+  },
+  {
+   "name": "Release Skills",
+   "identifier": "release-skills",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "WHAT: Universal release workflow with auto-detection, multi-language changelogs, semantic versioning, and git tagging.\n\nWHEN: User wants to create a release, bump version, update changelog, push a new version, or prepare for deployment.\n\nKEYWORDS: \"release\", \"\u53d1\u5e03\", \"new version\", \"\u65b0\u7248\u672c\", \"bump version\", \"update version\", \"\u66f4\u65b0\u7248\u672c\", \"push\", \"\u63a8\u9001\", \"create release\", \"prepare release\", \"tag version\""
+  },
+  {
+   "name": "Semver Helper",
+   "identifier": "semver-helper",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Semantic Versioning 2.0.0 reference guide. Quick decision trees and examples for choosing MAJOR, MINOR, or PATCH version bumps."
+  },
+  {
+   "name": "Semver Manager",
+   "identifier": "semver-manager",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Parse, validate, compare, sort, bump, and filter semantic versions (semver). Use when asked to check version compatibility, bump version numbers, sort releas..."
+  },
+  {
+   "name": "Semver Release Recommender",
+   "identifier": "semver-release-recommender",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze repository changes from the last release to the current revision and recommend the correct semantic version bump. Use when the user asks what version..."
+  },
+  {
+   "name": "Semver Toolkit",
+   "identifier": "semver-toolkit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Semantic Versioning (SemVer 2.0.0) toolkit for parsing, validating, comparing, bumping, and sorting version strings. Use when working with software versions,..."
+  },
+  {
+   "name": "better-skill-creator",
+   "identifier": "better-skill-creator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Advanced skill creation and management tool with automated version control, intelligent diff, risk assessment, rollback, semantic versioning, and test automa..."
+  },
+  {
+   "name": "skill git - version control for your skills",
+   "identifier": "skill-git",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage AI agent skills with version control to initialize tracking, commit changes with semantic versioning, and revert to previous skill versions."
+  }
+ ],
+ "git hooks": [
+  {
+   "name": "Git Hooks Generator",
+   "identifier": "git-hooks-generator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u751f\u6210 Git hooks \u811a\u672c\uff0c\u81ea\u52a8\u683c\u5f0f\u5316\u4ee3\u7801\u3001\u68c0\u67e5 lint\u3001\u8fd0\u884c\u6d4b\u8bd5\u7b49\u3002"
+  },
+  {
+   "name": "Git Hooks Manager",
+   "identifier": "git-hooks-manager",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage Git hooks with easy installation, configuration, and sharing, supporting lint, test, commit message, and branch name validations."
+  },
+  {
+   "name": "Git Hooks Toolkit",
+   "identifier": "git-hooks-toolkit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generate, install, and manage Git hooks with pre-built templates. Includes hooks for linting staged files, enforcing conventional commits, blocking debug sta..."
+  },
+  {
+   "name": "Agent Guardrails",
+   "identifier": "jz-agent-guardrails",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Stop AI agents from secretly bypassing your rules. Mechanical enforcement with git hooks, secret detection, deployment verification, and import registries. B..."
+  },
+  {
+   "name": "DocSync",
+   "identifier": "docsync",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generate and auto-sync documentation from code with git hooks; detect and fix doc drift using tree-sitter parsing and semantic diffs locally."
+  },
+  {
+   "name": "Git Plus",
+   "identifier": "git-plus",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enhanced Git with advanced workflows, Git hooks, CI/CD integration, monorepo support, Git LFS, and Git internals deep dive."
+  },
+  {
+   "name": "Skill Index",
+   "identifier": "skill-catalog",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Auto-scan all installed skills, generate a categorized INDEX.md, and keep it in sync via git hooks. Triggers: skill index, scan skills, update index, skill c..."
+  }
+ ],
+ "mutation testing": [
+  {
+   "name": "Mutation Test Runner",
+   "identifier": "mutation-test-runner",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Run mutation testing to measure real test suite effectiveness. Inject code mutations (flip conditions, remove calls, change returns), run tests against mutan..."
+  },
+  {
+   "name": "Testing Plus",
+   "identifier": "testing-plus",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enhanced testing with framework-specific templates, CI/CD integration, mutation testing, and performance testing. Covers unit, integration, E2E, and security..."
+  },
+  {
+   "name": "ts4",
+   "identifier": "ts4",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "TS4 namespace for Netsnek e.U. TypeScript testing framework. Unit testing, snapshot testing, coverage reporting, and mutation testing."
+  }
+ ],
+ "property testing": [],
+ "hypothesis": [
+  {
+   "name": "nemo-rl-auto-research",
+   "identifier": "NVIDIA/skills/skills/nemo-rl-auto-research",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Autonomous NeMo-RL research agent workflow for directed hypothesis testing and open-ended discovery. Guides agents through the full experiment lifecycle: understanding recipes and environments, wiring RL or NeMo-gym runs, launching reproducible baselines and iterations, analyzing results, preserving human oversight, and using git plus TSV logs as the research ledger. Do NOT use for: bug fixes, code review, documentation, refactoring, dependency updates, or single-file changes."
+  },
+  {
+   "name": "hypothesis-generation",
+   "identifier": "skills-sh/k-dense-ai/scientific-agent-skills/hypothesis-generation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from k-dense-ai/scientific-agent-skills"
+  },
+  {
+   "name": "hypothesis-generation",
+   "identifier": "skills-sh/davila7/claude-code-templates/hypothesis-generation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from davila7/claude-code-templates"
+  },
+  {
+   "name": "define-hypothesis",
+   "identifier": "skills-sh/product-on-purpose/pm-skills/define-hypothesis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from product-on-purpose/pm-skills"
+  },
+  {
+   "name": "epic-hypothesis",
+   "identifier": "skills-sh/deanpeters/product-manager-skills/epic-hypothesis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from deanpeters/product-manager-skills"
+  },
+  {
+   "name": "statistical-hypothesis-testing",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/statistical-hypothesis-testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "tool-foundation-sprint-founding-hypothesis",
+   "identifier": "skills-sh/product-on-purpose/pm-skills/tool-foundation-sprint-founding-hypothesis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from product-on-purpose/pm-skills"
+  },
+  {
+   "name": "trade-hypothesis-ideator",
+   "identifier": "skills-sh/tradermonty/claude-trading-skills/trade-hypothesis-ideator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from tradermonty/claude-trading-skills"
+  },
+  {
+   "name": "a-share-hypothesis-intake",
+   "identifier": "a-share-hypothesis-intake",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u628a\u957f\u6750\u6599\u3001\u5b8f\u89c2\u89c2\u70b9\u3001\u5f55\u97f3\u8f6c\u5199\u548c\u65b0\u95fb\u6d41\u62c6\u6210\u4e8b\u5b9e\u3001\u63a8\u65ad\u3001\u6570\u636e\u7f3a\u53e3\u3001\u9a8c\u8bc1\u6761\u4ef6\u4e0e A \u80a1\u4f20\u5bfc\u5361\u3002\u9002\u7528\u4e8e\u7528\u6237\u8d34\u957f\u6587\u3001\u89c6\u9891\u5b57\u5e55\u3001\u5b8f\u89c2\u6846\u67b6\u3001\u65b0\u95fb\u6458\u8981\uff0c\u60f3\u843d\u5230\u677f\u5757\u4e0e\u9009\u80a1\u903b\u8f91\u7684\u573a\u666f\u3002"
+  },
+  {
+   "name": "AB Test Setup",
+   "identifier": "sw-ab-test-setup",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Plan A/B tests with a clear hypothesis, defined metrics, variant design, sample size, duration, and statistical significance guidelines."
+  },
+  {
+   "name": "Algo Builder",
+   "identifier": "algo-builder",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Build and test systematic daily-to-weekly trading algorithms through hypothesis, signal validation, backtesting, and strategy development steps."
+  },
+  {
+   "name": "Clarity Submit",
+   "identifier": "clarity-submit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Submit a protein variant hypothesis to Clarity Protocol for validation and folding. Use when the user asks to submit a hypothesis, propose a protein variant,..."
+  }
+ ],
+ "type checking": [
+  {
+   "name": "Licia",
+   "identifier": "licia",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use licia utility library to simplify JavaScript/TypeScript code. Activate when writing utility functions, data manipulation, type checking, string processing, DOM operations, or any code that could be replaced by a well-tested utility. Triggers on \"simplify code\", \"use licia\", \"refactor with utilit"
+  },
+  {
+   "name": "Nm Attune Precommit Setup",
+   "identifier": "nm-attune-precommit-setup",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Configures pre-commit hooks for linting, type checking, formatting, and testing"
+  },
+  {
+   "name": "validation-utils",
+   "identifier": "jpeng-validation-utils",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides data validation and type checking utilities for validating inputs and data structures. Use when you need to validate data types, check constraints,..."
+  }
+ ],
+ "ruff": [
+  {
+   "name": "mcore-linting-and-formatting",
+   "identifier": "NVIDIA/skills/skills/mcore-linting-and-formatting",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Linting and formatting for Megatron-LM. Covers running autoformat.sh, tools (ruff, black, isort, pylint, mypy), and code style rules."
+  },
+  {
+   "name": "ruff",
+   "identifier": "skills-sh/astral-sh/claude-code-plugins/ruff",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from astral-sh/claude-code-plugins"
+  },
+  {
+   "name": "ruff-recursive-fix",
+   "identifier": "skills-sh/github/awesome-copilot/ruff-recursive-fix",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "Pet Grooming Effect Assessment (Mats/Dandruff) | \u5ba0\u7269\u68b3\u6bdb\u6548\u679c\u8bc4\u4f30\uff08\u6bdb\u7ed3/\u76ae\u5c51\uff09",
+   "identifier": "smyx-grooming-effect-assessment-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI-powered pet grooming effect assessment: detects mat residue area, dandruff coverage, and coat smoothness from post-grooming images, outputs a 0-100 groomi..."
+  },
+  {
+   "name": "OpenCode HTTP API",
+   "identifier": "opencode-api",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u900f\u904e HTTP API \u547c\u53eb OpenCode Server \u9032\u884c code review\u3001\u7a0b\u5f0f\u78bc\u5206\u6790\u8207\u7de8\u78bc\u4efb\u52d9\u3002 \u6db5\u84cb\uff1aAgents\uff084\u7a2e\u6a21\u5f0f+\u81ea\u8a02\u4ee3\u7406\uff09\u3001Custom Tools\uff08TypeScript\uff09\u3001Formatters\uff08ruff/biome\uff09\u3001 Skills\uff08\u8f09\u5165\u6280\u80fd\uff09\u3001SDK\uff08\u5b8c\u6574 API\uff0c\u542b\u7d50\u69cb\u5316\u8f38..."
+  },
+  {
+   "name": "Project Code Standard",
+   "identifier": "project-code-standard",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u6b64 skill \u7528\u4e8e\u68c0\u67e5\u3001\u6267\u884c\u548c\u4fee\u590d\u9879\u76ee\u4ee3\u7801\u89c4\u8303\u3002\u5f53\u7528\u6237\u9700\u8981\u4e3a\u9879\u76ee\u5efa\u7acb\u4ee3\u7801\u98ce\u683c\u6807\u51c6\u3001 \u68c0\u67e5\u4ee3\u7801\u662f\u5426\u7b26\u5408\u89c4\u8303\u3001\u81ea\u52a8\u4fee\u590d\u683c\u5f0f\u95ee\u9898\u3001\u751f\u6210\u4ee3\u7801\u8d28\u91cf\u62a5\u544a\uff0c\u6216\u5728 Code Review \u4e2d\u9a8c\u8bc1\u63d0\u4ea4\u662f\u5426\u6ee1\u8db3\u56e2\u961f\u89c4\u8303\u65f6\u6fc0\u6d3b\u3002\u652f\u6301 Python (PEP8/black/ruff)\u3001JavaScript/ TypeScript (E..."
+  },
+  {
+   "name": "Security Audit (Sona)",
+   "identifier": "sona-security-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Fail-closed security auditing for OpenClaw/ClawHub skills & repos: trufflehog secrets scanning, semgrep SAST, prompt-injection/persistence signals, and supply-chain hygiene checks before enabling or installing."
+  },
+  {
+   "name": "Sick Poultry/Swine Behavior Detection | \u75c5\u9e21/\u75c5\u732a\u884c\u4e3a\u8bc6\u522b",
+   "identifier": "smyx-sick-poultry-behavior-detect-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detects morbid behavioral cues in poultry and pigs from continuous barn videos \u2014 such as difficulty standing, ruffled feathers/piloerection, isolation, drows..."
+  },
+  {
+   "name": "mcore-linting-and-formatting",
+   "identifier": "mcore-linting-and-formatting",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Linting and formatting for Megatron-LM. Covers running autoformat.sh, tools (ruff, black, isort, pylint, mypy), and code style rules."
+  },
+  {
+   "name": "python-dev",
+   "identifier": "python-dev",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Opinionated Python development setup with uv + ty + ruff + pytest + just. Use when creating new Python projects, setting up pyproject.toml, configuring linti..."
+  }
+ ],
+ "python lint": [
+  {
+   "name": "Pylinter Assist",
+   "identifier": "pylinter-assist",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides context-aware Python linting with pattern-based heuristics for reviewing GitHub pull requests."
+  }
+ ],
+ "pyc": [
+  {
+   "name": "HappyCoding AI Coding",
+   "identifier": "happycoding-aicoding",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Facilitates full-cycle coding workflow in HappyCoding AI Coding: from requirement discussion, code edits, preview, to saving, publishing, and evidence docume..."
+  },
+  {
+   "name": "Agora Marketplace",
+   "identifier": "agora-marketplace",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Post quests, accept tasks, and earn JPYC on AGORA \u2014 the AI-agent-only guild marketplace. No humans allowed. Find other agents, transact autonomously, build r..."
+  },
+  {
+   "name": "Automl Skill",
+   "identifier": "automl-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AutoML \u81ea\u52a8\u5316\u673a\u5668\u5b66\u4e60\u6280\u80fd | Automated Machine Learning Skill. \u57fa\u4e8e PyCaret \u8fdb\u884c\u4f4e\u4ee3\u7801\u673a\u5668\u5b66\u4e60\u5efa\u6a21\uff0c\u652f\u6301\u5206\u7c7b\u3001\u56de\u5f52\u3001\u805a\u7c7b\u3001\u5f02\u5e38\u68c0\u6d4b\u3001\u65f6\u95f4\u5e8f\u5217\u9884\u6d4b\u3001\u81ea\u7136\u8bed\u8a00\u5904\u7406\u548c\u5173\u8054\u89c4\u5219\u6316\u6398\u7b49\u4efb\u52a1\u3002 \u672a\u6765\u5c06\u96c6\u6210\u66f4\u591a AutoML \u5e93\uff08\u5982 AutoGluon\u3001FLAML \u7b49\uff09\u3002 \u5f53..."
+  },
+  {
+   "name": "Control4 Home",
+   "identifier": "control4-home",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Control a Control4 smart home via pyControl4 (lights, relays, room media) using local Python wrappers. Use when the user asks to control devices, set levels,..."
+  },
+  {
+   "name": "Python Cheat Sheets",
+   "identifier": "pyc",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides functional Python code and detailed answers by fetching and applying proven patterns and examples from pythonsheets.com across core, system, concurr..."
+  },
+  {
+   "name": "llm-text-correct",
+   "identifier": "llm-text-correct",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5f53\u7528\u6237\u60f3\u8981**\u7ea0\u6b63\u4e2d\u6587\u6587\u672c\u9519\u8bef**\u3001**\u4fee\u6539\u62fc\u5199\u9519\u522b\u5b57**\u3001**\u4fee\u6b63\u8bed\u6cd5**\u3001**\u8c03\u6574\u6807\u70b9**\u3001**\u6da6\u8272\u4e2d\u6587\u53e5\u5b50**\u3001**\u68c0\u67e5\u5f62\u8fd1\u5b57\u9519\u8bef**\u65f6\u81ea\u52a8\u89e6\u53d1\u3002 \u4f7f\u7528 pycorrector + MacBERT \u4e13\u4e1a\u6a21\u578b\u8fdb\u884c\u9ad8\u7cbe\u5ea6\u4e2d\u6587\u7ea0\u9519\uff0c\u51c6\u786e\u7387\u8fdc\u9ad8\u4e8e\u666e\u901a LLM \u76f4\u63a5\u63d0\u793a\u3002 \u652f\u6301\u76f4\u63a5\u8f93\u5165\u4e00\u6bb5\u6587\u5b57\u3001\u957f\u6587\u672c\uff0c\u6216\u63d0\u4f9b\u6587\u672c\u6587\u4ef6..."
+  },
+  {
+   "name": "search-vegan",
+   "identifier": "browse-sh/happycow.net/search-vegan-ei6wpc",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Search HappyCow for vegan, vegetarian, and veg-friendly venues (restaurants, health/veg stores, juice bars, bakeries) in any location, honoring HappyCow's full filter surface (diet/venue type, cuisine, features, rating sort, distance, open-now time slider). Returns structured JSON with venue ID, name, slug, diet, coords, address, phone, rating, hours, photos, and region totals."
+  }
+ ],
+ "cpython": [
+  {
+   "name": "\u5929\u6d25\u5b89\u4fe1\u534e\u745e",
+   "identifier": "tianjin-anxinhuarui-gas-monitoring-iot",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u57fa\u4e8eQuecPython\u5e73\u53f0\u7684Modbus\u534f\u8baeIoT\u6846\u67b6\uff0c\u652f\u6301\u591a\u4f20\u611f\u5668\u6570\u636e\u91c7\u96c6\u30014G\u901a\u4fe1\u3001\u4e91\u7aef\u4e0a\u62a5\u53caOTA\u8fdc\u7a0b\u5347\u7ea7\u3002"
+  },
+  {
+   "name": "\u5929\u6d25\u5b89\u4fe1\u534e\u745e\u79d1\u6280\u6709\u9650\u516c\u53f8-\u53ef\u71c3\u6c14\u4f53\u62a5\u8b66\u5668\u4e3b\u673a-\u914d\u5957\u6280\u80fd",
+   "identifier": "tianjin-anxinhuarui-gas-monitoring-iot-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "This skill should be used when the user wants to generate, customize, or deploy QuecPython code for reading gas detector data from an Anxin Huarui AX100 seri..."
+  }
+ ],
+ "pyperf": [],
+ "asv": [
+  {
+   "name": "Telegram\u8bed\u97f3\u6d88\u606f\u6280\u80fd\u5305:\u57fa\u4e8e\u5b9e\u9645\u8e29\u5751\u7ecf\u9a8c\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848\uff0c\u5e2e\u52a9AI\u52a9\u624b\u6b63\u786e\u53d1\u9001Telegram\u8bed\u97f3\u6d88\u606f\u3002\u89e3\u51b3WAV\u683c\u5f0f\u9519\u8bef\u3001\u7f3a\u5c11asVoice\u53c2\u6570\u3001TTS\u97f3\u9891URL\u8fc7\u671f\u7b49\u5e38\u89c1\u95ee\u9898\u3002",
+   "identifier": "telegram-voice-message-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u57fa\u4e8e\u5b9e\u9645\u8e29\u5751\u7ecf\u9a8c\uff0c\u6307\u5bfcAI\u5c06TTS\u97f3\u9891\u8f6c\u6362\u4e3aOGG\u5e76\u6b63\u786e\u4f7f\u7528asVoice\u53c2\u6570\u53d1\u9001Telegram\u8bed\u97f3\u6d88\u606f\u3002"
+  },
+  {
+   "name": "maasv Memory",
+   "identifier": "maasv-memory",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides structured long-term memory with semantic, keyword, and knowledge graph retrieval, entity extraction, temporal versioning, and experiential learning."
+  },
+  {
+   "name": "shux",
+   "identifier": "skills-sh/indrasvat/shux/shux",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from indrasvat/shux"
+  },
+  {
+   "name": "species_identification_sequence_blast_annotation_tool",
+   "identifier": "blast-species-identification",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u63d0\u4f9b\u57fa\u4e8eBLAST\u7684FASTA\u5e8f\u5217\u548cOTU\u8868Top ASV\u7684\u7269\u79cd\u6ce8\u91ca\uff0c\u652f\u6301\u6620\u5c04\u6587\u4ef6\u3001\u5ef6\u8fdf\u8bbe\u7f6e\u548c\u65ad\u70b9\u7eed\u4f20\u529f\u80fd\u3002"
+  },
+  {
+   "name": "scrape-exhibitor-directory",
+   "identifier": "browse-sh/lasvegas.jckonline.com/scrape-exhibitor-directory-3uw0f6",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Extract the full list of exhibitors from the JCK Las Vegas show directory (~1,700 companies) with name, contact information (phone, email, website, country), description, booth/stand reference, and product categories. Uses the public Algolia search API embedded in the directory page \u2014 two HTTPS POSTs cover the full roster."
+  }
+ ],
+ "pyperf timeit": []
+}

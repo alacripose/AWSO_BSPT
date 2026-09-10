@@ -1,0 +1,1026 @@
+{
+ "ast-grep": [
+  {
+   "name": "ast-grep",
+   "identifier": "official/software-development/ast-grep",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "AST-aware structural code search and rewrite via ast-grep."
+  },
+  {
+   "name": "ast-grep",
+   "identifier": "skills-sh/ast-grep/agent-skill/ast-grep",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from ast-grep/agent-skill"
+  },
+  {
+   "name": "ast-grep",
+   "identifier": "skills-sh/pproenca/dot-skills/ast-grep",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from pproenca/dot-skills"
+  },
+  {
+   "name": "ast-grep-find",
+   "identifier": "skills-sh/parcadei/continuous-claude-v3/ast-grep-find",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from parcadei/continuous-claude-v3"
+  },
+  {
+   "name": "ast-grep-outline",
+   "identifier": "skills-sh/ast-grep/agent-skill/ast-grep-outline",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from ast-grep/agent-skill"
+  }
+ ],
+ "uv": [
+  {
+   "name": "uv",
+   "identifier": "skills-sh/astral-sh/claude-code-plugins/uv",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from astral-sh/claude-code-plugins"
+  },
+  {
+   "name": "uv",
+   "identifier": "skills-sh/google-deepmind/science-skills/uv",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from google-deepmind/science-skills"
+  },
+  {
+   "name": "uv-package-manager",
+   "identifier": "skills-sh/wshobson/agents/uv-package-manager",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshobson/agents"
+  },
+  {
+   "name": "uv-package-manager",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/uv-package-manager",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "uview-pro",
+   "identifier": "skills-sh/uview-pro/skills/uview-pro",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from uview-pro/skills"
+  },
+  {
+   "name": "UV Global",
+   "identifier": "uv-global",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provision and reuse a global uv environment for ad hoc Python scripts."
+  },
+  {
+   "name": "uView UI",
+   "identifier": "uview-ui",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "uView UI uni-app component library for Vue 2. Invoke when developing uni-app pages with Vue 2, using uView components (u-button, u-input, u-form, etc.), or n..."
+  },
+  {
+   "name": "uv-package-manager",
+   "identifier": "fix-build-agentops-uv-package-manager",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python pr..."
+  },
+  {
+   "name": "Hologres Uv Compute",
+   "identifier": "hologres-uv-compute",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Hologres UV/PV computation using Dynamic Tables and RoaringBitmap for real-time deduplication at scale. Use for building incremental UV/PV pipelines, Roaring..."
+  },
+  {
+   "name": "Pet UV Safety Monitor Analysis | \u5ba0\u7269\u7d2b\u5916\u7ebf\u6d88\u6bd2\u5b89\u5168\u76d1\u6d4b",
+   "identifier": "smyx-uv-safety-monitor-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI-powered UV disinfection safety monitor for pets. Real-time camera analysis detects whether a pet enters an active UV-C disinfection zone and whether the U..."
+  }
+ ],
+ "pip-audit": [
+  {
+   "name": "clawsec-scanner",
+   "identifier": "clawsec-scanner",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Automated vulnerability scanner for agent platforms. Performs dependency scanning (npm audit, pip-audit), multi-database CVE lookup (OSV, NVD, GitHub Advisor..."
+  }
+ ],
+ "packaging": [
+  {
+   "name": "hatch-pet",
+   "identifier": "openai/skills/skills/.curated/hatch-pet",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Create, repair, validate, visually QA, and package Codex-compatible animated pets and pet spritesheets from character art, generated images, company or prospect brand cues, or visual references. Use when a user wants a lightweight-worker Codex pet workflow, a non-pixel custom pet style, a prospect or company mascot pet, or a full 8x9 animated pet atlas with transparent unused cells, QA contact sheets, and pet.json packaging. This skill composes the installed $imagegen system skill for visual generation and uses bundled scripts for deterministic spritesheet assembly."
+  },
+  {
+   "name": "nemo-relay-plugin-build",
+   "identifier": "NVIDIA/skills/skills/nemo-relay-plugin-build",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when building or packaging reusable NeMo Relay runtime behavior as a configuration-activated plugin with deterministic validation and rollback-safe registration."
+  },
+  {
+   "name": "omniverse-cad-to-simready",
+   "identifier": "NVIDIA/skills/skills/omniverse-cad-to-simready",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Coordinate the end-to-end CAD/source-asset to SimReady workflow. Use for broad requests such as CAD to SimReady, source asset to simulation-ready USD, or prop packaging that require conversion, material/physics assignment, SimReady conformance, validation, and optional package creation; deploy or verify Content Agents services first when property assignment is enabled; route single-stage work through nested references."
+  },
+  {
+   "name": "physicsnemo-discover",
+   "identifier": "NVIDIA/skills/skills/physicsnemo-discover",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Official NVIDIA-authored guidance for navigating PhysicsNeMo \u2014 pick the model, datapipe, or example for a SciML/AI4Science task (surrogates, forecasting, downscaling, physics-informed, inverse, generative). Points at existing files via live repo search; never writes code. Do NOT use for installation or environment setup, training-loop or other code authoring/scaffolding, contributor/CI/packaging questions, repo-specific questions in physicsnemo-sym/-cfd/-curator, or general (non-physics) ML/PyTorch."
+  },
+  {
+   "name": "tao-port-huggingface-model",
+   "identifier": "NVIDIA/skills/skills/tao-port-huggingface-model",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Integrate a HuggingFace Computer Vision model into the NVIDIA TAO Toolkit ecosystem (tao-core config, tao-pytorch trainer, tao-deploy TensorRT pipeline). Use when the user asks to \"integrate a HuggingFace model into TAO\", \"add an HF model to TAO Toolkit\", \"wire a HuggingFace ViT/DETR/ SegFormer into tao-pytorch\", \"build a TAO trainer + deploy pipeline for an HF CV model\", or pastes a HuggingFace model URL/ID and wants it turned into a TAO model. Covers the full 7-phase loop: prerequisites check, HuggingFace inspection and validation, codebase exploration, tao-core configuration and native trainer implementation, ONNX export plus TensorRT deploy integration, packaging and L0 testing, container-based end-to-end validation, and (conditional) accuracy/latency tuning. Supports classification, object detection, semantic / instance / panoptic segmentation, zero-shot detection, and depth estimation.\n"
+  },
+  {
+   "name": "packaging",
+   "identifier": "packaging",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u63d0\u4f9b\u5305\u88c5\u4f18\u5316\u7684\u53ef\u843d\u5730\u6307\u5357\u4e0eSOP\u3002\u5728\u5f00\u5c55\u5305\u88c5\u4f18\u5316\u76f8\u5173\u5de5\u4f5c\u65f6\u8c03\u7528\u3002"
+  },
+  {
+   "name": "packaging-design-generation",
+   "identifier": "skills-sh/eachlabs/skills/packaging-design-generation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from eachlabs/skills"
+  },
+  {
+   "name": "Packaging Designer",
+   "identifier": "packaging-designer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Design product packaging and unboxing experiences that reinforce brand identity, encourage social sharing, reduce damage rates, and include insert cards that..."
+  },
+  {
+   "name": "Packaging Generation",
+   "identifier": "packaging-generation",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5305\u88c5\u8bbe\u8ba1\u751f\u6210\u6280\u80fd\uff0c\u652f\u6301\u4ece\u96f6\u521b\u5efa\u5404\u79cd\u5305\u88c5\u8bbe\u8ba1\uff0c\u5305\u542b\u5b8c\u6574\u8bbe\u8ba1\u89c4\u8303\u3001\u6a21\u677f\u7cfb\u7edf\u548c\u5185\u5bb9\u751f\u6210\u80fd\u529b\u3002\u89e6\u53d1\u8bcd\uff1a\u751f\u6210\u5305\u88c5\u3001\u521b\u5efa\u5305\u88c5\u3001\u5305\u88c5\u8bbe\u8ba1\u3001\u4ea7\u54c1\u5305\u88c5\u3001\u793c\u54c1\u5305\u88c5\u3001meta-skill-system"
+  },
+  {
+   "name": "A cross-session handoff protocol for Claude Code and other AI agents.  handoff is not a summarization tool. It's a protocol for freezing your work context, packaging it, and resuming execution \u2014 in any session, any agent, any device.",
+   "identifier": "handoff-session",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u8de8\u4f1a\u8bdd\u4ea4\u63a5\u534f\u8bae\u3002\u7528\u6237\u53ea\u8981\u8868\u73b0\u51fa\u201c\u73b0\u5728\u5148\u505c\u4e00\u4e0b\uff0c\u4e0b\u4e00\u4f1a\u8bdd\u63a5\u7740\u5e72\u201d\u201c\u7ee7\u7eed\u521a\u624d\u90a3\u4e00\u8f6e\u201d\u201c\u4e0a\u4e0b\u6587\u592a\u957f\u8981\u8fc1\u79fb\u5de5\u4f5c\u73b0\u573a\u201d\u7b49\u610f\u56fe\uff0c\u5c31\u5fc5\u987b\u4f7f\u7528\u6b64 skill\u3002 `handoff out` \u751f\u6210\u4e00\u4e2a\u6700\u5c0f\u53ef\u6267\u884c\u7684 handoff \u5305\uff1b`handoff in <id|latest>` \u5148\u8bfb\u53d6 handoff \u5305\u5e76\u7ed9\u51fa\u6062\u590d\u9884\u89c8\uff0c\u83b7\u5f97\u7528\u6237..."
+  }
+ ],
+ "documentation": [
+  {
+   "name": "simple-english",
+   "identifier": "official/creative/simple-english",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Rewrite text to ASD-STE100 Simplified Technical English."
+  },
+  {
+   "name": "code-wiki",
+   "identifier": "official/software-development/code-wiki",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Generate wiki docs + Mermaid diagrams for any codebase."
+  },
+  {
+   "name": "documentation",
+   "identifier": "skills-sh/anthropics/knowledge-work-plugins/documentation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from anthropics/knowledge-work-plugins"
+  },
+  {
+   "name": "documentation",
+   "identifier": "skills-sh/mcollina/skills/documentation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mcollina/skills"
+  },
+  {
+   "name": "documentation",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/documentation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "Documentation",
+   "identifier": "documentation",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u514d\u8d39\u6280\u672f\u6587\u6863\u8f85\u52a9\u6280\u80fd\u3002\u9002\u7528\u4e8e\u8bf4\u660e\u6587\u6863\u3001\u64cd\u4f5c\u624b\u518c\u3001\u90e8\u7f72\u6587\u6863\u3001API \u8bf4\u660e\u3001 \u4ea4\u4ed8\u6587\u6863\u5927\u7eb2\u3001\u4e8b\u5b9e\u6536\u96c6\u6e05\u5355\u3001\u5199\u4f5c\u987a\u5e8f\u5efa\u8bae\u7b49\u672c\u5730\u6587\u6863\u6574\u7406\u573a\u666f\u3002"
+  },
+  {
+   "name": "documentation-and-adrs",
+   "identifier": "skills-sh/addyosmani/agent-skills/documentation-and-adrs",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from addyosmani/agent-skills"
+  },
+  {
+   "name": "documentation-engineer",
+   "identifier": "skills-sh/charon-fan/agent-playbook/documentation-engineer",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from charon-fan/agent-playbook"
+  },
+  {
+   "name": "documentation-generation-doc-generate",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/documentation-generation-doc-generate",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "documentation-lookup",
+   "identifier": "skills-sh/affaan-m/everything-claude-code/documentation-lookup",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/everything-claude-code"
+  }
+ ],
+ "docstring": [
+  {
+   "name": "nemo-rl-docs",
+   "identifier": "NVIDIA/skills/skills/nemo-rl-docs",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Documentation conventions for NeMo-RL. Covers docs/index.md updates and docstring format. Do NOT use for: bug fixes, test fixes, dependency bumps, refactoring, CI/CD changes, performance tuning, or any task that does not involve writing or updating documentation."
+  },
+  {
+   "name": "docstring",
+   "identifier": "skills-sh/pytorch/pytorch/docstring",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from pytorch/pytorch"
+  },
+  {
+   "name": "Docstring Generator / \u6587\u6863\u6ce8\u91ca\u751f\u6210",
+   "identifier": "docstring-gen",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Auto-generate docstrings and comments from code signatures. / \u4ece\u4ee3\u7801\u7b7e\u540d\u81ea\u52a8\u751f\u6210\u6587\u6863\u6ce8\u91ca\u3002"
+  },
+  {
+   "name": "Auto Doc AI",
+   "identifier": "auto-doc-ai",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u57fa\u4e8e AST \u548c LLM \u81ea\u52a8\u751f\u6210 Python \u4ee3\u7801\u6587\u6863\uff08Google Style docstring\uff09\u3002 \u81ea\u52a8\u5206\u6790\u4ee3\u7801\u7ed3\u6784\uff0c\u751f\u6210\u7b26\u5408 Google Style \u7684 docstring\u3002"
+  },
+  {
+   "name": "Code Documenter",
+   "identifier": "code-documenter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, use..."
+  },
+  {
+   "name": "Improve Code Comments",
+   "identifier": "improve-code-comments",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when auditing, adding, removing, or improving code comments, docstrings, JSDoc/TSDoc, TODO/FIXME/HACK notes, public API comments, inline rationale, stale..."
+  },
+  {
+   "name": "Pydantic Ai Tool System",
+   "identifier": "pydantic-ai-tool-system",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Register and implement PydanticAI tools with proper context handling, type annotations, and docstrings. Use when adding tool capabilities to agents, implemen..."
+  },
+  {
+   "name": "Python Hardener",
+   "identifier": "skill-python-hardener",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Hardens Python scripts by applying a complete security review, clean-code refactoring, robust error handling, proper logging, and full docstring coverage \u2014 t..."
+  },
+  {
+   "name": "Review Ai Writing",
+   "identifier": "review-ai-writing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detect AI-generated writing patterns in developer text \u2014 docs, docstrings, commit messages, PR descriptions, and code comments. Use when reviewing any text a..."
+  },
+  {
+   "name": "Thoth Pro",
+   "identifier": "thoth-pro",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Thoth Pro -- Full Auto-Documentation Suite. README + API reference + docstrings injected into source + CHANGELOG from git + architecture doc. The definitive..."
+  }
+ ],
+ "observability": [
+  {
+   "name": "observability",
+   "identifier": "skills-sh/assistant-ui/skills/observability",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from assistant-ui/skills"
+  },
+  {
+   "name": "Observability",
+   "identifier": "observability",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Logs, metrics, and traces as complementary signals, high-cardinality dimensions, and the instrumentation budget."
+  },
+  {
+   "name": "Observability",
+   "identifier": "yuyonghao-observability",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides a complete AI agent observability solution with structured logs, metrics, distributed tracing, alert management, and a real-time monitoring dashboard."
+  },
+  {
+   "name": "observability-and-instrumentation",
+   "identifier": "skills-sh/addyosmani/agent-skills/observability-and-instrumentation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from addyosmani/agent-skills"
+  },
+  {
+   "name": "observability-designer",
+   "identifier": "skills-sh/alirezarezvani/claude-skills/observability-designer",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from alirezarezvani/claude-skills"
+  },
+  {
+   "name": "observability-edot-dotnet-instrument",
+   "identifier": "skills-sh/elastic/agent-skills/observability-edot-dotnet-instrument",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elastic/agent-skills"
+  },
+  {
+   "name": "observability-edot-dotnet-migrate",
+   "identifier": "skills-sh/elastic/agent-skills/observability-edot-dotnet-migrate",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elastic/agent-skills"
+  },
+  {
+   "name": "observability-edot-java-instrument",
+   "identifier": "skills-sh/elastic/agent-skills/observability-edot-java-instrument",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elastic/agent-skills"
+  },
+  {
+   "name": "observability-edot-java-migrate",
+   "identifier": "skills-sh/elastic/agent-skills/observability-edot-java-migrate",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elastic/agent-skills"
+  },
+  {
+   "name": "observability-edot-python-instrument",
+   "identifier": "skills-sh/elastic/agent-skills/observability-edot-python-instrument",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elastic/agent-skills"
+  }
+ ],
+ "error handling": [
+  {
+   "name": "Error Handling",
+   "identifier": "error-handling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deep error handling workflow\u2014taxonomy, user-visible vs internal errors, retries and idempotency, observability, and supportability. Use when standardizing fa..."
+  },
+  {
+   "name": "API Error Handling",
+   "identifier": "api-error-handling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Error handling patterns across languages and layers \u2014 operational vs programmer errors, retry strategies, circuit breakers, error boundaries, HTTP responses, graceful degradation, and structured logging. Use when designing error strategies, building resilient APIs, or reviewing error management."
+  },
+  {
+   "name": "GI Error Handling",
+   "identifier": "gi-error-handling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Handle errors and logging following project conventions. Use when implementing exception handling, adding logs, or when the user asks for error handling patt..."
+  },
+  {
+   "name": "Golang Error Handling",
+   "identifier": "golang-error-handling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Idiomatic Golang error handling \u2014 creation, wrapping with %w, errors.Is/As, errors.Join, custom error types, sentinel errors, panic/recover, the single handl..."
+  },
+  {
+   "name": "Missing Error Handling",
+   "identifier": "missing-error-handling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Code handles only the happy path \u2014 external calls, I/O, and parsing have no failure handling and crash on anything unexpected."
+  },
+  {
+   "name": "Review Error Handling",
+   "identifier": "review-error-handling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit failure states, retries, validation, and idempotency in the code under review."
+  },
+  {
+   "name": "AHA Mermaid Diagram",
+   "identifier": "aha-mermaid-diagram",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Render Mermaid.js class, flowchart, sequence, and ER diagrams in HTML with live preview, dark theme, and error handling for clean visualization."
+  },
+  {
+   "name": "AI Model Team",
+   "identifier": "ai-model-team",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI Model Team - Multi-model prediction system (Kronos + Chronos-2 + TimesFM + VADER) for OKX crypto and US stocks. Features error handling, retry logic, HTTP..."
+  },
+  {
+   "name": "API Design Principles",
+   "identifier": "api-design-principles",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Design clear, scalable REST and GraphQL APIs including resource modeling, HTTP methods, pagination, error handling, versioning, and schema best practices."
+  },
+  {
+   "name": "AWEKAS Wetter API",
+   "identifier": "awekas-current",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Fetches and normalizes current weather data from the AWEKAS API with caching, retries, and structured error handling."
+  }
+ ],
+ "logging": [
+  {
+   "name": "doca-telemetry",
+   "identifier": "NVIDIA/skills/skills/doca-telemetry",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when reading **DOCA hardware-counter events** from a `doca_dev` via the per-domain DOCA Telemetry reader libraries \u2014 `doca_telemetry_pcc`, `_dpa`, `_diag`, `_adp_retx`, `_phy`, `_pci`. This is the **counter-READER** surface \u2014 there is no NetFlow / IPFIX / local-socket collector framework here; the bundle previously framed it that way and that framing is wrong. Each domain ships its own `doca_telemetry_{domain}_*` API: cap-query `_cap_is_supported(devinfo)`, `_create()` on a `doca_dev`, `_start()`, then per-domain read / sample. Trigger even when the user does not say \"DOCA Telemetry\" \u2014 typical implicit phrasings: \"read PCC counters from my BlueField app\", \"sample DPA counter exports\", \"expose PHY / PCI / DIAG counters from this `doca_dev`\". Refuse and route elsewhere for the publishing / export side (`doca-telemetry-exporter`), DOCA Telemetry Service (DTS) as deployed (out of scope), NetFlow / IPFIX collectors, and plain stdout logging.\n"
+  },
+  {
+   "name": "doca-telemetry-exporter",
+   "identifier": "NVIDIA/skills/skills/doca-telemetry-exporter",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is doing hands-on DOCA Telemetry Exporter programming on a host where DOCA is installed \u2014 defining a doca_telemetry_exporter_schema, creating sources, picking counter/gauge/event types, running capability queries before assuming limits, registering schemas before the first emit, or debugging DOCA_ERROR_* failures from the exporter API. Trigger even when the user does not explicitly mention \"DOCA Telemetry Exporter\" or \"doca_telemetry_exporter_*\" \u2014 typical implicit phrasings include \"publishing counters from my DOCA app\", \"emit returns AGAIN under bulk load\", \"consumer sees nothing but emit reports success\", \"NOT_FOUND on first submit\", or \"should I link the exporter or the telemetry service\". Refuse and route elsewhere for the receiving DOCA Telemetry Service, plain stdout logging via doca_log, non-DOCA Prometheus scrape sinks, or real-time event subscription back into the app via doca-comch \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "huggingface-trackio",
+   "identifier": "huggingface/skills/skills/huggingface-trackio",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation."
+  },
+  {
+   "name": "logging-best-practices",
+   "identifier": "skills-sh/boristane/agent-skills/logging-best-practices",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from boristane/agent-skills"
+  },
+  {
+   "name": "logging-best-practices",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/logging-best-practices",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "logging-best-practices",
+   "identifier": "skills-sh/mindrally/skills/logging-best-practices",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mindrally/skills"
+  },
+  {
+   "name": "logging-best-practices",
+   "identifier": "skills-sh/secondsky/claude-skills/logging-best-practices",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from secondsky/claude-skills"
+  },
+  {
+   "name": "logging-observability",
+   "identifier": "skills-sh/wshaddix/dotnet-skills/logging-observability",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshaddix/dotnet-skills"
+  },
+  {
+   "name": "Logging Observability",
+   "identifier": "logging-observability",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Structured logging, distributed tracing, and metrics collection patterns for building observable systems. Use when implementing logging infrastructure, setting up distributed tracing with OpenTelemetry, designing metrics collection (RED/USE methods), configuring alerting and dashboards, or reviewing observability practices. Covers structured JSON logging, context propagation, trace sampling, Prometheus/Grafana stack, alert design, and PII/secret scrubbing."
+  },
+  {
+   "name": "Ai Intelligent Audit Logging",
+   "identifier": "ai-intelligent-audit-logging",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5ba1\u8ba1\u65e5\u5fd7\uff0c\u64cd\u4f5c\u8bb0\u5f55 + \u5408\u89c4\u5ba1\u8ba1\u3002"
+  }
+ ],
+ "python expert": [
+  {
+   "name": "tilegym-cutile-python",
+   "identifier": "NVIDIA/skills/skills/tilegym-cutile-python",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Expert cuTile programming assistant. Write high-performance GPU kernels using cuTile's tile-based programming model with proper validation and optimization. Supports deep agent orchestration for complex multi-kernel tasks."
+  },
+  {
+   "name": "tilegym-cutile-python",
+   "identifier": "tilegym-cutile-python",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Expert cuTile programming assistant. Write high-performance GPU kernels using cuTile's tile-based programming model with proper validation and optimization. Supports deep agent orchestration for complex multi-kernel tasks."
+  },
+  {
+   "name": "python-buddy",
+   "identifier": "lobehub/python-buddy",
+   "source": "lobehub",
+   "trust_level": "community",
+   "description": "Your Python expert friend"
+  }
+ ],
+ "python best practices": [
+  {
+   "name": "Shadows Python Sensei",
+   "identifier": "shadows-python-sensei",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Python best practices enforcer \u2014 clean code, proper patterns, performance, testing, type hints. Use when writing or reviewing Python code."
+  }
+ ],
+ "code standards": [
+  {
+   "name": "variable-name-conversion",
+   "identifier": "lobehub/variable-name-conversion",
+   "source": "lobehub",
+   "trust_level": "community",
+   "description": "During software development, naming variables is a common yet time-consuming task. This assistant can automatically convert Chinese variable names into English variable names that conform to camelCase"
+  }
+ ],
+ "conventional commits": [
+  {
+   "name": "Conventional Commits",
+   "identifier": "conventional-commits",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Format commit messages using the Conventional Commits specification. Use when creating commits, writing commit messages, or when the user mentions commits, git commits, or commit messages. Ensures commits follow the standard format for automated tooling, changelog generation, and semantic versioning."
+  },
+  {
+   "name": "Caveman Commit",
+   "identifier": "caveman-commit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Ultra-compressed commit message generator. Cuts noise from commit messages while preserving intent and reasoning. Conventional Commits format. Subject \u226450 ch..."
+  },
+  {
+   "name": "Commit Message Linter",
+   "identifier": "commit-message-linter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Validate git commit messages against Conventional Commits spec and configurable rules. Use when linting commit messages, enforcing commit conventions, checki..."
+  },
+  {
+   "name": "Commit Message Validation",
+   "identifier": "commit-message-writing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Strict Conventional Commits v1.0.0, atomic commit discipline, and Trunk-Based Development guardrails for git work. Use when preparing a commit, staging chang..."
+  },
+  {
+   "name": "Commit code safe and nice",
+   "identifier": "proper-git-commit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Smart git commit with remote sync, amend intelligence, and conventional commits. Use when the user asks to commit changes, stage and commit, \"/commit\", save..."
+  },
+  {
+   "name": "Conventional Git",
+   "identifier": "conventional-git",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Conventional Commits v1.0.0 branch naming, worktree naming, and commit message standards for GitHub and GitLab projects. Use when creating branches, naming w..."
+  },
+  {
+   "name": "Git Changelog Generator",
+   "identifier": "git-changelog-generator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generate structured changelogs from git history using conventional commits, with support for multiple formats, AI-enhanced descriptions, and customizable ran..."
+  },
+  {
+   "name": "Git Commit Cn",
+   "identifier": "git-commit-cn",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Read git diff --staged, generate Conventional Commits format messages in Chinese. Requires: git. Shows diff summary, suggests commit type, generates message."
+  },
+  {
+   "name": "Git Commit Formatter",
+   "identifier": "git-commit-formatter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Format commit message theo Conventional Commits standard (Conventional Commits v1.0.0). Input l\u00e0 git diff ho\u1eb7c m\u00f4 t\u1ea3 thay \u0111\u1ed5i, output l\u00e0 commit message c\u00f3 ty..."
+  },
+  {
+   "name": "Git Commit Generator",
+   "identifier": "git-commit-generator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\ud83d\udc51 kingai.work \u51fa\u54c1 \u00b7 git-commit-generator \u00b7 \u628a git diff \u4e00\u952e\u53d8\u6210\u7b26\u5408 Conventional Commits \u7684\u63d0\u4ea4\u4fe1\u606f \u00b7 \u514d\u8d39\u7248\u53ef\u7528\uff0c\u4ed8\u8d39\u7248\u89e3\u9501\u9ad8\u7ea7/\u6279\u91cf\u80fd\u529b"
+  }
+ ],
+ "changelog": [
+  {
+   "name": "changelog",
+   "identifier": "skills-sh/everyinc/compound-engineering-plugin/changelog",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from everyinc/compound-engineering-plugin"
+  },
+  {
+   "name": "Changelog",
+   "identifier": "changelog",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Changelog - command-line tool for everyday use Use when you need changelog."
+  },
+  {
+   "name": "changelog-automation",
+   "identifier": "skills-sh/wshobson/agents/changelog-automation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshobson/agents"
+  },
+  {
+   "name": "changelog-automation",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/changelog-automation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "changelog-generator",
+   "identifier": "skills-sh/composiohq/awesome-claude-skills/changelog-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from composiohq/awesome-claude-skills"
+  },
+  {
+   "name": "changelog-generator",
+   "identifier": "skills-sh/claude-office-skills/skills/changelog-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from claude-office-skills/skills"
+  },
+  {
+   "name": "changelog-generator",
+   "identifier": "skills-sh/alirezarezvani/claude-skills/changelog-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from alirezarezvani/claude-skills"
+  },
+  {
+   "name": "changelog-generator",
+   "identifier": "skills-sh/davila7/claude-code-templates/changelog-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from davila7/claude-code-templates"
+  },
+  {
+   "name": "changelog-generator",
+   "identifier": "skills-sh/composiohq/awesome-codex-skills/changelog-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from composiohq/awesome-codex-skills"
+  },
+  {
+   "name": "changelog-generator",
+   "identifier": "skills-sh/skillcreatorai/ai-agent-skills/changelog-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from skillcreatorai/ai-agent-skills"
+  }
+ ],
+ "versioning": [
+  {
+   "name": "publish-site",
+   "identifier": "official/web-development/publish-site",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Versioned site deploys to GitHub/Cloudflare/Netlify Pages."
+  },
+  {
+   "name": "Api Versioning Strategy",
+   "identifier": "api-versioning-strategy",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Write an API versioning strategy document for a service or API platform. Use when asked to define versioning policy, plan API deprecation, classify breaking..."
+  },
+  {
+   "name": "api-changelog-versioning",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/api-changelog-versioning",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "api-changelog-versioning",
+   "identifier": "skills-sh/secondsky/claude-skills/api-changelog-versioning",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from secondsky/claude-skills"
+  },
+  {
+   "name": "api-versioning-strategy",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/api-versioning-strategy",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "api-versioning-strategy",
+   "identifier": "skills-sh/secondsky/claude-skills/api-versioning-strategy",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from secondsky/claude-skills"
+  },
+  {
+   "name": "git-workflow-and-versioning",
+   "identifier": "skills-sh/addyosmani/agent-skills/git-workflow-and-versioning",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from addyosmani/agent-skills"
+  },
+  {
+   "name": "semantic-versioning",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/semantic-versioning",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "vtex-io-storefront-theme-versioning",
+   "identifier": "skills-sh/vtex/skills/vtex-io-storefront-theme-versioning",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from vtex/skills"
+  },
+  {
+   "name": "wix-stores-versioning",
+   "identifier": "skills-sh/wix/skills/wix-stores-versioning",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wix/skills"
+  }
+ ],
+ "sql": [
+  {
+   "name": "darwinian-evolver",
+   "identifier": "official/research/darwinian-evolver",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Evolve prompts/regex/SQL/code with Imbue's evolution loop."
+  },
+  {
+   "name": "SQL",
+   "identifier": "sql",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Master relational databases with SQL. Schema design, queries, performance, migrations for PostgreSQL, MySQL, SQLite, SQL Server."
+  },
+  {
+   "name": "sql-best-practices",
+   "identifier": "skills-sh/mindrally/skills/sql-best-practices",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mindrally/skills"
+  },
+  {
+   "name": "sql-code-review",
+   "identifier": "skills-sh/github/awesome-copilot/sql-code-review",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "sql-database-assistant",
+   "identifier": "skills-sh/alirezarezvani/claude-skills/sql-database-assistant",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from alirezarezvani/claude-skills"
+  },
+  {
+   "name": "sql-injection-prevention",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/sql-injection-prevention",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "sql-injection-testing",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/sql-injection-testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "sql-injection-testing",
+   "identifier": "skills-sh/davila7/claude-code-templates/sql-injection-testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from davila7/claude-code-templates"
+  },
+  {
+   "name": "sql-optimization",
+   "identifier": "skills-sh/github/awesome-copilot/sql-optimization",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "sql-optimization-patterns",
+   "identifier": "skills-sh/wshobson/agents/sql-optimization-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshobson/agents"
+  }
+ ],
+ "database schema": [
+  {
+   "name": "Database Schema Design",
+   "identifier": "database-schema-design",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Document or design a database schema with entity relationships, table definitions, constraints, indexes, and access patterns. Use when asked to design a data..."
+  },
+  {
+   "name": "Database Schema Designer / \u6570\u636e\u5e93\u8bbe\u8ba1\u5668",
+   "identifier": "db-schema-designer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Design and suggest database schemas from application descriptions. / \u4ece\u5e94\u7528\u63cf\u8ff0\u8bbe\u8ba1\u548c\u63a8\u8350\u6570\u636e\u5e93 schema\u3002"
+  },
+  {
+   "name": "Database Schema Differ",
+   "identifier": "database-schema-differ",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Compare database schemas across environments, generate migration scripts, and track schema evolution."
+  },
+  {
+   "name": "Database Schema Sync",
+   "identifier": "database-schema-sync",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Database schema management using idempotent sync script instead of Alembic migrations. Use when (1) Adding new database tables, (2) Adding new columns to exi..."
+  },
+  {
+   "name": "Teamgram Database Schema",
+   "identifier": "teamgram-database-schema",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Complete database schema reference for Teamgram Server with all 43 tables, ER relationships, and key table structure explanations for the MySQL teamgram data..."
+  },
+  {
+   "name": "DB Schema Generator",
+   "identifier": "db-schema-gen",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generate database schemas, migrations, and ERD diagrams from plain English descriptions \u2014 supports PostgreSQL, MySQL, SQLite, and MongoDB with proper indexes..."
+  },
+  {
+   "name": "Database Operations",
+   "identifier": "database-operations",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when designing database schemas, writing migrations, optimizing SQL queries, fixing N+1 problems, creating indexes, setting up PostgreSQL, configuring EF Core, implementing caching, partitioning tables, or any database performance question."
+  },
+  {
+   "name": "Database Specialist",
+   "identifier": "database-specialist",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Database schema design, SQL optimization, index strategy, and migration planning. User questions are transmitted via HTTPS to a clawtip third-party verification service for order creation; order metadata is stored locally in ~/.openclaw/skills/orders/. No database credentials, passwords, or connecti"
+  },
+  {
+   "name": "Dise\u00f1ador base de datos",
+   "identifier": "kv-database-designer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Design, analyze, optimize and evolve database schemas. Use when the user asks to design schemas from scratch, choose between SQL and NoSQL engines, analyze o..."
+  },
+  {
+   "name": "Ecto Migrator",
+   "identifier": "ecto-migrator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generate Ecto migrations from natural language or schema descriptions. Handles tables, columns, indexes, constraints, references, enums, and partitioning. Supports reversible migrations, data migrations, and multi-tenant patterns. Use when creating or modifying database schemas, adding indexes, altering tables, creating enums, or performing data migrations in an Elixir project."
+  }
+ ],
+ "benchmark optimization": [],
+ "load": [
+  {
+   "name": "huggingface-hub",
+   "identifier": "official/mlops/models/huggingface-hub",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "HuggingFace hf CLI: search/download/upload models, datasets."
+  },
+  {
+   "name": "pytorch-fsdp",
+   "identifier": "official/mlops/pytorch-fsdp",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Fully sharded data-parallel training for large models."
+  },
+  {
+   "name": "compose-email-with-emojis",
+   "identifier": "browse-sh/emojis.directory/compose-email-with-emojis-uk7ipo",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Look up matching emojis on emojis.directory for each idea in an email's copy, then return a structured email payload (subject + body + emojis_used audit) with emojis interleaved through the body for the caller to paste into their own mail client."
+  },
+  {
+   "name": "check-availability",
+   "identifier": "browse-sh/resy.com/check-availability-v27zl8",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Check Resy for bookable reservation slots at a given restaurant for a party size and date or date window. Returns slot times with seating type, config_id token (load-bearing for downstream booking), price, and policy. Distinguishes available, sold-out, outside-publish-window, ambiguous-name, venue-not-found, party-size-exceeds-max, and Resy-Premier-wall outcomes. Read-only \u2014 never books."
+  },
+  {
+   "name": "lookup-software",
+   "identifier": "browse-sh/software.nasa.gov/lookup-software-contract-54tcpr",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Look up software in NASA's public Software Catalog by free-text keyword or by canonical case number, returning structured records with title, description, NASA field center, category, release type, version, dates, and download URL."
+  },
+  {
+   "name": "get-resale-price",
+   "identifier": "browse-sh/stockx.com/get-resale-price-eewaou",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Given a sneaker or streetwear product (name + optional size), return the StockX market snapshot: lowest ask, highest bid, last sale + date, recent sales volume, and a 30-day price-trend payload. Read-only \u2014 never bids or buys."
+  },
+  {
+   "name": "search-skills-plugins-subagents",
+   "identifier": "browse-sh/agentpowers.ai/search-skills-plugins-subagents-1at6ii",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Search the AgentPowers marketplace for skills, agents (subagents), and plugins by keyword, type, and category \u2014 returning slug, title, description, type, price, security status, install/download counts, rating, author, and source (native vs. external like ClawHub)."
+  },
+  {
+   "name": "apple-pdf-reducto-extract",
+   "identifier": "browse-sh/apple.com/apple-pdf-reducto-extract-8cbngf",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Download Apple's quarterly Condensed Consolidated Financial Statements PDF from apple.com/newsroom and POST it to Reducto's /extract endpoint with a JSON Schema to return structured revenue, segment + product breakdowns, EPS, and balance-sheet line items. Read-only."
+  },
+  {
+   "name": "find-repair-guides",
+   "identifier": "browse-sh/dell.com/find-repair-guides-q4h1h4",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Search Dell's support site for a product model or service tag and return structured resources: service manuals, hardware replacement guides (steps, tools, screw lists), driver downloads, BIOS updates, diagnostic tools, and warranty status. Read-only."
+  },
+  {
+   "name": "find-agent-contact-details",
+   "identifier": "browse-sh/edgeprop.my/find-agent-contact-details-hvhaqj",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Extract a Malaysian real-estate agent's display name, full mobile phone (E.164), and email from any EdgeProp.my agent profile or listing page by parsing the inlined Next.js __NEXT_DATA__ payload \u2014 bypasses the UI's masked phone and email-form gateway."
+  }
+ ]
+}

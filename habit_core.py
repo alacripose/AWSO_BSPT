@@ -66,6 +66,9 @@ CREATE TABLE IF NOT EXISTS checkins(
   FOREIGN KEY(habit_id) REFERENCES habits(id));
 CREATE TABLE IF NOT EXISTS readings(
   key TEXT NOT NULL, ts TEXT NOT NULL, value REAL NOT NULL, unit TEXT DEFAULT '');
+CREATE TABLE IF NOT EXISTS chat(
+  id INTEGER PRIMARY KEY, ts TEXT NOT NULL, sender TEXT NOT NULL,
+  text TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS events(
   ts TEXT NOT NULL, kind TEXT NOT NULL, message TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS meta(k TEXT PRIMARY KEY, v TEXT NOT NULL);
@@ -360,12 +363,40 @@ def telemetry_stats(conn, hours=24):
     out = {}
     for row in conn.execute(
             "SELECT key, COUNT(*) n, MIN(value) mn, AVG(value) av, MAX(value) mx,"
-            " MAX(ts) last_ts, MIN(unit) unit FROM readings WHERE ts>=? GROUP BY key",
-            (since,)):
+            " MAX(ts) last_ts, MIN(unit) unit,"
+            " (SELECT value FROM readings r2 WHERE r2.key=readings.key"
+            "  ORDER BY ts DESC, rowid DESC LIMIT 1) lv"
+            " FROM readings WHERE ts>=? GROUP BY key", (since,)):
         out[row["key"]] = {"count": row["n"], "min": round(row["mn"], 3),
                             "avg": round(row["av"], 3), "max": round(row["mx"], 3),
+                            "last_value": round(row["lv"], 3) if row["lv"] is not None else None,
                             "unit": row["unit"], "last": row["last_ts"]}
     return out
+
+
+def post_chat(conn, text, sender="human"):
+    """Chat mailbox: human writes from the GUI, agent bot replies via CLI."""
+    cid = next_id(conn)
+    conn.execute("INSERT INTO chat(id,ts,sender,text) VALUES(?,?,?,?)",
+                 (cid, iso_utc(now_utc()), sender, text))
+    log_event(conn, "chat.msg", f"{sender}: {text[:80]}")
+    conn.commit()
+    return cid
+
+
+def list_chat(conn, last=50):
+    """Oldest→newest so chat views can append; call sites reverse as needed."""
+    return [dict(r) for r in conn.execute(
+        "SELECT * FROM (SELECT * FROM chat ORDER BY id DESC LIMIT ?)"
+        " ORDER BY id ASC", (last,))]
+
+
+def deferred_list(conn, at=None):
+    """Habits currently due-but-deferred by the operator mode."""
+    at = at or datetime.now().astimezone()
+    return [habit_summary(conn, h, at) for h in active_habits(conn)
+            if h["effort"] in DEFERRED[get_mode(conn)] and
+            is_due_period(h, period_start(h, at))]
 
 
 def recent_events(conn, n=100):
@@ -508,6 +539,15 @@ def build_parser():
     sp.add_argument("--hours", type=int, default=24)
     sp.add_argument("--json", action="store_true")
 
+    sp = sub.add_parser("chat", help="agent chat mailbox (send/list)")
+    sub_chat = sp.add_subparsers(dest="chat_cmd", required=True)
+    sp_c = sub_chat.add_parser("send", help="post a message")
+    sp_c.add_argument("text")
+    sp_c.add_argument("--sender", default="agent:hermes-ops")
+    sp_c2 = sub_chat.add_parser("list", help="recent messages")
+    sp_c2.add_argument("--last", type=int, default=50)
+    sp_c2.add_argument("--json", action="store_true")
+
     sp = sub.add_parser("events", help="recent audit events")
     sp.add_argument("--last", type=int, default=50)
     sp.add_argument("--json", action="store_true")
@@ -625,9 +665,7 @@ def cli(argv=None, write=print) -> int:
         elif args.cmd == "status":
             mode = get_mode(conn)
             due = due_list(conn)
-            deferred = [habit_summary(conn, h) for h in active_habits(conn)
-                        if h["effort"] in DEFERRED[mode] and
-                        is_due_period(h, period_start(h, datetime.now().astimezone()))]
+            deferred = deferred_list(conn)
             st = telemetry_stats(conn)
             latest = {k: v["last"] for k, v in st.items()}
             payload = {"mode": mode, "due_count": len(due),
@@ -670,6 +708,18 @@ def cli(argv=None, write=print) -> int:
                 for k, v in st.items():
                     write(f"  {k}: n={v['count']} min={v['min']} "
                           f"avg={v['avg']} max={v['max']} {v['unit']}")
+
+        elif args.cmd == "chat":
+            if args.chat_cmd == "send":
+                cid = post_chat(conn, args.text, args.sender)
+                write(f"posted chat #{cid} as {args.sender}")
+            else:
+                msgs = list_chat(conn, args.last)
+                if args.json:
+                    J(msgs)
+                else:
+                    for m in msgs:
+                        write(f"{m['ts']} {m['sender']}: {m['text']}")
 
         elif args.cmd == "events":
             ev = recent_events(conn, args.last)
