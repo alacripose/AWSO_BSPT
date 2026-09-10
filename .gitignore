@@ -1,0 +1,5 @@
+habits.db
+habits.db-wal
+habits.db-shm
+__pycache__/
+*.pyc
