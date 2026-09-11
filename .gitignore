@@ -18,3 +18,7 @@ merged_hf/
 # coverage
 .coverage
 workspace/helpers/
+bin/*.dll
+bin/*.exe
+bin/*.zip
+bin/llama-server*
