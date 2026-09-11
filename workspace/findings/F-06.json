@@ -1,0 +1,39 @@
+{
+  "id": "F-06",
+  "title": "Console verb `model` (train/bench/export) runs torch + llama.cpp jobs synchronously on the Qt main thread — same freeze class as F-05 with a minutes-to-hours duration",
+  "severity": "medium",
+  "code_paths": [
+    "habit_core.py:1329",
+    "habit_core.py:1743",
+    "habit_gui.py:258"
+  ],
+  "description": "CONSOLE_SAFE_VERBS (habit_core.py) included `model`, so Bridge.runCommand (habit_gui.py:250) allowed the kiosk Console tab to execute `model train/bench/export/pipeline`. Those verbs import model_trainer, which loads torch (AutoModelForCausalLM), runs QLoRA fine-tuning for minutes-to-hours on CPU, and shells out to llama.cpp convert/quantize binaries (model_trainer.py:322). All of this executes synchronously inside the Qt main-thread slot — the exact freeze pattern of closed finding F-05 (`watch`): the event loop never returns, screensaver/touch die, systemd sees a live (merely hung) process so Restart=on-failure does not fire. On a 4GB solar/battery kiosk, an operator typing `model bench` after reading 'same verbs your agent uses' in the help text freezes the UI for the duration of a multi-minute benchmark — field-unrecoverable without SSH. The verb was already excluded from AGENTD_VERBS as 'heavy/dev', confirming the classification, but the human-facing console still exposed it.",
+  "status": "VALID",
+  "reasoning": "Adversarial 13-rule review: (01) not hypothetical misuse — the console help text explicitly advertised the verb and the operator is the intended caller; (02) not defense-in-depth hygiene — it is a direct synchronous blocking call on the GUI thread; (03) trivially reproducible: type `model train` in the Console tab, UI freezes for the training duration; (04) no standard-library-safety carve-out — torch subprocess import inside a UI slot; (05) primary flaw class (Qt-thread blocking) is the same one F-05 established as VALID for this exact surface; (06) production path — runCommand is the shipped console; (07) not DoS-bounded — the freeze is a side effect of a single call, not resource exhaustion; (08) intrinsic to the design: whitelist gated a long-running verb; (09) the F-05 mitigation (allowlist) is respected and worked correctly — this is a member of the same class that the mitigation should have excluded; (10) code_paths pinpoint the whitelist, the `model` CLI dispatch, and the runCommand gate; (11) N/A no vector code; (12) verified against source: `model` present in CONSOLE_SAFE_VERBS pre-fix (habit_core.py), dispatched at habit_core.py:1740 via lazy model_trainer import, gated by habit_gui.py:250; (13) ingress = operator-typed console text (untrusted input at the kiosk surface) reaching the verb dispatcher. Fix landed this session: `model` removed from CONSOLE_SAFE_VERBS (habit_core.py), block message + help_text updated, selfcheck asserts the block. Same fix class as F-05, so it inherits F-05's verified mitigation pattern.",
+  "repro_hints": "Pre-fix: run habit_gui.py, open Console tab, type `model bench --model models/foo.gguf` — kiosk freezes for the whole benchmark (torch load + inference) with no event-loop return; contrast `model train` on a CPU-only box taking minutes. Post-fix: same input returns the block message 'not available in the console' immediately and the event loop stays live (verified offscreen via selfcheck assertion `model block`).",
+  "triage_checklist": {
+    "ignore_hypothetical_misuse": { "outcome": "PASS" },
+    "ignore_missing_hygiene": { "outcome": "PASS" },
+    "require_strict_reproducibility": { "outcome": "PASS" },
+    "avoid_pedantic_linting": { "outcome": "PASS" },
+    "no_security_flaw_stretching": { "outcome": "PASS" },
+    "evaluate_questionable_file_paths": { "outcome": "PASS" },
+    "ignore_resource_exhaustion_dos": { "outcome": "PASS" },
+    "intrinsic_security_flaws": { "outcome": "PASS" },
+    "verify_mitigations_pragmatically": { "outcome": "PASS" },
+    "refine_code_paths_strictly": { "outcome": "PASS" },
+    "ignore_simd_vector_padding": { "outcome": "NOT_APPLICABLE", "reason": "no optimized vector routines involved" },
+    "ensure_source_code_coherence": { "outcome": "PASS" },
+    "verify_attacker_control_of_source": { "outcome": "PASS" }
+  },
+  "history": [
+    {
+      "stage": "reviewer",
+      "action": "reviewed",
+      "details": "Determined status as VALID because the finding is a direct, operator-triggerable Qt-thread block via an advertised console verb, same class as the previously-validated F-05. Fixed in the same pass that filed it: verb removed from CONSOLE_SAFE_VERBS, GUI block message + help_text updated, selfcheck regression assertion added ('model block').",
+      "pass_number": 5,
+      "snapshot": "",
+      "timestamp": "2026-09-11T12:00:00Z"
+    }
+  ]
+}

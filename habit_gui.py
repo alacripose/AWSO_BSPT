@@ -235,6 +235,14 @@ class Bridge(QObject):
         with self._conn() as c:
             return core.habit_detail(c, hid)
 
+    # -- fleet inventory (skills hamburger panel) ------------------------------
+    @Slot(result="QVariant")
+    def fleetModel(self):
+        """Sectioned inventory for the Drawer: agents, models, skills by
+        category. fleet_scan() is pure stdlib and sub-100ms (stat() + PATH
+        walk only), so it is safe to call from QML directly."""
+        return core.fleet_scan(probe=False)
+
     # -- console ---------------------------------------------------------------
     @Slot(str, result=str)
     def runCommand(self, cmd):
@@ -250,8 +258,8 @@ class Bridge(QObject):
         if verb not in core.CONSOLE_SAFE_VERBS:
             return (
                 f"error: '{verb}' is not available in the console.\n"
-                "Run 'help' for the verb list. Daemon verbs (watch, gui) "
-                "would freeze or duplicate the kiosk."
+                "Run 'help' for the verb list. Daemon/dev verbs (watch, gui, "
+                "model) would freeze, duplicate, or hog the kiosk."
             )
         if verb == "help":
             return core.help_text()
@@ -321,6 +329,12 @@ def main() -> int:
             assert "habitctl" in bridge.runCommand("version"), "console"
             assert "habitctl verbs:" in bridge.runCommand("help"), "help verb"
             assert "not available" in bridge.runCommand("watch"), "daemon block"
+            assert "not available" in bridge.runCommand("model train"), "model block"
+            assert "model" not in core.CONSOLE_SAFE_VERBS, "model off whitelist"
+            assert "fleet" in core.CONSOLE_SAFE_VERBS, "fleet on whitelist"
+            fleet = bridge.fleetModel()
+            assert "skills" in fleet and "counts" in fleet, "fleet model"
+            assert fleet["counts"]["skills"] > 0, "fleet found skills"
             assert bridge.runCommand('add "quoted name"') or True, "quoted add"
             bridge.setMode("red")
             assert bridge.mode == "red", "setMode property"

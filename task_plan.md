@@ -34,7 +34,7 @@ review stdout in session log.
   strip_think (Qwen3 raw completion), sanitize (ChatML injection boundary),
   render_chatml/render_plain. Tests: test_astra_effort.py (24 tests).
 
-### Phase 4 — Backends + agentd integration [complete, gates pending]
+### Phase 4 — Backends + agentd integration [complete]
 - local_runner.py: LlamaServerRunner (device, stdlib HTTP to llama-server
   :8010) + LocalModelRunner (dev bindings). Pivot from llama-cpp-python was
   forced by the offline-device requirement (no pip/compiler on device).
@@ -74,7 +74,21 @@ review stdout in session log.
 - Acceptance: install.sh --check-only on dev box; honest report that device
   smoke is the ceiling unless operator boots real hardware.
 
-### Phase 8 — Closeout [pending]
+### Phase 8 — Fleet hamburger panel (skills menu) [complete]
+- Data: reused fleet_scan() (159 skills, sub-100ms, pure stdlib) — no new
+  probe code; Bridge.fleetModel() slot added to habit_gui.py.
+- UI: Kiosk.qml Drawer (Qt Quick's native hamburger component) — 44px HIG
+  target, sectioned ListView (category headers), live filter field, 44/56/72
+  fixed 2-state row heights (no implicit chains), rescan on open only
+  (never on the 15s cycle), ☰ button in the header.
+- Console: `fleet` added to CONSOLE_SAFE_VERBS; `model` REMOVED (Mantis
+  F-06 — torch/llama.cpp jobs on the Qt thread, same freeze class as F-05);
+  block message + help_text updated.
+- Gates: ruff clean; pytest 59/59; QML offscreen load + selfcheck green
+  (drawer opens, 22 sections, filter works, model-blocked assert);
+  semgrep 187 rules 0 findings; Mantis F-06 filed VALID w/ fix + history.
+
+### Phase 9 — Closeout [pending]
 - FLEET_LOCAL_MODELS entries with MEASURED RAM/latency/protocol-success
 - README/docs updates, final report (review R1-R5 + outline mapping + package)
 

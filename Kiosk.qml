@@ -89,6 +89,150 @@ ApplicationWindow {
         refreshAll()
     }
 
+    // ---------------- Fleet drawer (hamburger) ----------------
+    // Same rule as runCmd: these are called from handlers inside the Drawer,
+    // so they MUST live at root scope.
+    property var fleetRows: []
+    property string fleetFilter: ""
+    function rebuildFleet() {
+        var inv = Bridge.fleetModel()
+        var rows = []
+        // agents — delegate CLIs found on PATH
+        for (var i = 0; i < inv.agents.length; i++)
+            rows.push({ section: "AGENTS", name: inv.agents[i].name,
+                        detail: inv.agents[i].detail })
+        if (inv.agents.length === 0)
+            rows.push({ section: "AGENTS", name: "(none installed)", detail: "" })
+        // models — policy recommendation first, then the live inventory
+        var rec = inv.recommended_model
+        rows.push({ section: "MODELS",
+                    name: rec.name + "  ★ recommended",
+                    detail: rec.note + "  ·  fits " + rec.ram_gb + " GB RAM" })
+        for (i = 0; i < inv.models.length; i++)
+            rows.push({ section: "MODELS", name: inv.models[i].name,
+                        detail: inv.models[i].detail })
+        // skills — grouped by their installed category folder
+        for (i = 0; i < inv.skills.length; i++) {
+            var s = inv.skills[i]
+            rows.push({ section: s.category ? s.category.toUpperCase() : "SKILLS",
+                        name: s.name, detail: s.description })
+        }
+        // credits — upstream sources (license attribution)
+        for (i = 0; i < inv.credits.length; i++)
+            rows.push({ section: "CREDITS", name: inv.credits[i].label,
+                        detail: inv.credits[i].url })
+        fleetRows = rows
+        fleetCounts.text = inv.counts.agents + " agents · "
+            + inv.counts.models + " models · "
+            + inv.counts.skills + " skills"
+        applyFleetFilter()
+    }
+    function applyFleetFilter() {
+        var q = fleetFilter.toLowerCase()
+        if (!q) { fleetList.model = fleetRows; return }
+        var out = []
+        for (var i = 0; i < fleetRows.length; i++)
+            if (fleetRows[i].name.toLowerCase().indexOf(q) >= 0
+                || fleetRows[i].detail.toLowerCase().indexOf(q) >= 0)
+                out.push(fleetRows[i])
+        fleetList.model = out
+    }
+
+    // ---------------- Fleet drawer (hamburger panel) ----------------
+    Drawer {
+        id: fleetDrawer
+        objectName: "fleetDrawer"
+        width: Math.min(root.width * 0.42, 480); height: root.height
+        edge: Qt.RightEdge
+        // skills/PATH inventory can change between opens — rescan on open,
+        // never on the 15s cycle (fleet_scan is sub-100ms but not free)
+        onOpened: rebuildFleet()
+
+        background: Rectangle { color: T.panel; border.color: T.border
+            border.width: 1 }  // right-edge border, rest soft-drawn by drawer
+
+        ColumnLayout {
+            anchors.fill: parent; spacing: 0
+
+            // header: title + counts + close
+            Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 60
+                color: T.header
+                RowLayout { anchors.fill: parent; anchors.margins: 14
+                    spacing: 10
+                    Text { text: "☰ Fleet"; color: T.text
+                        font.pixelSize: T.h3; font.weight: Font.DemiBold }
+                    Item { Layout.fillWidth: true }
+                    Text { id: fleetCounts; text: ""
+                        color: T.muted; font.pixelSize: T.small
+                        font.weight: Font.Medium } } }
+
+            // live filter — 44px target (HIG)
+            TextField {
+                id: fleetSearch
+                Layout.fillWidth: true; Layout.preferredHeight: 44
+                Layout.margins: 10
+                placeholderText: "Filter skills, agents, models…"
+                color: T.text; font.pixelSize: T.small
+                font.family: T.monoFamily; verticalAlignment: Text.AlignVCenter
+                background: Rectangle { radius: 8; color: T.card
+                    border.color: fleetSearch.activeFocus ? T.accent : T.border
+                    border.width: 1 }
+                onTextChanged: { root.fleetFilter = text
+                    root.applyFleetFilter() }
+            }
+
+            // sectioned list — ListView virtualizes 159 skills; sections
+            // keep the hamburger scannable without a tree control
+            ListView {
+                id: fleetList
+                objectName: "fleetList"
+                Layout.fillWidth: true; Layout.fillHeight: true
+                Layout.margins: 10
+                clip: true; spacing: 2
+                model: []
+                section.property: "section"
+                section.delegate: Rectangle {
+                    width: fleetList.width; height: 36
+                    color: T.card
+                    Text { anchors.fill: parent; anchors.leftMargin: 14
+                        verticalAlignment: Text.AlignVCenter
+                        text: section; color: T.accent
+                        font.pixelSize: T.small; font.weight: Font.Bold
+                        font.family: T.monoFamily }
+                }
+                delegate: Rectangle {
+                    required property var modelData
+                    width: fleetList.width
+                    // fixed 2-state height: detail row wraps to 2 lines max
+                    height: modelData.detail.length > 0
+                        ? (modelData.detail.length > 60 ? 72 : 56) : 44
+                    radius: 8
+                    color: fleetHover.containsMouse ? T.hover : T.bg
+                    border.color: T.border; border.width:  1
+                    MouseArea { id: fleetHover
+                        anchors.fill: parent; hoverEnabled: true }
+                    ColumnLayout { anchors.fill: parent
+                        anchors.margins: 10; spacing: 2
+                        Text { text: modelData.name; color: T.text
+                            font.pixelSize: T.small
+                            font.weight: Font.Medium
+                            Layout.fillWidth: true
+                            elide: Text.ElideRight }
+                        Text { visible: modelData.detail.length > 0
+                            text: modelData.detail; color: T.muted
+                            font.pixelSize: T.small
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap
+                            elide: Text.ElideRight }
+                    }
+                }
+                Text { visible: fleetList.count === 0
+                    text: "No matches."; color: T.muted
+                    font.pixelSize: T.small; padding: 12 }
+            }
+        }
+    }
+
     // ---------------- Task detail popup ----------------
     // A task row click opens the full audit trail: description, checkins with
     // source attribution (human vs agent:awso-agentd), related events.
@@ -304,6 +448,19 @@ ApplicationWindow {
                     id: headerRow
                     anchors.fill: parent; anchors.leftMargin: 20; anchors.rightMargin: 20
                     spacing: 12
+                    // hamburger — opens the fleet/skills Drawer (44px HIG target)
+                    Button {
+                        id: menuBtn
+                        text: "☰"; implicitWidth: 44; implicitHeight: 44
+                        background: Rectangle { radius: 22; color: menuHover.containsMouse ? T.hover : T.card
+                            border.color: T.border; border.width: 1 }
+                        contentItem: Text { text: parent.text; color: T.text
+                            font.pixelSize: T.body; font.weight: Font.DemiBold
+                            anchors.centerIn: parent }
+                        MouseArea { id: menuHover
+                            anchors.fill: parent; hoverEnabled: true }
+                        onClicked: { fleetDrawer.open(); rebuildFleet() }
+                    }
                     // Title yields space first (elides before pills ever squeeze)
                     Text { id: headerTitle; text: "AWSO Habit Kiosk"; color: T.text
                         font.pixelSize: T.h3; font.weight: Font.DemiBold
@@ -783,7 +940,7 @@ ApplicationWindow {
                 // ============ CONSOLE ============
                 Item {
                     ColumnLayout { anchors.fill: parent; anchors.margins: 16; spacing: 12
-                        Text { text: "Command line — same verbs your agent uses. Type 'help' for the list; 'watch'/'gui' are daemon-only and blocked here."
+                        Text { text: "Command line — same verbs your agent uses. Type 'help' for the list; 'watch'/'gui'/'model' are daemon/dev-only and blocked here."
                             color: T.muted; font.pixelSize: T.small
                             Layout.fillWidth: true
                             wrapMode: Text.WordWrap }

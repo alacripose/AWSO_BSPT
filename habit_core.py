@@ -1322,7 +1322,10 @@ def build_parser():
 
 # Verbs the kiosk console may run. `watch` is an unbounded while-True loop
 # (freezes the Qt main thread forever — Mantis F-05) and `gui` spawns a
-# second GUI process; both are daemon-verbs, not interactive ones.
+# second GUI process; both are daemon-verbs, not interactive ones. `model`
+# is excluded the same way (Mantis F-06): train/bench/export run torch +
+# llama.cpp jobs that can take minutes-to-hours on the Qt thread — same
+# freeze class, just slower to notice.
 CONSOLE_SAFE_VERBS = (
     "add",
     "list",
@@ -1341,9 +1344,9 @@ CONSOLE_SAFE_VERBS = (
     "chat",
     "sos",
     "events",
+    "fleet",
     "build",
     "releases",
-    "model",
     "selftest",
     "version",
     "help",
@@ -1373,11 +1376,11 @@ def help_text() -> str:
         "  chat list [--last N]   recent messages",
         "  sos scan|list|ack       escalation channel",
         "  events [--last N]      recent audit events",
+        "  fleet [--probe]        agent/model/skill inventory (skills panel)",
         "  build                  build stamp: version + git hash",
         "  releases sync|list|view  update channel (CI changelog)",
-        "  model prepare|train|router|export|bench|pipeline  local model mgmt",
         "  selftest | version | help",
-        "  (watch/gui are daemon verbs — not available in this console)",
+        "  (watch/gui/model are daemon/dev verbs — not available in this console)",
     ]
     return "\n".join(lines)
 
