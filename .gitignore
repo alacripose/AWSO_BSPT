@@ -17,3 +17,4 @@ merged_hf/
 .agent_prompt.txt
 # coverage
 .coverage
+workspace/helpers/
