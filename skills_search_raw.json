@@ -1,0 +1,1815 @@
+{
+ "security": [
+  {
+   "name": "evm",
+   "identifier": "official/blockchain/evm",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Read-only EVM client: wallets, tokens, gas across 8 chains."
+  },
+  {
+   "name": "1password",
+   "identifier": "official/security/1password",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Set up op CLI, sign in, and read or inject secrets."
+  },
+  {
+   "name": "oss-forensics",
+   "identifier": "official/security/oss-forensics",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "GitHub supply-chain forensics: recovery, IOCs, reporting."
+  },
+  {
+   "name": "sherlock",
+   "identifier": "official/security/sherlock",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Find accounts for a username across 400+ platforms."
+  },
+  {
+   "name": "unbroker",
+   "identifier": "official/security/unbroker",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Autonomously remove your info from data-broker sites."
+  },
+  {
+   "name": "web-pentest",
+   "identifier": "official/security/web-pentest",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Authorized web pentest: recon, proof-based exploits, report."
+  },
+  {
+   "name": "security-best-practices",
+   "identifier": "skills-sh/openai/skills/security-best-practices",
+   "source": "skills.sh",
+   "trust_level": "trusted",
+   "description": "Indexed by skills.sh from openai/skills"
+  },
+  {
+   "name": "security-ownership-map",
+   "identifier": "skills-sh/openai/skills/security-ownership-map",
+   "source": "skills.sh",
+   "trust_level": "trusted",
+   "description": "Indexed by skills.sh from openai/skills"
+  },
+  {
+   "name": "lookup-trust-posture",
+   "identifier": "browse-sh/trust.scoutos.com/lookup-scout-trust-kuepc9",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Look up Scout's security, compliance, and privacy posture from trust.scoutos.com (Vanta-hosted Trust Center) for a given topic. Returns structured JSON with compliance badges, audit reports, policy documents, controls by category, subprocessors with regions, gated-access flags, and the canonical access-request workflow URL. Read-only \u2014 never submits access or NDA forms."
+  },
+  {
+   "name": "check-wait-time",
+   "identifier": "browse-sh/tsa.gov/check-wait-time-90hawj",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Return current and historical TSA security-line wait times for a US airport. TSA's public web wait-time tool has been deprecated since 2023; this skill documents the dead-end and routes callers to the MyTSA mobile app or third-party trackers."
+  },
+  {
+   "name": "search-skills-plugins-subagents",
+   "identifier": "browse-sh/agentpowers.ai/search-skills-plugins-subagents-1at6ii",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Search the AgentPowers marketplace for skills, agents (subagents), and plugins by keyword, type, and category \u2014 returning slug, title, description, type, price, security status, install/download counts, rating, author, and source (native vs. external like ClawHub)."
+  },
+  {
+   "name": "fetch-all-product-details",
+   "identifier": "browse-sh/temu.com/fetch-all-product-details-xj2sb6",
+   "source": "browse-sh",
+   "trust_level": "community",
+   "description": "Extract all product details (title, price, discount, rating, reviews, sold count, variants, images, shipping, store, specifications) from a Temu product page. Read-only. Currently blocked by a deterministic Security Verification image-grid CAPTCHA on every page."
+  },
+  {
+   "name": "security",
+   "identifier": "skills-sh/markdown-viewer/skills/security",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from markdown-viewer/skills"
+  },
+  {
+   "name": "security",
+   "identifier": "skills-sh/cognitedata/builder-skills/security",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from cognitedata/builder-skills"
+  },
+  {
+   "name": "security",
+   "identifier": "skills-sh/boshu2/agentops/security",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from boshu2/agentops"
+  }
+ ],
+ "secure coding": [
+  {
+   "name": "Cybersec Helper",
+   "identifier": "cybersec-helper",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Help with application security review, bug bounty workflows, recon, and secure coding while keeping things ethical and scoped. Think critically, use real sources only, and reference OWASP."
+  }
+ ],
+ "python performance": [
+  {
+   "name": "Nm Parseltongue Python Performance",
+   "identifier": "nm-parseltongue-python-performance",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Profiles Python code for performance bottlenecks and memory issues"
+  }
+ ],
+ "profiling": [
+  {
+   "name": "doca-dpa-hl-tracer",
+   "identifier": "NVIDIA/skills/skills/doca-dpa-hl-tracer",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user runs doca_dpa_hl_tracer to capture/decode DPA-side traces at the programming-events layer (kernel entry/exit, sync points, comm primitive calls, RDMA WR submission, completion drain) \u2014 picking TRACE vs CRIT, tuning the JSON config (file-size limits + file_size_limit_policy, thread priorities/cores), decoding against the matching DPA-side ELF, or diagnosing empty/noisy captures. Trigger even when the user does not explicitly mention \"DOCA DPA tracer\" or \"high-level tracer\" \u2014 typical implicit phrasings include \"DPA kernel returns wrong result but host completions look clean\", \"kernel-entry to first-comm latency is huge\", \"RDMA WR to drain gap on the DPA\", \"trace file truncated mid-run\", \"TRACE doubled my DPA latency\", or \"tracer wrote a file but parser shows zero events\". Refuse and route elsewhere for writing DPA kernels, DPA-Comms/DPA-Verbs programming, raw per-cycle DPA profiling, host-side doca-dpa debugging, or production DPA telemetry \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "doca-spcx-cc",
+   "identifier": "NVIDIA/skills/skills/doca-spcx-cc",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is invoking `doca_spcx_cc` (the host-side CLI under /opt/mellanox/doca/tools/) to load, parameterize, start, observe, or stop a Programmable Congestion Control (SPCX) algorithm on a BlueField with a DPA processor against a live RDMA / RoCE fabric, or picking SPCX vs the established `doca-pcc` surface. Trigger even when the user does not say \"DOCA SPCX\" or \"doca_spcx_cc\" \u2014 typical implicit phrasings include \"I want to write a custom RTT-based CC algorithm for my RoCE fabric\", \"my SPCX session loaded but throughput / latency didn't change\", \"doca_pcc status shows Active but factory CC seems to still be in charge\", \"DOCA_PCC_PS_ERROR on start\", \"is the programmable-CC surface available on my install\", or \"DPA-side algorithm image won't load\". Refuse and route elsewhere for DPA-side algorithm authoring detail, factory PCC firmware configuration, read-only PCC counter inspection, raw DPA cycle profiling, RDMA library programming, or general DOCA install \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "rag-perf",
+   "identifier": "NVIDIA/skills/skills/rag-perf",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Performance benchmarking for a deployed NVIDIA RAG Blueprint server: profiling pass + aiperf load test driven by a single YAML config. Not for accuracy / RAGAS scoring (use rag-eval) or for deploying / repairing services (use rag-blueprint)."
+  },
+  {
+   "name": "tilegym-improve-cutile-kernel-perf",
+   "identifier": "NVIDIA/skills/skills/tilegym-improve-cutile-kernel-perf",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Iteratively optimize cuTile kernel performance through systematic profiling, bottleneck analysis, IR comparison, and targeted tuning. Covers tile sizes, occupancy, autotune configs, TMA, latency hints, persistent scheduling, num_ctas, flush_to_zero, and IR-level debugging. Use when asked to \"optimize cutile kernel\", \"improve kernel perf\", \"tune cutile performance\", \"make kernel faster\", or iteratively benchmark and refine a cuTile GPU kernel in the TileGym project."
+  },
+  {
+   "name": "profiling-optimization",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/profiling-optimization",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "profiling-tables",
+   "identifier": "skills-sh/astronomer/agents/profiling-tables",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from astronomer/agents"
+  },
+  {
+   "name": "Alibabacloud Aes Ack Pod Performance Profiling",
+   "identifier": "alibabacloud-aes-ack-pod-performance-profiling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Perform SysOM performance profiling on ACK cluster Pods to identify root causes of Pod-level performance issues (CPU throttling, OOM, memory distribution, ne..."
+  },
+  {
+   "name": "Company Profiling",
+   "identifier": "company-profiling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Accurately and efficiently extract and analyze intelligence based on massive pharmaceutical data to provide users with professional company profiles and inve..."
+  },
+  {
+   "name": "Company Profiling Zhcn",
+   "identifier": "company-profiling-zhcn",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u57fa\u4e8e\u6d77\u91cf\u5236\u836f\u6570\u636e\uff0c\u7cbe\u51c6\u9ad8\u6548\u5730\u63d0\u53d6\u548c\u5206\u6790\u60c5\u62a5\uff0c\u4e3a\u7528\u6237\u63d0\u4f9b\u4e13\u4e1a\u7684\u516c\u53f8\u753b\u50cf\u53ca\u6295\u8d44/\u5408\u4f5c\u5efa\u8bae\u3002 \u5f53\u7528\u6237\u8be2\u95ee\u67d0\u5236\u836f\u516c\u53f8\u60c5\u51b5\u65f6\u5e94\u8c03\u7528\u672c\u6280\u80fd\uff0c\u6d89\u53ca\u4ee5\u4e0b\u5185\u5bb9\uff1a 1\u3001\u516c\u53f8\u6982\u51b5 2\u3001\u516c\u53f8\u878d\u8d44\u5386\u53f2\u5206\u6790 3\u3001\u516c\u53f8\u7ba1\u7ebf\u5206\u6790 4\u3001\u516c\u53f8\u836f\u7269\u4ea4\u6613\u5206\u6790 5\u3001\u516c\u53f8\u5728\u7279\u5b9a\u9886\u57df\u7684\u91cd\u8981\u4e13\u5229\u5e03\u5c40 \u5178\u578b\u67e5\u8be2 - \u7ed9\u6211\u4ecb\u7ecd\u4e00\u4e0b Arrowhead Pharma..."
+  },
+  {
+   "name": "Instruments Profiling",
+   "identifier": "instruments-profiling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when profiling native macOS or iOS apps with Instruments/xctrace. Covers correct binary selection, CLI arguments, exports, and common gotchas."
+  },
+  {
+   "name": "Performance Profiling",
+   "identifier": "performance-profiling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u6027\u80fd\u5206\u6790\u901f\u67e5\u3002\u5f53\u9700\u8981\uff1a(1) Python \u6027\u80fd\u5206\u6790 (2) Node.js \u6027\u80fd\u5206\u6790 (3) \u6570\u636e\u5e93\u4f18\u5316 (4) \u7cfb\u7edf\u6027\u80fd\u76d1\u63a7\u65f6\u4f7f\u7528\u3002"
+  },
+  {
+   "name": "SMILES Profiling",
+   "identifier": "smiles-profiling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Comprehensive SMILES profiling through SwissTargetPrediction, PubChem, ADMETlab 3.0, ChEMBL, and PK-Smart. Use when given a single SMILES to extract predicte..."
+  },
+  {
+   "name": "Threat Actor OSINT Profiling",
+   "identifier": "threat-actor-osint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Build comprehensive threat actor profiles using open-source intelligence (OSINT) techniques to document adversary motivations, capabilities, infrastructure,..."
+  },
+  {
+   "name": "competitor-profiling",
+   "identifier": "skills-sh/coreyhaines31/marketingskills/competitor-profiling",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from coreyhaines31/marketingskills"
+  },
+  {
+   "name": "cpu-profiling",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/cpu-profiling",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  }
+ ],
+ "optimization": [
+  {
+   "name": "flash-attention",
+   "identifier": "official/mlops/flash-attention",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Speed up long-sequence transformer training and inference."
+  },
+  {
+   "name": "peft",
+   "identifier": "official/mlops/peft",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Fine-tune large LLMs with LoRA on limited GPU memory."
+  },
+  {
+   "name": "dspy",
+   "identifier": "official/mlops/research/dspy",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "DSPy: declarative LM programs, auto-optimize prompts, RAG."
+  },
+  {
+   "name": "simpo",
+   "identifier": "official/mlops/simpo",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Reference-free preference alignment, simpler than DPO."
+  },
+  {
+   "name": "tensorrt-llm",
+   "identifier": "official/mlops/tensorrt-llm",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "High-throughput LLM inference on NVIDIA GPUs."
+  },
+  {
+   "name": "unsloth",
+   "identifier": "official/mlops/training/unsloth",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Unsloth: 2-5x faster LoRA/QLoRA fine-tuning, less VRAM."
+  },
+  {
+   "name": "darwinian-evolver",
+   "identifier": "official/research/darwinian-evolver",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Evolve prompts/regex/SQL/code with Imbue's evolution loop."
+  },
+  {
+   "name": "optimization-advisor-sms",
+   "identifier": "skills-sh/blacktwist/social-media-skills/optimization-advisor-sms",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from blacktwist/social-media-skills"
+  },
+  {
+   "name": "AI Agent Cost Optimization Cookbook: Cut Your Agent Bills by 60% Without Sacrificing Quality",
+   "identifier": "greenhelix-agent-cost-optimization",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI Agent Cost Optimization Cookbook: Cut Your Agent Bills by 60% Without Sacrificing Quality. Practical recipes for reducing AI agent operational costs. Cove..."
+  },
+  {
+   "name": "AI Prompt Optimization",
+   "identifier": "ai-prompt-optimization",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when users need to optimize prompts for AI conversations, generate structured templates, create few-shot examples, design chain-of-thought guidance, or d..."
+  },
+  {
+   "name": "AI Prompt Optimization Expert",
+   "identifier": "ai-prompt-optimization-expert",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Professional AI prompt optimization expert that analyzes and optimizes user prompts using the CRISP framework (Clarity/Role/Instructions/Structure/Precision)..."
+  },
+  {
+   "name": "API usage optimization",
+   "identifier": "api-optimization",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u53d1\u73b0\u548c\u914d\u7f6e\u514d\u8d39/\u8d85\u4f4e\u4ef7 AI \u6a21\u578b\uff0c\u652f\u6301\u667a\u80fd\u5206\u6d41\u548c\u65e0\u611f\u964d\u7ea7\u3002\u652f\u6301 SiliconFlow\u3001NVIDIA NIM\u3001OpenRouter\u3001DeepSeek\u3001\u667a\u8c31\u7b49\u591a\u5e73\u53f0\u3002\u5f53\u7528\u6237\u8bf4'\u514d\u8d39\u6a21\u578b'\u3001'\u7701\u94b1\u914d\u7f6e'\u3001'\u52a0\u514d\u8d39 API'\u3001'find free models'\u3001'\u914d\u7f6e\u514d\u8d39\u6a21\u578b'\u3001'\u4f4e\u6210\u672c\u6a21\u578b'\u65f6\u89e6\u53d1"
+  },
+  {
+   "name": "Account Weight Optimization",
+   "identifier": "account-weight-optimization",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Optimize platform account weight and authority by assessing health, analyzing factors, and providing strategies for compliance, growth, and recovery."
+  },
+  {
+   "name": "Agent Revenue Analytics: Attribution, LTV, Cohorts, and Pricing Optimization for AI Agent Services",
+   "identifier": "greenhelix-agent-revenue-analytics",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Agent Revenue Analytics: Attribution, LTV, Cohorts, and Pricing Optimization for AI Agent Services. Complete guide to revenue measurement for AI agent servic..."
+  },
+  {
+   "name": "Ai Intelligent Ad Optimization",
+   "identifier": "ai-ad-optimizer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5e7f\u544a\u4f18\u5316\uff0c\u6295\u653e\u4f18\u5316 + \u521b\u610f\u4f18\u5316\u3002"
+  }
+ ],
+ "benchmark": [
+  {
+   "name": "evaluating-llms-harness",
+   "identifier": "official/mlops/evaluation/evaluating-llms-harness",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.)."
+  },
+  {
+   "name": "jetson-llm-benchmark",
+   "identifier": "NVIDIA/skills/skills/jetson-llm-benchmark",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Benchmark Jetson LLM/VLM serving performance across vLLM, llama.cpp, and Ollama with structured JSON output."
+  },
+  {
+   "name": "benchmark",
+   "identifier": "skills-sh/affaan-m/everything-claude-code/benchmark",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/everything-claude-code"
+  },
+  {
+   "name": "benchmark",
+   "identifier": "skills-sh/affaan-m/ecc/benchmark",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/ecc"
+  },
+  {
+   "name": "benchmark",
+   "identifier": "garrytan/gstack/benchmark",
+   "source": "github",
+   "trust_level": "community",
+   "description": "Performance regression detection using the browse daemon. (gstack)"
+  },
+  {
+   "name": "benchmark-methodology",
+   "identifier": "skills-sh/affaan-m/ecc/benchmark-methodology",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/ecc"
+  },
+  {
+   "name": "benchmark-methodology",
+   "identifier": "skills-sh/affaan-m/everything-claude-code/benchmark-methodology",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/everything-claude-code"
+  },
+  {
+   "name": "benchmark-optimization-loop",
+   "identifier": "skills-sh/affaan-m/ecc/benchmark-optimization-loop",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/ecc"
+  },
+  {
+   "name": "benchmark-optimization-loop",
+   "identifier": "skills-sh/affaan-m/everything-claude-code/benchmark-optimization-loop",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from affaan-m/everything-claude-code"
+  },
+  {
+   "name": "benchmark-to-brief",
+   "identifier": "skills-sh/postplusai/postplus-skills/benchmark-to-brief",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from postplusai/postplus-skills"
+  },
+  {
+   "name": "benchmark-models",
+   "identifier": "garrytan/gstack/benchmark-models",
+   "source": "github",
+   "trust_level": "community",
+   "description": "Cross-model benchmark for gstack skills. (gstack)"
+  },
+  {
+   "name": "Benchmark Email",
+   "identifier": "oo-benchmark-email",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Benchmark Email (benchmarkemail.com). Use this skill for ANY Benchmark Email request \u2014 searching and reading data. Whenever a task involves Benchmark Email,..."
+  },
+  {
+   "name": "Benchmark Model Provider",
+   "identifier": "benchmark-model-provider",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Benchmark and rank AI providers/models against a user-specific prompt suite derived from the user's purpose, domain, and usage frequency. Use when users ask..."
+  },
+  {
+   "name": "Benchmark Store",
+   "identifier": "benchmark-store",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5f53\u9700\u8981\u521d\u59cb\u5316\u57fa\u51c6\u6570\u636e\u5e93\u3001\u5bf9\u6bd4 skill \u8bc4\u5206\u4e0e\u5386\u53f2\u57fa\u7ebf\u3001\u67e5\u770b Pareto front \u662f\u5426\u6709\u7ef4\u5ea6\u56de\u9000\u3001\u6216\u67e5\u9605\u8d28\u91cf\u5206\u7ea7\u6807\u51c6\u65f6\u4f7f\u7528\u3002\u4e0d\u7528\u4e8e\u7ed9\u5019\u9009\u6253\u5206\uff08\u7528 improvement-discriminator\uff09\u6216\u81ea\u52a8\u6539\u8fdb\uff08\u7528 improvement-learner\uff09\u3002"
+  },
+  {
+   "name": "Benchmark Tool",
+   "identifier": "benchmark-tool",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Benchmark CPU, memory, disk I/O, and network on your system. Use when measuring server performance."
+  }
+ ],
+ "testing": [
+  {
+   "name": "adversarial-ux-test",
+   "identifier": "official/dogfood/adversarial-ux-test",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Roleplay a hostile user to find and triage UX pain points."
+  },
+  {
+   "name": "rest-graphql-debug",
+   "identifier": "official/software-development/rest-graphql-debug",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Debug REST/GraphQL APIs: status codes, auth, schemas, repro."
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/lobehub/lobehub/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from lobehub/lobehub"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/grafana/skills/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from grafana/skills"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/lobehub/lobe-chat/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from lobehub/lobe-chat"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/tursodatabase/turso/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from tursodatabase/turso"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/mindrally/skills/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mindrally/skills"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/dalestudy/skills/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from dalestudy/skills"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/rshankras/claude-code-apple-skills/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from rshankras/claude-code-apple-skills"
+  },
+  {
+   "name": "testing",
+   "identifier": "skills-sh/tartinerlabs/skills/testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from tartinerlabs/skills"
+  },
+  {
+   "name": "testing-agentforce",
+   "identifier": "skills-sh/forcedotcom/sf-skills/testing-agentforce",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from forcedotcom/sf-skills"
+  },
+  {
+   "name": "testing-agentforce",
+   "identifier": "skills-sh/forcedotcom/afv-library/testing-agentforce",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from forcedotcom/afv-library"
+  },
+  {
+   "name": "testing-agentforce",
+   "identifier": "skills-sh/salesforceairesearch/agentforce-adlc/testing-agentforce",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from salesforceairesearch/agentforce-adlc"
+  },
+  {
+   "name": "testing-anti-patterns",
+   "identifier": "skills-sh/obra/superpowers-skills/testing-anti-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from obra/superpowers-skills"
+  },
+  {
+   "name": "testing-api-authentication-weaknesses",
+   "identifier": "skills-sh/mukul975/anthropic-cybersecurity-skills/testing-api-authentication-weaknesses",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mukul975/anthropic-cybersecurity-skills"
+  }
+ ],
+ "pytest": [
+  {
+   "name": "pytest",
+   "identifier": "skills-sh/bobmatnyc/claude-mpm-skills/pytest",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from bobmatnyc/claude-mpm-skills"
+  },
+  {
+   "name": "pytest",
+   "identifier": "skills-sh/manutej/luxor-claude-marketplace/pytest",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from manutej/luxor-claude-marketplace"
+  },
+  {
+   "name": "pytest-coverage",
+   "identifier": "skills-sh/github/awesome-copilot/pytest-coverage",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "pytest-patterns",
+   "identifier": "skills-sh/manutej/luxor-claude-marketplace/pytest-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from manutej/luxor-claude-marketplace"
+  },
+  {
+   "name": "pytest-testing",
+   "identifier": "skills-sh/pluginagentmarketplace/custom-plugin-python/pytest-testing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from pluginagentmarketplace/custom-plugin-python"
+  },
+  {
+   "name": "Pytest Code Review",
+   "identifier": "pytest-code-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Reviews pytest test code for async patterns, fixtures, parametrize, and mocking. Use when reviewing test_*.py files, checking async test functions, fixture u..."
+  },
+  {
+   "name": "Pytest Test Master",
+   "identifier": "pytest-test-master",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u638c\u63e1 pytest fixtures \u8303\u56f4\u3001\u53c2\u6570\u5316\u3001mock \u7528\u6cd5\u53ca coverage \u62a5\u544a\uff0c\u63d0\u5347\u6d4b\u8bd5\u7ed3\u6784\u6e05\u6670\u5ea6\u548c\u8986\u76d6\u7387\u5206\u6790\u80fd\u529b\u3002"
+  },
+  {
+   "name": "pytest-test-master",
+   "identifier": "pytest-test-master-kay",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u63d0\u4f9b pytest fixtures \u7528\u6cd5\u3001mock/patch \u64cd\u4f5c\u3001\u53c2\u6570\u5316\u6d4b\u8bd5\u3001coverage \u62a5\u544a\u89e3\u8bfb\u548c\u6d4b\u8bd5\u6570\u636e\u751f\u6210\u7684\u4e13\u9879\u6307\u5bfc\u548c\u793a\u4f8b\u3002"
+  },
+  {
+   "name": "Clean Pytest",
+   "identifier": "clean-pytest",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Write clean, maintainable pytest tests using Fake-based testing, contract testing, and dependency injection patterns. Use when setting up test suites for Pyt..."
+  },
+  {
+   "name": "Nm Leyline Pytest Config",
+   "identifier": "nm-leyline-pytest-config",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides standardized pytest config, reusable fixtures, and CI integration patterns"
+  },
+  {
+   "name": "AccessMind",
+   "identifier": "accessmind",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enterprise WCAG 2.2/2.1/EN 301 549 accessibility audit platform. OpenClaw Browser Tool ile entegre \u00e7al\u0131\u015fan, g\u00fcvenli ve profesyonel eri\u015filebilirlik denetim si..."
+  },
+  {
+   "name": "Auto Test",
+   "identifier": "auto-test",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u81ea\u52a8\u751f\u6210\u5355\u5143\u6d4b\u8bd5\u3002\u5206\u6790\u4ee3\u7801\u903b\u8f91\uff0c\u81ea\u52a8\u751f\u6210 pytest (Python)\u3001JUnit (Java)\u3001Jest (JavaScript) \u7b49\u6d4b\u8bd5\u6846\u67b6\u7684\u6d4b\u8bd5\u7528\u4f8b\u3002\u652f\u6301\u8986\u76d6\u7387\u62a5\u544a\u751f\u6210\u3002"
+  },
+  {
+   "name": "Nm Parseltongue Python Testing",
+   "identifier": "nm-parseltongue-python-testing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Python testing patterns with pytest, fixtures, TDD, mocking, async and integration tests"
+  },
+  {
+   "name": "Prioritize uv",
+   "identifier": "uv-priority",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Prioritize uv over pip for all Python package management and execution. When running ANY Python command or CLI tool (python, dbt, pytest, etc.), MUST wrap wi..."
+  },
+  {
+   "name": "Python Testing",
+   "identifier": "python-testing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Python \u6d4b\u8bd5\u901f\u67e5\u3002\u5f53\u9700\u8981\uff1a(1) \u8fd0\u884c pytest \u6d4b\u8bd5 (2) \u4f7f\u7528 mock/patch (3) \u53c2\u6570\u5316\u6d4b\u8bd5 (4) fixtures (5) \u5f02\u6b65\u6d4b\u8bd5 (6) \u8986\u76d6\u7387\u6d4b\u8bd5\u65f6\u4f7f\u7528\u3002"
+  }
+ ],
+ "coverage": [
+  {
+   "name": "doca-argus",
+   "identifier": "NVIDIA/skills/skills/doca-argus",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is deploying or operating the DOCA Argus Service \u2014 the packaged BlueField-side runtime-security container that watches the BlueField and attached host for suspicious activity, integrity violations, and operational anomalies, and forwards findings to a SIEM (Splunk / ELK / Sentinel / syslog). Covers the four-axis config (detection policy, forwarding, sampling, host coverage), running the NGC container on BlueField Arm, and wiring the forwarder. Trigger even without \"DOCA Argus\" by name \u2014 typical implicit phrasings: \"container green but no findings arrive\", \"false-positive flood in Splunk\", or \"runtime security on a fleet of BlueField-3s\". Refuse and route elsewhere for installing DOCA, SIEM-side ingest stanzas, pre-baked detection-rule packs, and metrics observability (DOCA Telemetry). Argus is NVIDIA's currently- promoted runtime-security framework, superseding the older App Shield library; name it first for new runtime-security work.\n"
+  },
+  {
+   "name": "coverage",
+   "identifier": "skills-sh/alirezarezvani/claude-skills/coverage",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from alirezarezvani/claude-skills"
+  },
+  {
+   "name": "coverage-analysis",
+   "identifier": "skills-sh/trailofbits/skills/coverage-analysis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "coverage-analysis",
+   "identifier": "skills-sh/dotnet/skills/coverage-analysis",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from dotnet/skills"
+  },
+  {
+   "name": "coverage-tracker",
+   "identifier": "skills-sh/elvisun/newsjack/coverage-tracker",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elvisun/newsjack"
+  },
+  {
+   "name": "coverage-tracker-setup",
+   "identifier": "skills-sh/elvisun/newsjack/coverage-tracker-setup",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from elvisun/newsjack"
+  },
+  {
+   "name": "Coverage Check",
+   "identifier": "coverage-check",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze a user's existing insurance coverage to identify gaps, overlaps, and under-insurance risks. Use when users want to review whether they have adequate..."
+  },
+  {
+   "name": "Coverage Gap Analysis",
+   "identifier": "coverage-gap-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Map an organisation's risks against its insurance policy portfolio to find what's uncovered, underinsured, or double-covered. Use when asked to run a coverag..."
+  },
+  {
+   "name": "Alibabacloud Security Vuln Coverage Check",
+   "identifier": "alibabacloud-security-vuln-coverage-check",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u67e5\u8be2\u963f\u91cc\u4e91\u56db\u6b3e\u5b89\u5168\u4ea7\u54c1\uff08\u4e91\u5b89\u5168\u4e2d\u5fc3 / WAF / \u4e91\u9632\u706b\u5899 / RASP\uff09\u5bf9\u6307\u5b9a\u6f0f\u6d1e\u7684\u9632\u62a4\u8986\u76d6\u60c5\u51b5\uff0c\u8f93\u5165 CVE \u7f16\u53f7\u6216 AVD \u7f16\u53f7\u5373\u53ef\u8fd4\u56de\u5404\u4ea7\u54c1\u662f\u5426\u5df2\u8986\u76d6\u3002\u5f53\u5ba2\u6237\u6216\u552e\u524d SA \u95ee\"\u6211\u4eec\u4ea7\u54c1\u80fd\u4e0d\u80fd\u9632\u4f4f CVE-XXXX\uff1f\"\u3001\"WAF \u8986\u76d6\u8fd9\u4e2a\u6f0f\u6d1e\u4e86\u5417\uff1f\"\u3001\"\u65b0\u7206\u51fa\u6765\u7684 XX \u6f0f\u6d1e\u6709\u6ca1\u6709\u8986\u76d6\uff1f\"\u3001\"\u9ad8\u5371\u6f0f\u6d1e Y..."
+  },
+  {
+   "name": "Cis Rhel Openeuler Coverage",
+   "identifier": "cis-rhel-openeuler-coverage",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5206\u6790 CIS Red Hat Enterprise Linux Benchmark \u4e2d\u7684\u5b89\u5168\u89c4\u5219\u5728 OpenEuler \u5b89\u5168\u914d\u7f6e\u57fa\u7ebf\u4e2d\u7684\u8986\u76d6\u60c5\u51b5\uff0c\u8f93\u51fa\u5b8c\u5168\u8986\u76d6\u3001\u90e8\u5206\u8986\u76d6\u3001\u672a\u8986\u76d6\u7684\u89c4\u5219\u6e05\u5355\u3002\u9002\u7528\u4e8e\uff1a\u7528\u6237\u63d0\u4f9b CIS RHEL Benchmark PDF \u6587\u4ef6\u8def\u5f84\u548c OpenEuler \u5b89\u5168\u57fa\u7ebf MD \u6587\u4ef6\u8def\u5f84\uff0c\u8981\u6c42..."
+  },
+  {
+   "name": "Code Coverage Differ / \u4ee3\u7801\u8986\u76d6\u5dee\u5f02\u62a5\u544a\u5668",
+   "identifier": "code-coverage-reporter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Compare test coverage between branches and highlight uncovered changed lines. / \u5bf9\u6bd4\u5206\u652f\u95f4\u7684\u6d4b\u8bd5\u8986\u76d6\u7387\uff0c\u9ad8\u4eae\u672a\u8986\u76d6\u7684\u53d8\u66f4\u884c\u3002"
+  },
+  {
+   "name": "Code Coverage Gap Finder / \u4ee3\u7801\u8986\u76d6\u7387\u7f3a\u53e3\u67e5\u627e\u5668",
+   "identifier": "code-coverage-gap-finder",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Compare coverage reports to identify untested critical paths and generate test cases. / \u5bf9\u6bd4\u8986\u76d6\u7387\u62a5\u544a\uff0c\u8bc6\u522b\u672a\u6d4b\u8bd5\u7684\u5173\u952e\u8def\u5f84\u5e76\u751f\u6210\u6d4b\u8bd5\u7528\u4f8b\u3002"
+  },
+  {
+   "name": "Game Design KPI Coverage Audit",
+   "identifier": "game-design-kpi-coverage-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit a game feature, roadmap candidate, UX improvement, support system, connective-tissue feature, or quality-of-life change for KPI coverage bias and measu..."
+  },
+  {
+   "name": "Google Maps business data extraction paired with bulk search and batch data download capabilities for global B2B lead generation. Filter search results bycountry, state, city, district, search radius, industry and product keywords to batch collect business names, physical addresses and full contact details.Precisely pinpoint overseas buyers and local enterprises to streamline end-to-end lead development workflows. Support field sales reps, distributors, brandoperation teams and regional managers to target merchants in designated zones and commercial districts. Analyze regional market density and coverage data togenerate high-qualified sales prospects. Fully optimized for regional business expansion, new outlet setup, distributor recruitment, competitor locationtracking and territory planning for offline channel development.",
+   "identifier": "upkuajing-map-merchants-search",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Pull bulk Google Maps business data with radius\u2011based filters. Gather merchant contact information, analyze market density and find distributors or overseas..."
+  },
+  {
+   "name": "Initiation of Coverage Agent",
+   "identifier": "initiation-of-coverage-or-deep-dive",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4f9d\u6258\u4e1c\u65b9\u8d22\u5bcc\u6570\u636e\u5e93\uff0c\u9762\u5411\u6caa\u6df1\u4eac\u6e2f\u7f8e\u4e0a\u5e02\u516c\u53f8\uff08A \u80a1\u3001\u6e2f\u80a1\u3001\u7f8e\u80a1\u3001\u5317\u4ea4\u6240\uff09\uff0c\u751f\u6210\u9996\u6b21\u8986\u76d6\u62a5\u544a\u6216\u6df1\u5ea6\u7814\u7a76\u62a5\u544a\u3002 \u5f53\u7528\u6237\u63d0\u53ca\u300c\u9996\u6b21\u8986\u76d6\u300d\u300c\u9996\u6b21\u8986\u76d6\u62a5\u544a\u300d\u300c\u521d\u59cb\u8986\u76d6\u300d\u300c\u6df1\u5ea6\u7814\u7a76\u300d\u300c\u6df1\u5ea6\u62a5\u544a\u300d\u300c\u4e2a\u80a1\u6df1\u5ea6\u300d\u300c\u516c\u53f8\u6df1\u5ea6\u300d\u300c\u6807\u7684\u6df1\u5ea6\u5206\u6790\u300d\uff0c\u6216\u8981\u6c42\u5bf9\u67d0\u53ea\u80a1\u7968/\u4e0a\u5e02\u516c\u53f8\u64b0\u5199\u5168\u9762\u3001\u4f53\u7cfb\u5316\u7684\u7814\u7a76\u62a5\u544a\u65f6\uff0c\u5fc5\u987b\u89e6\u53d1\u672c Skill\u3002 \u5373\u4f7f\u7528\u6237..."
+  }
+ ],
+ "code quality": [
+  {
+   "name": "Code Quality",
+   "identifier": "code-quality",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Coding style standards, security guidelines, and accessibility requirements. Use when (1) Writing new code, (2) Reviewing code for style/security, (3) Implem..."
+  },
+  {
+   "name": "Code Quality Analyzer (FightingDao)",
+   "identifier": "fightingdao-code-quality-analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4ee3\u7801\u8d28\u91cf\u5206\u6790\u6280\u80fd\uff0c\u7528\u4e8e\u5206\u6790\u4ee3\u7801\u4ed3\u5e93\u7684\u5468/\u6708\u7ef4\u5ea6\u53d8\u66f4\uff0c\u751f\u6210\u4ea4\u4ed8\u62a5\u544a\u5e76\u540c\u6b65\u5230\u4ee3\u7801\u8d28\u91cf\u5206\u6790\u7cfb\u7edf\u6570\u636e\u5e93\u3002\u89e6\u53d1\u573a\u666f\uff1a(1) \u7528\u6237\u8981\u6c42\u8fdb\u884c\u4ee3\u7801\u8d28\u91cf\u5206\u6790 (2) \u751f\u6210\u5468\u62a5/\u6708\u62a5 (3) \u7edf\u8ba1\u4ee3\u7801\u53d8\u66f4 (4) \u5206\u6790\u5206\u652f\u63d0\u4ea4 (5) \u540c\u6b65\u5206\u6790\u6570\u636e\u5230\u6570\u636e\u5e93\u3002"
+  },
+  {
+   "name": "Code Quality Enforcer / \u4ee3\u7801\u8d28\u91cf\u5f3a\u5236\u68c0\u67e5\u5668",
+   "identifier": "code-quality-enforcer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enforce custom linting, complexity, and coverage rules across any language before merge. / \u5728\u5408\u5e76\u524d\u8de8\u4efb\u610f\u8bed\u8a00\u5f3a\u5236\u6267\u884c\u81ea\u5b9a\u4e49 lint\u3001\u590d\u6742\u5ea6\u53ca\u8986\u76d6\u7387\u89c4\u5219\u3002"
+  },
+  {
+   "name": "Code Quality Guard",
+   "identifier": "code-quality-guard",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Professional pre-deployment code review and quality enforcement. Ensures imports are valid, tags are closed, and logic follows best practices before announci..."
+  },
+  {
+   "name": "Code Quality Guardian",
+   "identifier": "code-quality-guardian",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4ee3\u7801\u8d28\u91cf\u68c0\u6d4b\u5668 - \u68c0\u6d4b\u4ee3\u7801\u5f02\u5473\u3001\u590d\u6742\u5ea6\u3001\u5b89\u5168\u6f0f\u6d1e\u3001\u98ce\u683c\u89c4\u8303\u7b49 | Code Quality Guardian - Detect code smells, complexity, security vulnerabilities and style issues"
+  },
+  {
+   "name": "Ai Code Quality Economics",
+   "identifier": "ai-code-quality-economics",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze and improve AI-generated code quality by leveraging economic incentives such as token efficiency, maintainability, and competitive market forces."
+  },
+  {
+   "name": "Analyzes code for improvements including code smells, design patterns, and best practices. Invoke when user asks for code analysis, code review, or suggestions to improve code quality.",
+   "identifier": "code-smell-analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyzes code for improvements including code smells, design patterns, and best practices. Invoke when user asks for code analysis, code review, or suggestio..."
+  },
+  {
+   "name": "Nm Conserve Code Quality Principles",
+   "identifier": "nm-conserve-code-quality-principles",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Applies KISS, YAGNI, and SOLID principles for clean code with reduced complexity"
+  },
+  {
+   "name": "health",
+   "identifier": "garrytan/gstack/health",
+   "source": "github",
+   "trust_level": "community",
+   "description": "Code quality dashboard. (gstack)"
+  },
+  {
+   "name": "Argus Pro \u2014 Code Intelligence Scanner",
+   "identifier": "argus-pro",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Argus Pro \u00e2\u0080\u0094 Code Intelligence Scanner. Scan Python and JavaScript codebases with 40+ rules covering security, bugs, performance, and code quality. Get prio..."
+  },
+  {
+   "name": "Auto Test Generator",
+   "identifier": "auto-test-generator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Automatically create and run basic unit/integration tests for OpenClaw skills to ensure code quality and prevent regressions."
+  },
+  {
+   "name": "Best Practices",
+   "identifier": "best-practices-ecc",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Apply modern web development best practices for security, compatibility, code quality, and coding standards. Covers KISS/DRY/YAGNI principles, TypeScript/Jav..."
+  },
+  {
+   "name": "CTO & Engineering Excellence Playbook",
+   "identifier": "cto-playbook",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "CTO & Engineering Excellence Playbook. Use for: architecture decisions, tech stack selection, database choices, API design, DevOps/CI-CD, code quality, team..."
+  },
+  {
+   "name": "Clawvet",
+   "identifier": "clawvet",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Code quality and safety linter for OpenClaw skills. Runs 6 analysis passes before you install."
+  },
+  {
+   "name": "Code Analysis",
+   "identifier": "code-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Perform multi-dimensional advanced code analysis including knowledge graph generation, code quality evaluation, performance analysis, security review, archit..."
+  }
+ ],
+ "lint": [
+  {
+   "name": "mcore-linting-and-formatting",
+   "identifier": "NVIDIA/skills/skills/mcore-linting-and-formatting",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Linting and formatting for Megatron-LM. Covers running autoformat.sh, tools (ruff, black, isort, pylint, mypy), and code style rules."
+  },
+  {
+   "name": "Lint",
+   "identifier": "lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Check code syntax, enforce style, and suggest auto-fixes with CI integration. Use when linting PRs, enforcing code style, detecting errors before merge."
+  },
+  {
+   "name": "lint-and-validate",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/lint-and-validate",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "lint-and-validate",
+   "identifier": "skills-sh/davila7/claude-code-templates/lint-and-validate",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from davila7/claude-code-templates"
+  },
+  {
+   "name": "linter-docs",
+   "identifier": "skills-sh/zernie/vigiles/linter-docs",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from zernie/vigiles"
+  },
+  {
+   "name": "linting-neostandard-eslint9",
+   "identifier": "skills-sh/mcollina/skills/linting-neostandard-eslint9",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mcollina/skills"
+  },
+  {
+   "name": "Alibabacloud Polardb Mysql Sql Lint",
+   "identifier": "alibabacloud-polardb-mysql-sql-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Pre-release SQL assessment and optimization for PolarDB MySQL. Combines 28+ static lint rules with Alibaba Cloud DAS dynamic diagnosis. Detects full table sc..."
+  },
+  {
+   "name": "Flyai Commit Lint",
+   "identifier": "flyai-commit-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enforce conventional commit messages with semantic validation, scope checking, and automated fix suggestions for git workflows."
+  },
+  {
+   "name": "Golang Lint",
+   "identifier": "golang-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Linting best practices and golangci-lint configuration for Golang projects \u2014 running linters, configuring .golangci.yml, suppressing warnings with nolint dir..."
+  },
+  {
+   "name": "Karpathy Lint",
+   "identifier": "karpathy-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Performs quality checks on Karpathy LLM knowledge points including deduplication, merging, updating, and generates reports on knowledge base health."
+  },
+  {
+   "name": "Markdown Lint",
+   "identifier": "nini-markdown-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use this skill immediately when the user needs to: set up markdownlint-cli2 and pre-commit hooks in a repository, fix or batch-repair markdownlint errors lik..."
+  },
+  {
+   "name": "Markdown Lint Fixer",
+   "identifier": "markdown-lint-fixer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\ud83d\udc51 kingai.work \u51fa\u54c1 \u00b7 markdown-lint-fixer \u00b7 \u81ea\u52a8\u4fee\u6b63\u5e38\u89c1 Markdown \u683c\u5f0f\u95ee\u9898 \u00b7 \u514d\u8d39\u7248\u53ef\u7528\uff0c\u4ed8\u8d39\u7248\u89e3\u9501\u9ad8\u7ea7/\u6279\u91cf\u80fd\u529b"
+  },
+  {
+   "name": "Prompt Lint",
+   "identifier": "prompt-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Lint prompts/SKILL.md for quality (role, goal, output format, vague verbs, jailbreak phrases). Stdlib."
+  },
+  {
+   "name": "Skill Lint",
+   "identifier": "skill-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Validate a ClawHub/OpenClaw skill folder before publishing (frontmatter, shape, size). Stdlib."
+  },
+  {
+   "name": "Wiki Lint",
+   "identifier": "wiki-lint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Lint and health-check a persistent markdown knowledge wiki. Use when a user wants the agent to inspect a wiki for contradictions, stale claims, missing cross..."
+  }
+ ],
+ "static analysis": [
+  {
+   "name": "A2a Code Audit",
+   "identifier": "a2a-code-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit Python and JavaScript code for security vulnerabilities, style issues, and bugs using static analysis tools and provide a detailed structured report."
+  },
+  {
+   "name": "Aegis Audit",
+   "identifier": "aegis-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deep behavioral security audit for AI agent skills and MCP tools. Performs deterministic static analysis (AST + Semgrep + 15 specialized scanners), cryptographic lockfile generation, and optional LLM-powered intent analysis. Use when installing, reviewing, or approving any skill, tool, plugin, or MCP server \u2014 especially before first use. Replaces basic safety summaries with full CWE-mapped, OWASP-tagged, line-referenced security reports."
+  },
+  {
+   "name": "Ai Code Review Expert",
+   "identifier": "ai-code-review-expert",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI-powered code review assistant \u2014 perform deep static analysis, identify security vulnerabilities, enforce coding standards, suggest refactoring patterns, a..."
+  },
+  {
+   "name": "Angus Bounty Hunter",
+   "identifier": "angus-bounty-hunter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Automated smart contract bug bounty hunting. Scans Immunefi/Code4rena targets with Slither static analysis, triages findings with local LLMs, and generates P..."
+  },
+  {
+   "name": "Claw Secure Auditor",
+   "identifier": "claw-secure-auditor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Security audit tool for ClawHub/OpenClaw skills (static analysis + reputation scoring)"
+  },
+  {
+   "name": "Code Inspector",
+   "identifier": "code-inspector",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Scan AI-generated code for bugs before deploying \u2014 8 static analysis checks from critical (hardcoded secrets, unsafe eval) to low (unused imports). Productio..."
+  },
+  {
+   "name": "Code Review",
+   "identifier": "code-review-sr",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI-powered code review that combines fast local static analysis with deep AI reasoning. Catches bugs, security vulnerabilities, performance issues, and style..."
+  },
+  {
+   "name": "EdgeOne Skill Scanner",
+   "identifier": "edgeone-skill-scanner",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Scan any agent skill for security risks before you install or use it. Powered by Tencent Zhuque Lab A.I.G (AI-Infra-Guard). 100% local static analysis \u2014 no f..."
+  },
+  {
+   "name": "OpenClaw Shield",
+   "identifier": "openclaw-shield",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enterprise AI security scanner using static analysis, runtime guards, and ClamAV to detect credential theft, data leaks, malware, and ensure audit logging."
+  },
+  {
+   "name": "Skill Deep Audit",
+   "identifier": "skill-deep-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generic skill-quality auditor for any agent skill (Claude, OpenClaw, Cursor, etc.). Runs a 7-dimension static analysis (D1 process closure & idempotency, D2..."
+  },
+  {
+   "name": "Skill Review Pro",
+   "identifier": "skill-review-pro",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI Skill \u8d28\u91cf\u8bc4\u5ba1\u7cfb\u7edf\u3002\u901a\u8fc7\u9759\u6001\u5ba1\u67e5\u5bf9 Skill \u8fdb\u884c\u8bc4\u5206\uff08100\u5206\u5236\uff09\uff0c \u8f93\u51fa\u4e13\u4e1a\u7684\u8bc4\u5ba1\u62a5\u544a\u548c\u6539\u8fdb\u5efa\u8bae\u3002\u6a21\u5757\u5316\u67b6\u6784\uff1a\u4e3b\u63a7\u7f16\u6392 + \u7c7b\u578b\u7b56\u7565 + \u8bc4\u5206\u6a21\u578b + \u4fee\u590d\u6267\u884c\u3002 AI Skill QA System. Evaluates Skills via static analysis, with 100..."
+  },
+  {
+   "name": "Slither Audit",
+   "identifier": "slither-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Run slither static analysis on Solidity contracts. Fast, lightweight security scanner for EVM smart contracts."
+  },
+  {
+   "name": "S\u00b3 Security Audit",
+   "identifier": "s3-security-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Run security audits on codebases using static analysis, dependency scanning, and manual code review patterns. Covers OWASP Top 10, secrets detection, depende..."
+  },
+  {
+   "name": "secure-skill",
+   "identifier": "secure-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Scan skills in a project directory for security issues and generate a markdown table report, then install skills from a local registry. Combines static analysis of code and markdown files with supply chain checks. Use when auditing a skills directory, generating a security summary table, or installi"
+  },
+  {
+   "name": "vettr",
+   "identifier": "vettr",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Static analysis security scanner for third-party OpenClaw skills. Detects eval/spawn risks, malicious dependencies, typosquatting, and prompt injection patte..."
+  }
+ ],
+ "mypy": [
+  {
+   "name": "mcore-linting-and-formatting",
+   "identifier": "NVIDIA/skills/skills/mcore-linting-and-formatting",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Linting and formatting for Megatron-LM. Covers running autoformat.sh, tools (ruff, black, isort, pylint, mypy), and code style rules."
+  },
+  {
+   "name": "mypy",
+   "identifier": "skills-sh/bobmatnyc/claude-mpm-skills/mypy",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from bobmatnyc/claude-mpm-skills"
+  },
+  {
+   "name": "Python Typing Checker",
+   "identifier": "python-typing-checker",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze Python type annotation coverage and quality \u2014 check mypy compliance, find untyped functions, review Protocol usage, Generic types, TypeVar constraint..."
+  },
+  {
+   "name": "mcore-linting-and-formatting",
+   "identifier": "mcore-linting-and-formatting",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Linting and formatting for Megatron-LM. Covers running autoformat.sh, tools (ruff, black, isort, pylint, mypy), and code style rules."
+  }
+ ],
+ "bandit": [
+  {
+   "name": "BanditDB",
+   "identifier": "banditdb",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "BanditDB is an in-memory decision database for AI agents \u2014 real-time learning from outcomes. Use it to auto-tune notification timing, model routing, or promp..."
+  },
+  {
+   "name": "Oraclaw Bandit",
+   "identifier": "oraclaw-bandit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "A/B testing and feature optimization for AI agents. Pick the best option automatically using Multi-Armed Bandits and Contextual Bandits (LinUCB). No data war..."
+  },
+  {
+   "name": "Clawhub Gate",
+   "identifier": "clawhub-gate",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "ClawHub \u53d1\u5e03\u524d\u5b89\u5168\u95e8\u7981\uff1a\u672c\u5730\u9759\u6001\u5206\u6790 + ClawScan \u8f6e\u8be2\uff0c\u786e\u4fdd skill \u901a\u8fc7 VirusTotal + ClawScan \u518d\u53d1\u5e03\u3002 \u5173\u952e\u8bcd\uff1aclawhub publish pre-publish security gate VirusTotal ClawScan shellcheck bandit"
+  },
+  {
+   "name": "Evez Rqns",
+   "identifier": "evez-rqns",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Implements a neuromorphic-quantum pipeline for anomaly detection using LIF spike encoding, contextual bandit allocation, and adaptive threshold hot-swapping."
+  }
+ ],
+ "supply chain": [
+  {
+   "name": "oss-forensics",
+   "identifier": "official/security/oss-forensics",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Supply chain investigation, evidence recovery, and forensic analysis for GitHub repositories.\nCovers deleted commit recovery, force-push detection, IOC extraction, multi-source evidence\ncollection, hy"
+  },
+  {
+   "name": "Supply Chain Mgmt",
+   "identifier": "toolweb-supply-chain-mgmt",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Professional platform that generates personalized Supply Chain Management career roadmaps based on user assessment data and experience level."
+  },
+  {
+   "name": "Supply Chain Optimization Amazon Lite",
+   "identifier": "supply-chain-optimization-amazon",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Supply Chain Optimization (Lite) - Diagnose bottlenecks and provide cost reduction strategies through conversation"
+  },
+  {
+   "name": "Supply Chain Optimization Shopify",
+   "identifier": "supply-chain-optimization-shopify",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Supply Chain Bottleneck Analyzer for Shopify/DTC stores. Diagnose cash flow, inventory, shipping costs, and customer acquisition efficiency. Includes CAC/LTV..."
+  },
+  {
+   "name": "Supply Chain Optimization Tiktok",
+   "identifier": "supply-chain-optimization-tiktok",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Supply Chain Bottleneck Analyzer for TikTok Shop sellers. Diagnose cash flow, inventory turnover, affiliate commissions, and return rates. Includes FBT cost..."
+  },
+  {
+   "name": "Supply Chain Optimization Walmart",
+   "identifier": "supply-chain-optimization-walmart",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Supply Chain Bottleneck Analyzer for Walmart Marketplace sellers. Diagnose cash flow, inventory, WFS costs, and referral fees. Includes comparison with Amazo..."
+  },
+  {
+   "name": "Supply Chain Poison Detector",
+   "identifier": "supply-chain-poison-detector",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Helps detect supply chain poisoning in AI agent marketplace skills. Scans Gene/Capsule validation fields for shell injection, outbound requests, and encoded..."
+  },
+  {
+   "name": "Supply Chain Risk Monitor",
+   "identifier": "afrexai-supply-chain",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze supplier risks, map dependencies, score vulnerabilities, and generate data-driven mitigation plans with risk dashboards and scenario modeling."
+  },
+  {
+   "name": "04 Supply Chain",
+   "identifier": "04-supply-chain",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u793e\u533a\u56e2\u8d2d\u4f9b\u5e94\u94fe\u4e0e\u91c7\u8d2d\u7ba1\u7406\u5168\u94fe\u8def\u6280\u80fd\u5305\u3002\u6db5\u76d6\u4f9b\u5e94\u5546\u5f00\u53d1\u3001\u8d44\u8d28\u5ba1\u6838\u3001\u8bc4\u5206\u5361\u3001\u91c7\u8d2d\u8c08\u5224\u3001\u4ed3\u50a8\u7ba1\u7406\u3001\u914d\u9001\u5c65\u7ea6\u53ca\u914d\u5957\u5de5\u5177\u3002\u9002\u7528\u4e8e\u5e73\u53f0\u91c7\u8d2d\u8d1f\u8d23\u4eba\u3001\u4f9b\u5e94\u94fe\u7ba1\u7406\u8005\u3002"
+  },
+  {
+   "name": "04 Supply Chain",
+   "identifier": "local-community-buying-04-supply-chain",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u793e\u533a\u56e2\u8d2d\u4f9b\u5e94\u94fe\u4e0e\u91c7\u8d2d\u7ba1\u7406\u5168\u94fe\u8def\u6280\u80fd\u5305\u3002\u6db5\u76d6\u4f9b\u5e94\u5546\u5f00\u53d1\u3001\u8d44\u8d28\u5ba1\u6838\u3001\u8bc4\u5206\u5361\u3001\u91c7\u8d2d\u8c08\u5224\u3001\u4ed3\u50a8\u7ba1\u7406\u3001\u914d\u9001\u5c65\u7ea6\u53ca\u914d\u5957\u5de5\u5177\u3002\u9002\u7528\u4e8e\u5e73\u53f0\u91c7\u8d2d\u8d1f\u8d23\u4eba\u3001\u4f9b\u5e94\u94fe\u7ba1\u7406\u8005\u3002"
+  },
+  {
+   "name": "Agentic Supply Chain Orchestration",
+   "identifier": "greenhelix-agent-supply-chain-orchestration",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Agentic Supply Chain Orchestration. Build multi-agent supplier networks that self-heal: supplier discovery, real-time SLA monitoring, disruption detection wi..."
+  },
+  {
+   "name": "DCL Provenance Tracker \u2014 Supply Chain & Version Drift Verifier",
+   "identifier": "dcl-provenance-tracker",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Verify the integrity and version history of any ClawHub skill after an update. After ClawHavoc incidents where thousands of skills silently changed behavior..."
+  },
+  {
+   "name": "Inventory Supply Chain",
+   "identifier": "afrexai-inventory-supply-chain",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage inventory, forecast demand, evaluate suppliers, optimize reorder points, and improve supply chain for businesses of all sizes."
+  },
+  {
+   "name": "Nm Leyline Supply Chain Advisory",
+   "identifier": "nm-leyline-supply-chain-advisory",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audits dependency supply chains for bad versions, lockfile drift, and artifact integrity"
+  },
+  {
+   "name": "Npm Supply Chain Security",
+   "identifier": "npm-supply-chain-security",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Help secure JavaScript projects by detecting malicious npm packages, enforcing trusted publishing, verifying releases, and auditing dependencies for threats."
+  }
+ ],
+ "dependency audit": [
+  {
+   "name": "Dependency Audit",
+   "identifier": "dependency-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audits project dependencies for security vulnerabilities, license compliance issues, outdated packages, and transitive dependency risk. Use when asked to aud..."
+  },
+  {
+   "name": "Dependency Health Check",
+   "identifier": "dependency-health-check",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Multi-ecosystem dependency audit \u2014 find outdated, vulnerable, unused, and license-incompatible packages across npm, pip, cargo, go, and composer. Use when as..."
+  },
+  {
+   "name": "Phy Dep Upgrade",
+   "identifier": "phy-dep-upgrade",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Dependency audit and upgrade planner for Node.js, Python, Rust, Go, and Ruby projects. Scans for outdated packages, vulnerability CVEs, and breaking changes,..."
+  }
+ ],
+ "secrets": [
+  {
+   "name": "1password",
+   "identifier": "official/security/1password",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Set up and use 1Password CLI (op). Use when installing the CLI, enabling desktop app integration, signing in, and reading/injecting secrets for commands."
+  },
+  {
+   "name": "setup-wizard-generator",
+   "identifier": "official/devops/setup-wizard-generator",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Generate a bash wizard guiding a human through manual setup."
+  },
+  {
+   "name": "nemo-rl-brev-etiquette",
+   "identifier": "NVIDIA/skills/skills/nemo-rl-brev-etiquette",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Brev instance operating guidance for NeMo-RL agents working in /home/ubuntu/RL with limited workspace disk, a larger /ephemeral volume, and optional /home/ubuntu/RL/.env secrets. Use when running nemo-rl-auto-research campaigns, experiments, training jobs, model or dataset downloads, shared cache-heavy commands, log-producing runs, checkpoint generation, W&B or Hugging Face authenticated workflows, or any workflow that may create large files on Brev."
+  },
+  {
+   "name": "Secrets",
+   "identifier": "secrets",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deep workflow for secrets lifecycle\u2014classification, storage (Vault/KMS/cloud), rotation, least privilege, developer ergonomics, audit, and incident response...."
+  },
+  {
+   "name": "secrets-management",
+   "identifier": "skills-sh/wshobson/agents/secrets-management",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshobson/agents"
+  },
+  {
+   "name": "secrets-management",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/secrets-management",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "secrets-management",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/secrets-management",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "secrets-rotation",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/secrets-rotation",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "secrets-scan",
+   "identifier": "skills-sh/jwynia/agent-skills/secrets-scan",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from jwynia/agent-skills"
+  },
+  {
+   "name": "secrets-vault-manager",
+   "identifier": "skills-sh/alirezarezvani/claude-skills/secrets-vault-manager",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from alirezarezvani/claude-skills"
+  },
+  {
+   "name": "Secrets (Zero to One)",
+   "identifier": "zero-to-one-secrets",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Activate when: user asks 'what do we know that others don't,' 'where is our edge,' 'what important truth do few people agree with me on,' 'is this idea defen..."
+  },
+  {
+   "name": "Secrets Audit",
+   "identifier": "secrets-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Scan projects and codebases for exposed secrets, API keys, tokens, passwords, and sensitive credentials. Detects hardcoded secrets in source code, config fil..."
+  },
+  {
+   "name": "Secrets Management",
+   "identifier": "secrets-management",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Securely store, manage, rotate, and integrate secrets (API keys, passwords, certificates) in CI/CD pipelines using Vault, AWS Secrets Manager, and native tools."
+  },
+  {
+   "name": "Secrets Manager",
+   "identifier": "secrets-manager",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Secure secrets store for OpenClaw agents. AES-256-GCM encryption. Store, retrieve, rotate, and audit secrets. Inject secrets into commands. Zero external dep..."
+  },
+  {
+   "name": "Secrets Scanner",
+   "identifier": "secrets-scanner",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detect hardcoded secrets, exposed API keys, and credential misconfigurations in IaC and config files"
+  }
+ ],
+ "fuzz": [
+  {
+   "name": "nemo-curator",
+   "identifier": "official/mlops/nemo-curator",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "GPU-accelerated data curation for LLM training. Supports text/image/video/audio. Features fuzzy deduplication (16\u00d7 faster), quality filtering (30+ heuristics), semantic deduplication, PII redaction, N"
+  },
+  {
+   "name": "define-goal",
+   "identifier": "openai/skills/skills/.curated/define-goal",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Help the user define a concrete, measurable goal before starting work, especially when they ask to use the goal tool, create a goal, set an objective, clarify success criteria, or turn a fuzzy intention into a quantitative outcome. Use this skill for goal creation and goal refinement only; it does not manage durable snapshots, decision logs, or long-running execution artifacts."
+  },
+  {
+   "name": "fuzzing",
+   "identifier": "skills-sh/mohitmishra786/low-level-dev-skills/fuzzing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mohitmishra786/low-level-dev-skills"
+  },
+  {
+   "name": "fuzzing-dictionary",
+   "identifier": "skills-sh/trailofbits/skills/fuzzing-dictionary",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "fuzzing-obstacles",
+   "identifier": "skills-sh/trailofbits/skills/fuzzing-obstacles",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "Fuzzy Agent Daily Driver",
+   "identifier": "fuzzy-agent-daily-driver",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "The 6 core workflows every OpenClaw agent uses every day \u2014 recall, spawn, schedule, research, delegate, monitor-update. A pattern reference for building reli..."
+  },
+  {
+   "name": "Fuzzy Cron Scheduler",
+   "identifier": "fuzzy-cron-scheduler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Master OpenClaw cron scheduling for reliable background tasks, reminders, and recurring automation. Use when: (1) setting up periodic checks or heartbeats, (..."
+  },
+  {
+   "name": "Fuzzy Multi Agent Team",
+   "identifier": "fuzzy-multi-agent-team",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Spawn and orchestrate multiple coordinated AI sub-agents to work in parallel on a single complex task. Use when: (1) a task is too large for one agent and sh..."
+  },
+  {
+   "name": "fuzzy-match",
+   "identifier": "invoice-fraud-detection-fuzzy-match",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "A toolkit for fuzzy string matching and data reconciliation. Useful for matching entity names (companies, people) across different datasets where spelling va..."
+  },
+  {
+   "name": "api-fuzzing-bug-bounty",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/api-fuzzing-bug-bounty",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "api-fuzzing-for-bug-bounty",
+   "identifier": "skills-sh/davila7/claude-code-templates/api-fuzzing-for-bug-bounty",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from davila7/claude-code-templates"
+  },
+  {
+   "name": "cargo-fuzz",
+   "identifier": "skills-sh/trailofbits/skills/cargo-fuzz",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "differential-fuzzer",
+   "identifier": "skills-sh/tursodatabase/turso/differential-fuzzer",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from tursodatabase/turso"
+  },
+  {
+   "name": "ffuf-web-fuzzing",
+   "identifier": "skills-sh/jthack/ffuf_claude_skill/ffuf-web-fuzzing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from jthack/ffuf_claude_skill"
+  },
+  {
+   "name": "libfuzzer",
+   "identifier": "skills-sh/trailofbits/skills/libfuzzer",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  }
+ ],
+ "sqlite": [
+  {
+   "name": "SQLite",
+   "identifier": "sqlite",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use SQLite correctly with proper concurrency, pragmas, and type handling."
+  },
+  {
+   "name": "sqlite-database-expert",
+   "identifier": "skills-sh/martinholovsky/claude-skills-generator/sqlite-database-expert",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from martinholovsky/claude-skills-generator"
+  },
+  {
+   "name": "sqlite-expert",
+   "identifier": "skills-sh/rightnow-ai/openfang/sqlite-expert",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from rightnow-ai/openfang"
+  },
+  {
+   "name": "sqlite-to-fast-sql",
+   "identifier": "skills-sh/cap-go/capgo-skills/sqlite-to-fast-sql",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from cap-go/capgo-skills"
+  },
+  {
+   "name": "Sqlite Client",
+   "identifier": "sqlite-client",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "SQLite database operations. Use this skill when users need to create, read, query, or modify SQLite databases (.db files)."
+  },
+  {
+   "name": "Sqlite Query Builder",
+   "identifier": "sqlite-query-builder",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\ud83d\udc51 kingai.work \u51fa\u54c1 \u00b7 sqlite-query-builder \u00b7 \u7528\u81ea\u7136\u8bed\u8a00\u751f\u6210\u51c6\u786e\u7684 SQLite \u67e5\u8be2 \u00b7 \u514d\u8d39\u7248\u53ef\u7528\uff0c\u4ed8\u8d39\u7248\u89e3\u9501\u9ad8\u7ea7/\u6279\u91cf\u80fd\u529b"
+  },
+  {
+   "name": "Sqlite Turso Migration",
+   "identifier": "sqlite-turso-migration",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Prisma PostgreSQL \u2192 SQLite/Turso migration pattern for AI workspaces \u2014 converts production Postgres schemas to edge-compatible SQLite with Turso replication...."
+  },
+  {
+   "name": "sqlite-map-parser",
+   "identifier": "civ6-adjacency-optimizer-sqlite-map-parser",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Parse SQLite databases into structured JSON data. Use when exploring unknown database schemas, understanding table relationships, and extracting map data as..."
+  },
+  {
+   "name": "sqlite-reader",
+   "identifier": "sqlite-reader",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Read and query SQLite database files. Use when user wants to inspect or extract data from .sqlite files, especially OpenClaw's main.sqlite memory database. S..."
+  },
+  {
+   "name": "Claw SQLite Knowledge",
+   "identifier": "clawsqlite-knowledge",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Knowledge base skill that uses the published clawsqlite CLI for ingest, search, show, and maintenance workflows."
+  },
+  {
+   "name": "Flexible Database Design \u2013 SQLite flexible schema & knowledge base skill",
+   "identifier": "flexible-database-design",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Guide agents and users to design and implement a \"flexible database\" on SQLite that can handle semi-structured, multi-source data. Typical scenarios: persona..."
+  },
+  {
+   "name": "Lite Sqlite",
+   "identifier": "lite-sqlite",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Fast lightweight local SQLite database for OpenClaw agents with minimal RAM and storage usage. Use when creating or managing SQLite databases for storing age..."
+  },
+  {
+   "name": "Todo SQLite",
+   "identifier": "todo-sqlite",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage multi-project todos with SQLite, supporting subtasks, priority/urgency levels, keyword search, time filters, smart sorting, and scheduled reminders."
+  },
+  {
+   "name": "eml to sqlite indexer",
+   "identifier": "eml-to-sqlite-indexer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Indexes EML emails into an SQLite database, providing a web interface for searching, management, Excel export, and file deletion, with IP access control and..."
+  },
+  {
+   "name": "bun-sqlite",
+   "identifier": "skills-sh/secondsky/claude-skills/bun-sqlite",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from secondsky/claude-skills"
+  }
+ ],
+ "ci": [
+  {
+   "name": "one-three-one-rule",
+   "identifier": "official/communication/one-three-one-rule",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "1-3-1 decision briefs: problem, three options, one pick."
+  },
+  {
+   "name": "ascii-art",
+   "identifier": "official/creative/ascii-art",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "ASCII art: pyfiglet, cowsay, boxes, image-to-ascii."
+  },
+  {
+   "name": "pretext",
+   "identifier": "official/creative/pretext",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Build creative browser demos with DOM-free text layout."
+  },
+  {
+   "name": "social-media-content-calendar",
+   "identifier": "official/creative/social-media-content-calendar",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Plan multi-platform social campaigns: briefs to posting."
+  },
+  {
+   "name": "unreal-mcp",
+   "identifier": "official/creative/unreal-mcp",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Automate Unreal Engine editor scenes, actors, and renders."
+  },
+  {
+   "name": "jupyter-notebook",
+   "identifier": "official/data-science/jupyter-notebook",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Iterative Python via live Jupyter kernel (hamelnb)."
+  },
+  {
+   "name": "3-statement-model",
+   "identifier": "official/finance/3-statement-model",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Build integrated IS/BS/CF financial workbooks in Excel."
+  },
+  {
+   "name": "excel-author",
+   "identifier": "official/finance/excel-author",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Build auditable financial workbooks headless via openpyxl."
+  },
+  {
+   "name": "fitness-nutrition",
+   "identifier": "official/health/fitness-nutrition",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Workout planning, macros, and body metrics via wger/USDA."
+  },
+  {
+   "name": "neuroskill-bci",
+   "identifier": "official/health/neuroskill-bci",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Use live BCI cognitive and mood state from NeuroSkill."
+  },
+  {
+   "name": "accelerate",
+   "identifier": "official/mlops/accelerate",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Run PyTorch training across GPUs with minimal changes."
+  },
+  {
+   "name": "flash-attention",
+   "identifier": "official/mlops/flash-attention",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Speed up long-sequence transformer training and inference."
+  },
+  {
+   "name": "peft",
+   "identifier": "official/mlops/peft",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Fine-tune large LLMs with LoRA on limited GPU memory."
+  },
+  {
+   "name": "pytorch-fsdp",
+   "identifier": "official/mlops/pytorch-fsdp",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Fully sharded data-parallel training for large models."
+  },
+  {
+   "name": "simpo",
+   "identifier": "official/mlops/simpo",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Reference-free preference alignment, simpler than DPO."
+  }
+ ],
+ "release": [
+  {
+   "name": "rss-feeds",
+   "identifier": "official/research/rss-feeds",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Read RSS, Atom, JSON feeds; discover feeds behind a page."
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/schpet/linear-cli/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from schpet/linear-cli"
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/tobi/qmd/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from tobi/qmd"
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/getpaperclipai/paperclip/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from getpaperclipai/paperclip"
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/boshu2/agentops/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from boshu2/agentops"
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/yeachan-heo/oh-my-claudecode/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from yeachan-heo/oh-my-claudecode"
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/parcadei/continuous-claude-v3/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from parcadei/continuous-claude-v3"
+  },
+  {
+   "name": "release",
+   "identifier": "skills-sh/ceedaragents/cyrus/release",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from ceedaragents/cyrus"
+  },
+  {
+   "name": "Release",
+   "identifier": "muse-ai",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI \u97f3\u4e50\u521b\u4f5c\u52a9\u624b \u2014 \u901a\u8fc7\u5bf9\u8bdd\u751f\u6210\u539f\u521b\u6b4c\u66f2\u3001\u7eaf\u97f3\u4e50\u548c BGM\u3002 \u5f53\u7528\u6237\u60f3\u8981\u521b\u4f5c\u3001\u751f\u6210\u3001\u5236\u4f5c\u4efb\u4f55\u5f62\u5f0f\u7684\u97f3\u4e50\u65f6\u4f7f\u7528\u6b64\u6280\u80fd\u3002 \u5305\u62ec\uff1a\u751f\u6210\u5e26\u4eba\u58f0\u7684\u6b4c\u66f2\u3001\u5199\u6b4c\u8bcd\u3001\u4f5c\u66f2\u7f16\u66f2\u3001\u5236\u4f5c\u7eaf\u97f3\u4e50/BGM/\u914d\u4e50\uff0c\u6216\u5c06\u6587\u5b57\u53d8\u6210\u6b4c\u66f2\u3002 \u5f53\u7528\u6237\u63d0\u5230\u5177\u4f53\u97f3\u4e50\u98ce\u683c\uff08\u5982\"\u6765\u9996\u6c11\u8c23\"\"\u505a\u9996\u8bf4\u5531\"\uff09\u65f6\u4e5f\u5e94\u89e6\u53d1\u3002 \u652f\u6301\u4e09\u79cd\u6a21\u5f0f\uff1a\u7075\u611f\u6a21\u5f0f\uff08\u4e00\u53e5\u8bdd\u751f\u6210\uff09\u3001..."
+  },
+  {
+   "name": "Release",
+   "identifier": "ai-music-muse",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI \u97f3\u4e50\u521b\u4f5c\u52a9\u624b \u2014 \u901a\u8fc7\u5bf9\u8bdd\u751f\u6210\u539f\u521b\u6b4c\u66f2\u3001\u7eaf\u97f3\u4e50\u548c BGM\u3002 \u5f53\u7528\u6237\u60f3\u8981\u521b\u4f5c\u3001\u751f\u6210\u3001\u5236\u4f5c\u4efb\u4f55\u5f62\u5f0f\u7684\u97f3\u4e50\u65f6\u4f7f\u7528\u6b64\u6280\u80fd\u3002 \u5305\u62ec\uff1a\u751f\u6210\u5e26\u4eba\u58f0\u7684\u6b4c\u66f2\u3001\u5199\u6b4c\u8bcd\u3001\u4f5c\u66f2\u7f16\u66f2\u3001\u5236\u4f5c\u7eaf\u97f3\u4e50/BGM/\u914d\u4e50\uff0c\u6216\u5c06\u6587\u5b57\u53d8\u6210\u6b4c\u66f2\u3002 \u5f53\u7528\u6237\u63d0\u5230\u5177\u4f53\u97f3\u4e50\u98ce\u683c\uff08\u5982\"\u6765\u9996\u6c11\u8c23\"\"\u505a\u9996\u8bf4\u5531\"\uff09\u65f6\u4e5f\u5e94\u89e6\u53d1\u3002 \u652f\u6301\u4e09\u79cd\u6a21\u5f0f\uff1a\u7075\u611f\u6a21\u5f0f\uff08\u4e00\u53e5\u8bdd\u751f\u6210\uff09\u3001..."
+  },
+  {
+   "name": "release-beta",
+   "identifier": "skills-sh/getpaseo/paseo/release-beta",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from getpaseo/paseo"
+  },
+  {
+   "name": "release-changelog",
+   "identifier": "skills-sh/getpaperclipai/paperclip/release-changelog",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from getpaperclipai/paperclip"
+  },
+  {
+   "name": "release-changelog-discord-message",
+   "identifier": "skills-sh/getpaperclipai/paperclip/release-changelog-discord-message",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from getpaperclipai/paperclip"
+  },
+  {
+   "name": "release-it",
+   "identifier": "skills-sh/wondelai/skills/release-it",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wondelai/skills"
+  },
+  {
+   "name": "release-management",
+   "identifier": "skills-sh/recoupable/release-management/release-management",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from recoupable/release-management"
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "id": "F-02",
+ "title": "next_id() read-then-write race: concurrent GUI/CLI/agent writers raise unhandled sqlite3.IntegrityError, silently dropping chat messages and habit creations",
+ "severity": "medium",
+ "code_paths": [
+  "habit_core.py:111",
+  "habit_core.py:454",
+  "habit_core.py:244",
+  "habit_core.py:1058",
+  "habit_gui.py:149"
+ ],
+ "description": "next_id() (habit_core.py:111-115) does SELECT v FROM meta, then INSERT OR REPLACE next_id=n+1, as two separate statements with no BEGIN IMMEDIATE \u2014 a classic read-then-write TOCTOU across connections. The deployment is explicitly concurrent by design (WAL + busy_timeout=5000 set in connect() for 'concurrent CLI/GUI/agent' use), and busy_timeout does not serialize this: two connections can both SELECT the same next_id value before either commits its meta write, so both compute the same id; the second INSERT into habits(id)/chat(id) (both INTEGER PRIMARY KEY, no AUTOINCREMENT) fails with IntegrityError. add_habit (line 244) and post_chat (line 454) both allocate ids this way. The exception then escapes every handler: cli() catches only (ValueError, FileNotFoundError) (habit_core.py:1058) so `habitctl add`/`chat send` die with a raw traceback and the write is lost; on the GUI side Bridge.sendChat (habit_gui.py:149-154) catches nothing and Bridge.addHabit catches only ValueError, so the IntegrityError propagates into the QML slot \u2014 with PySide6 6.11 the app survives but the human's chat message or habit is silently dropped with no feedback (verified by execution on PySide6 6.11.0: an unhandled exception in a C++-invoked slot prints a traceback and the event loop continues). Reproduced by execution: two concurrent add_habit calls on one WAL DB -> one succeeds, the other raises 'IntegrityError: UNIQUE constraint failed: habits.id' (see repro harness output). This also violates the project's own mandated SQLite rule (AGENTS.md: 'BEGIN IMMEDIATE for read-then-write'). Impact: lost operator chat messages at the exact moment the operator is talking to the agent (the GUI chat send racing any agent-side add/chat write is the normal steady state), failed habit creations with traceback instead of error message, and a corrupted-looking audit trail. Not a DoS finding: it is a data-loss/concurrency correctness flaw on the designed hot path.",
+ "repro_hints": "Repro harness: C:/Users/ala/AppData/Local/Temp/mantis_repro/repro.py section 'F-03 next_id race' \u2014 thread A holds BEGIN EXCLUSIVE briefly while two threads call core.add_habit(); on release, one thread raises IntegrityError: UNIQUE constraint failed: habits.id (observed). No repo files touched, temp DB only. Fix shape: wrap next_id in BEGIN IMMEDIATE (per the project sqlite skill) or use an UPDATE ... RETURNING / AUTOINCREMENT counter.",
+ "status": "VALID",
+ "reasoning": "Verified against habit_core.py:111 (next_id). Old code did SELECT-then-INSERT OR REPLACE across two statements with no transaction bracket \u2014 TOCTOU confirmed by execution in the Mantis repro harness (F-03 section): two concurrent add_habit calls on one WAL DB produced 'IntegrityError: UNIQUE constraint failed: habits.id'. A second latent bug in the same function surfaced during this session: the meta UPDATE bound a bare string '(str(n+1))' (no tuple), so sqlite3 read the string's characters as bindings and crashed the moment the counter hit 10 (live DB sat at next_id=6). BOTH are fixed by the atomic UPSERT now landed at the same site (INSERT ... ON CONFLICT DO UPDATE + in-transaction SELECT, SQLite 3.24+ compatible). Verified: sequential ids 1..12, migration from v=6, and 3 rounds x 16 threads of concurrent add_habit/post_chat on WAL \u2014 48/48 unique ids, zero IntegrityErrors. AGENTS.md sqlite rule ('BEGIN IMMEDIATE for read-then-write') satisfied via the single-statement write-lock approach; ruff + pytest green.",
+ "triage_checklist": {
+  "ignore_hypothetical_misuse": {
+   "outcome": "PASS"
+  },
+  "ignore_missing_hygiene": {
+   "outcome": "PASS"
+  },
+  "require_strict_reproducibility": {
+   "outcome": "PASS"
+  },
+  "avoid_pedantic_linting": {
+   "outcome": "PASS"
+  },
+  "no_security_flaw_stretching": {
+   "outcome": "PASS"
+  },
+  "evaluate_questionable_file_paths": {
+   "outcome": "PASS"
+  },
+  "ignore_resource_exhaustion_dos": {
+   "outcome": "PASS"
+  },
+  "intrinsic_security_flaws": {
+   "outcome": "PASS"
+  },
+  "verify_mitigations_pragmatically": {
+   "outcome": "PASS"
+  },
+  "refine_code_paths_strictly": {
+   "outcome": "PASS"
+  },
+  "ignore_simd_vector_padding": {
+   "outcome": "PASS"
+  },
+  "ensure_source_code_coherence": {
+   "outcome": "PASS"
+  },
+  "verify_attacker_control_of_source": {
+   "outcome": "PASS"
+  }
+ },
+ "history": [
+  {
+   "stage": "reviewer",
+   "action": "reviewed",
+   "details": "Determined status as VALID because Verified against habit_core.py:111 (next_id). Old code did SELECT-then-INSERT OR REPLACE across two statements with no t",
+   "pass_number": 1,
+   "snapshot": "",
+   "timestamp": "2026-09-10T22:04:35.869111+00:00"
+  },
+  {
+   "stage": "reviewer",
+   "action": "reassessed",
+   "details": "Pre-alpha review: closure confirmed \u2014 next_id is now a single atomic INSERT OR REPLACE ... RETURNING (no read-then-write window). Closure verdict stands.",
+   "pass_number": 4,
+   "snapshot": "pre-alpha-commit working tree vs d0ed517",
+   "timestamp": "2026-09-11T02:50:33.426238+00:00"
+  }
+ ]
+}

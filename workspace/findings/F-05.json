@@ -1,0 +1,84 @@
+{
+ "id": "F-05",
+ "title": "runCommand executes the never-returning `watch` verb synchronously on the Qt main thread \u2014 one console command permanently freezes the kiosk",
+ "severity": "medium",
+ "code_paths": [
+  "habit_gui.py:158",
+  "habit_gui.py:161",
+  "habit_core.py:1037",
+  "habit_core.py:646",
+  "habit_core.py:673"
+ ],
+ "description": "Bridge.runCommand (habit_gui.py:158-164) routes user-typed console text straight into core.cli() with no verb allowlist, on the Qt main/GUI thread. Two subcommands never return: `watch` calls the daemon loop watch() (habit_core.py:1037-1039 -> 646), an unbounded `while True: ... time.sleep(interval)` (habit_core.py:657-673) \u2014 verified by execution: cli(['watch','--interval','1']) is still running after 2.5s and never exits \u2014 and the `gui` verb spawns a whole second GUI process (habit_core.py:1041-1049). The console's own placeholder and help text invite the operator to run 'the same verbs your agent uses', and `watch` is a documented agent verb (docs/design/habit_tracker_architecture.md lists `watch --headless` in the subagent surface), so an operator typing `watch` (or `watch --headless`) in the Console tab freezes the entire kiosk UI forever: the slot blocks inside time.sleep, Qt never returns to the event loop, the screensaver/idle logic stops, and touch input is dead until systemd restarts the service (Restart=on-failure does not fire \u2014 the process is alive, merely hung). On a battery/solar kiosk this is a total, field-unrecoverable UI outage indistinguishable from device failure. Note `watch` is also the service's own daemon verb (awso-habit.service ExecStart=/opt/awso/habitctl watch), making it the most natural thing for an operator to try from the console. Fix shape: allowlist console verbs to the interactive set (add/check/due/list/mode/sos/chat/events/report/status/...) or at minimum reject `watch`/`gui`, and/or run cli() on a worker thread with a timeout. This is a hang, not resource exhaustion: the defect is a blocking call with no return path on the UI thread, triggered by a single documented verb from the designed console surface.",
+ "repro_hints": "Repro harness: C:/Users/ala/AppData/Local/Temp/mantis_repro/repro.py section 'F-04 watch verb never returns' \u2014 cli(['--db', tmp, 'watch', '--interval', '1']) launched in a thread is still alive after 2.5s (never returns). For the full effect on the device: QT_QPA_PLATFORM=offscreen python3 habit_gui.py --selfcheck --db <tmp> and call bridge.runCommand('watch') \u2014 the check QTimer never fires because the main thread is blocked in time.sleep.",
+ "status": "VALID",
+ "reasoning": "Verified against habit_gui.py:158 (Bridge.runCommand): console text is split and passed straight to core.cli() with no verb allowlist, on the Qt main thread. `watch` (habit_core.py, watch()) is a `while True` loop with time.sleep \u2014 typed into the Console tab it blocks the event loop forever; on a battery kiosk this is an unrecoverable UI hang. Not fixed in the current tree; out of scope of the layout task but confirmed still present. Recommend the fix shape from the finding: interactive verb allowlist (reject watch/gui) and/or worker-thread execution.",
+ "triage_checklist": {
+  "ignore_hypothetical_misuse": {
+   "outcome": "PASS"
+  },
+  "ignore_missing_hygiene": {
+   "outcome": "PASS"
+  },
+  "require_strict_reproducibility": {
+   "outcome": "PASS"
+  },
+  "avoid_pedantic_linting": {
+   "outcome": "PASS"
+  },
+  "no_security_flaw_stretching": {
+   "outcome": "PASS"
+  },
+  "evaluate_questionable_file_paths": {
+   "outcome": "PASS"
+  },
+  "ignore_resource_exhaustion_dos": {
+   "outcome": "PASS"
+  },
+  "intrinsic_security_flaws": {
+   "outcome": "PASS"
+  },
+  "verify_mitigations_pragmatically": {
+   "outcome": "PASS"
+  },
+  "refine_code_paths_strictly": {
+   "outcome": "PASS"
+  },
+  "ignore_simd_vector_padding": {
+   "outcome": "PASS"
+  },
+  "ensure_source_code_coherence": {
+   "outcome": "PASS"
+  },
+  "verify_attacker_control_of_source": {
+   "outcome": "PASS"
+  }
+ },
+ "history": [
+  {
+   "stage": "reviewer",
+   "action": "reviewed",
+   "details": "Determined status as VALID because Verified against habit_gui.py:158 (Bridge.runCommand): console text is split and passed straight to core.cli() with no v",
+   "pass_number": 1,
+   "snapshot": "",
+   "timestamp": "2026-09-10T22:04:35.869111+00:00"
+  },
+  {
+   "stage": "reviewer",
+   "action": "fix_validated",
+   "details": "FIXED this session: Bridge.runCommand (habit_gui.py) now allowlists verbs via core.CONSOLE_SAFE_VERBS; 'watch' and 'gui' are rejected with an operator-readable explanation before core.cli runs. Verified by execution offscreen (verify_fixes.py: runCommand('watch') returns the block message, event loop alive) and by the new selfcheck assertion 'daemon block'. The never-returning watch() loop can no longer be reached from the GUI console.",
+   "pass_number": 2,
+   "snapshot": "",
+   "timestamp": "2026-09-10T23:36:53.121018+00:00"
+  },
+  {
+   "stage": "reviewer",
+   "action": "reassessed",
+   "details": "Pre-alpha review: closure confirmed \u2014 CONSOLE_SAFE_VERBS allowlist (blocks watch/gui) is in habit_core.py and enforced in habit_gui.runCommand. Verdict: closed.",
+   "pass_number": 4,
+   "snapshot": "pre-alpha-commit working tree vs d0ed517",
+   "timestamp": "2026-09-11T02:50:33.426238+00:00"
+  }
+ ],
+ "fix": "FIXED this session: Bridge.runCommand (habit_gui.py) now allowlists verbs via core.CONSOLE_SAFE_VERBS; 'watch' and 'gui' are rejected with an operator-readable explanation before core.cli runs. Verified by execution offscreen (verify_fixes.py: runCommand('watch') returns the block message, event loop alive) and by the new selfcheck assertion 'daemon block'. The never-returning watch() loop can no longer be reached from the GUI console."
+}

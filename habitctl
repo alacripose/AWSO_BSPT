@@ -1,0 +1,3 @@
+#!/bin/sh
+# habitctl — thin shim for device/cron/systemd use (adjust PYTHON & path if needed)
+exec python3 "$(dirname "$0")/habit_core.py" "$@"

@@ -1,0 +1,2120 @@
+This response was given by ChatGPT using the free plan.
+
+Yes. I looked up the current OpenAI documentation because **GPT-6 Astra is new enough that the details around its higher reasoning settings have changed substantially from earlier GPT generations**.
+
+One important distinction up front: **OpenAI publicly documents what “reasoning effort” does and gives some concrete observations about higher effort, but it does not publish the exact internal algorithm that turns `high → xhigh → max` into additional computation.** So below I’ll separate **documented behavior** from **what can reasonably be inferred from the evidence**, rather than pretending we know Astra's private architecture.
+
+# GPT-6 Astra's “Extra Depth”: what it actually means
+
+GPT-6 Astra supports five reasoning-effort levels:
+
+**Low → Medium → High → XHigh → Max**
+
+The API documentation describes Astra as OpenAI's most capable model for difficult end-to-end work and explicitly exposes those five settings. ([OpenAI Developers][1])
+
+The key idea is:
+
+> **Reasoning effort is a compute budget/control over how much internal problem-solving Astra performs before committing to an answer or action.**
+
+It is **not simply “make the response longer.”**
+
+And this distinction becomes especially important with Astra because the model is designed to perform **multi-step work involving tools, code execution, browser interaction, verification, and changing plans**.
+
+OpenAI explicitly says that higher effort in coding can result in:
+
+* more iterations on a fresh build,
+* more verification through browser testing,
+* greater preference for actually executing code rather than simply applying a patch. ([OpenAI][2])
+
+So “extra depth” is much closer to:
+
+**think → formulate a plan → test an idea → inspect the result → reconsider → try another approach → verify → finalize**
+
+than:
+
+**think harder → write a longer answer.**
+
+---
+
+# 1. The five Astra reasoning levels
+
+The currently documented API interface is:
+
+| Setting    | General purpose                        |
+| ---------- | -------------------------------------- |
+| **Low**    | Fast, relatively lightweight reasoning |
+| **Medium** | Normal deeper problem solving          |
+| **High**   | Difficult reasoning                    |
+| **XHigh**  | Very demanding reasoning               |
+| **Max**    | Maximum available reasoning effort     |
+
+OpenAI does **not** publish a fixed number of “thinking tokens” associated with each level.
+
+That's important.
+
+You should **not** think:
+
+> Low = 2,000 reasoning tokens
+> Medium = 5,000
+> High = 10,000
+> XHigh = 30,000
+> Max = 100,000
+
+There is no public specification like that.
+
+OpenAI explicitly says that a reasoning level **does not set a fixed amount of usage for a task or guarantee a better result**. ([OpenAI Help Center][3])
+
+Instead, it appears to function more like a **target/constraint on how much computational work the model is willing to spend**.
+
+---
+
+# 2. The biggest misconception: extra depth isn't extra verbosity
+
+Suppose you ask Astra:
+
+> “What's 17 × 23?”
+
+At low effort, it can solve that essentially immediately.
+
+At Max, it doesn't need to spend minutes philosophizing about multiplication.
+
+This is why OpenAI says:
+
+> higher effort does not always produce a better result. ([OpenAI Help Center][3])
+
+The model can recognize that a problem is trivial and terminate early.
+
+So reasoning effort is better understood as a **ceiling/freedom for computational deliberation**, rather than a mandatory amount of thought.
+
+Conceptually:
+
+```text
+Low
+│
+├── Solve if obvious
+│
+└── Stop quickly
+
+Medium
+│
+├── Analyze
+├── consider alternatives
+└── solve
+
+High
+│
+├── deeper analysis
+├── alternative hypotheses
+├── checking
+└── reconsideration
+
+XHigh
+│
+├── extensive reasoning
+├── more exploration
+├── more verification
+├── more tool interaction
+└── more willingness to revise
+
+Max
+│
+├── maximum permitted computational exploration
+├── extensive verification
+├── deeper search over possible solutions
+├── repeated correction
+└── substantially more compute when the problem warrants it
+```
+
+The exact internal mechanism isn't publicly specified.
+
+---
+
+# 3. Why Astra's extra depth is particularly interesting
+
+This is where Astra differs from thinking about older “reasoning models.”
+
+Astra isn't primarily being positioned as:
+
+> “a chatbot that thinks for a long time.”
+
+It's being positioned as:
+
+> **an agent that can actually do complicated work.**
+
+OpenAI says Astra can perform tasks involving:
+
+* computer use
+* browsers
+* software engineering
+* scientific software
+* terminal environments
+* spreadsheets
+* presentations
+* research
+* professional applications
+* multi-step workflows. ([OpenAI][4])
+
+That changes what “depth” means.
+
+For an ordinary text model:
+
+```text
+Prompt
+ ↓
+Reason
+ ↓
+Answer
+```
+
+For Astra:
+
+```text
+Goal
+ ↓
+Understand requirements
+ ↓
+Plan
+ ↓
+Act
+ ↓
+Observe result
+ ↓
+Evaluate result
+ ↓
+Revise plan
+ ↓
+Act again
+ ↓
+Verify
+ ↓
+Finish
+```
+
+And higher reasoning effort can give the model more room to do that.
+
+---
+
+# 4. Think of Astra's reasoning as a search process
+
+This is probably the most useful mental model.
+
+Imagine you ask:
+
+> “Fix this application. It crashes when I click the settings button.”
+
+A shallow model might reason:
+
+```text
+Crash occurs on settings button
+        ↓
+Look at settings handler
+        ↓
+Find obvious error
+        ↓
+Patch it
+        ↓
+Done
+```
+
+A deeper Astra might effectively explore:
+
+```text
+Hypothesis A: null reference
+Hypothesis B: invalid state
+Hypothesis C: signal connected twice
+Hypothesis D: UI thread problem
+Hypothesis E: serialization failure
+```
+
+Then investigate.
+
+Perhaps:
+
+```text
+A → inspect → unlikely
+B → inspect → possible
+C → test → false
+D → test → likely
+E → inspect → unrelated
+```
+
+Then:
+
+```text
+D
+↓
+make fix
+↓
+run application
+↓
+reproduce
+↓
+does crash disappear?
+```
+
+If not:
+
+```text
+D wasn't sufficient
+↓
+reconsider
+↓
+inspect traceback
+↓
+find second failure
+↓
+fix
+↓
+test again
+```
+
+That's the sort of behavior that makes additional reasoning effort valuable.
+
+---
+
+# 5. The really important part: verification
+
+OpenAI specifically gives evidence that Astra's higher effort can change **what it does**, not merely how much it writes.
+
+A quote from the OpenAI launch material describes testing Astra at low, medium, and high effort and says higher effort produced:
+
+* more iterations on fresh builds,
+* more verification through browser testing,
+* a tendency toward code execution rather than simply applying patches. ([OpenAI][2])
+
+That's extremely significant.
+
+It means:
+
+### Low
+
+> “I think this code should work.”
+
+### High
+
+> “I think this should work. Let me execute it.”
+
+### XHigh/Max
+
+Potentially:
+
+> “Let me implement it, execute it, inspect the result, identify discrepancies, modify it, execute again, and verify the behavior against the original requirements.”
+
+That's a much more agentic interpretation of reasoning depth.
+
+---
+
+# 6. Reasoning depth can change the *strategy*, not just confidence
+
+This is another subtle difference.
+
+A model with limited reasoning budget may pick the first plausible solution.
+
+A model with more available compute has room to compare strategies.
+
+For example:
+
+### Problem
+
+> “Design a local AI system that can operate software on an 8 GB GPU and delegate tasks to a server.”
+
+A shallow approach might be:
+
+```text
+Use model X
++
+use agent framework Y
++
+connect them
+```
+
+A deeper approach could reason:
+
+```text
+What tasks actually require GPU?
+What can run CPU-only?
+Which model handles vision?
+Which model handles planning?
+Where does state live?
+How are tasks delegated?
+What happens if the local model fails?
+How does the agent recover?
+How do we prevent infinite loops?
+How does GUI interaction happen?
+What is the latency budget?
+What happens when context exceeds the model window?
+What needs persistent memory?
+What needs human confirmation?
+```
+
+Then it can construct an architecture.
+
+That is **qualitatively different work**.
+
+---
+
+# 7. Astra's enormous context window matters here
+
+Astra has a **1,050,000-token context window** and up to **128,000 output tokens** in the API. ([OpenAI Developers][1])
+
+This is important because deep reasoning isn't occurring in isolation.
+
+The model can potentially have access to:
+
+```text
+original requirements
++
+previous conversation
++
+source code
++
+logs
++
+tool outputs
++
+test results
++
+documents
++
+browser state
++
+screenshots
++
+previous decisions
+```
+
+all at once.
+
+That allows a deeper process to operate over a much larger state.
+
+---
+
+# 8. Astra also changes how long-running reasoning works
+
+One of the most interesting changes is in Codex.
+
+OpenAI says Astra introduces a new context-preservation mechanism where, when context windows fill:
+
+### Older approach
+
+```text
+Huge context
+      ↓
+COMPRESS
+      ↓
+summary
+      ↓
+continue
+```
+
+The problem is that compression can lose:
+
+* why a fix failed,
+* what was already tested,
+* subtle implementation details,
+* exact requirements,
+* intermediate observations.
+
+Astra's Codex system instead allows notes to persist across context windows while **earlier context remains searchable**. ([OpenAI][2])
+
+So a long coding task can conceptually become:
+
+```text
+Context window #1
+    ↓
+requirements
+    ↓
+investigation
+    ↓
+tests
+    ↓
+discoveries
+    ↓
+notes
+    ↓
+Context window #2
+    ↓
+new work
+    ↓
+search previous context
+    ↓
+recover exact old test result
+    ↓
+continue
+```
+
+That's a huge deal for “extra depth.”
+
+It means depth doesn't necessarily have to terminate when the immediate context fills.
+
+---
+
+# 9. Extra depth + tools creates a feedback loop
+
+This is perhaps the most important concept.
+
+A normal reasoning model does:
+
+```text
+Input → reasoning → output
+```
+
+An agentic reasoning model can do:
+
+```text
+Input
+ ↓
+reason
+ ↓
+tool
+ ↓
+observation
+ ↓
+reason
+ ↓
+tool
+ ↓
+observation
+ ↓
+reason
+ ↓
+tool
+ ↓
+verification
+ ↓
+answer
+```
+
+The tool results become new information.
+
+That creates a **closed-loop reasoning system**.
+
+For example:
+
+```text
+Goal:
+Make this website work.
+
+Astra:
+"I need to inspect the project."
+
+↓ terminal
+
+Result:
+Build fails.
+
+↓ reasoning
+
+"I need to resolve dependency X."
+
+↓ terminal
+
+Result:
+Build succeeds.
+
+↓ reasoning
+
+"Now I need to test runtime behavior."
+
+↓ browser
+
+Result:
+Button doesn't respond.
+
+↓ reasoning
+
+"The original bug was only partially fixed."
+
+↓ code
+
+Patch.
+
+↓ browser
+
+Result:
+Button works.
+
+↓ reasoning
+
+"Now verify the rest of the application."
+
+↓ tests
+
+Result:
+3 unrelated failures.
+
+↓ reasoning
+
+Investigate.
+
+...
+```
+
+**That's where additional reasoning effort can become much more valuable than simply increasing answer length.**
+
+---
+
+# 10. Why Max isn't necessarily dramatically better than XHigh
+
+This is important.
+
+There is no reason to expect:
+
+> Max = XHigh but 2× smarter.
+
+OpenAI explicitly warns that higher effort doesn't guarantee better results. ([OpenAI Help Center][3])
+
+There are several reasons.
+
+Imagine the model has already found the correct solution:
+
+```text
+Problem
+ ↓
+Correct solution
+ ↓
+verify
+ ↓
+done
+```
+
+Giving it more compute doesn't necessarily improve anything.
+
+The model might instead spend additional computation exploring alternatives that don't matter.
+
+So the relationship can look more like:
+
+```text
+Quality
+  ^
+  |                         _______
+  |                     ___/
+  |                 ___/
+  |             ___/
+  |         ___/
+  |______ __/
+  |
+  +------------------------------> reasoning effort
+       low med high xhigh max
+```
+
+rather than:
+
+```text
+Quality
+  ^
+  |                         /
+  |                       /
+  |                     /
+  |                   /
+  |                 /
+  |               /
+  +------------------------------> effort
+```
+
+There are diminishing returns.
+
+---
+
+# 11. But difficult problems can have enormous returns
+
+For genuinely difficult tasks, the curve can look very different.
+
+Consider a problem where the first solution has only a 30% chance of being correct.
+
+Suppose deeper reasoning allows Astra to:
+
+* generate alternatives,
+* reject bad hypotheses,
+* test assumptions,
+* run experiments,
+* verify the final result.
+
+The probability of success can increase substantially.
+
+So higher effort is particularly valuable when the task has:
+
+### High uncertainty
+
+```text
+"I don't know which explanation is correct."
+```
+
+### Large search space
+
+```text
+"There are dozens of possible solutions."
+```
+
+### Interdependent steps
+
+```text
+"Step 4 depends on whether step 2 worked."
+```
+
+### Expensive failure
+
+```text
+"One wrong assumption ruins everything downstream."
+```
+
+### Verification opportunities
+
+```text
+"I can actually test whether my solution works."
+```
+
+### Long-horizon execution
+
+```text
+"The task takes 50+ actions."
+```
+
+Those are exactly the kinds of workloads Astra is designed for.
+
+---
+
+# 12. Why Astra can sometimes be *more efficient* at higher effort
+
+This sounds contradictory:
+
+> “More reasoning”
+> but
+> “fewer tokens.”
+
+Yet OpenAI reports exactly this phenomenon.
+
+For example, Astra's Terminal-Bench 4.0 result is **57.9%**, compared with **37.3% for GPT-5.6 Sol**, while OpenAI reports approximately 9% lower estimated API cost per task in the comparison shown. ([OpenAI][4])
+
+And on some professional evaluations, Astra reaches stronger results while using substantially fewer output tokens. ([OpenAI][4])
+
+Why?
+
+Because **tokens are not the same thing as useful computation**.
+
+A weaker model might do:
+
+```text
+reason
+ ↓
+wrong approach
+ ↓
+long explanation
+ ↓
+failure
+ ↓
+new explanation
+ ↓
+another failure
+ ↓
+more tokens
+```
+
+A stronger model might do:
+
+```text
+reason
+ ↓
+identify correct approach
+ ↓
+execute
+ ↓
+verify
+ ↓
+finish
+```
+
+The second process may actually use **less visible output** despite requiring more sophisticated internal computation.
+
+---
+
+# 13. This is why “thinking” shouldn't be measured by visible reasoning
+
+This is particularly important with Astra.
+
+OpenAI explicitly says Astra's written reasoning is harder to monitor than GPT-5.6 Sol's in some evaluations, and attributes this partly to Astra having greater control over written reasoning and being able to solve some tasks with fewer written steps. ([OpenAI][4])
+
+So:
+
+> **A longer visible explanation does not mean Astra reasoned more deeply.**
+
+And:
+
+> **A short answer does not mean Astra barely thought.**
+
+The actual internal computation and the user-visible response are separate things.
+
+---
+
+# 14. What “extra depth” probably looks like internally
+
+OpenAI doesn't publish the private implementation, so this next section is **conceptual rather than an architectural disclosure**.
+
+A useful abstraction is:
+
+```text
+                 USER GOAL
+                    │
+                    ▼
+            ┌───────────────┐
+            │ Understand     │
+            │ objective      │
+            └───────┬───────┘
+                    │
+                    ▼
+            ┌───────────────┐
+            │ Build internal │
+            │ task model     │
+            └───────┬───────┘
+                    │
+                    ▼
+            ┌───────────────┐
+            │ Generate plan  │
+            └───────┬───────┘
+                    │
+              ┌─────┴─────┐
+              ▼           ▼
+          hypothesis A  hypothesis B
+              │           │
+              └─────┬─────┘
+                    ▼
+               choose path
+                    │
+                    ▼
+                  TOOL
+                    │
+                    ▼
+                OBSERVE
+                    │
+                    ▼
+             compare result
+                    │
+             ┌──────┴──────┐
+             │             │
+           works        doesn't
+             │             │
+             ▼             ▼
+         verify       revise plan
+                           │
+                           └───────┐
+                                   ▼
+                                  TOOL
+                                   │
+                                  ▼
+                                ...
+                                   │
+                                   ▼
+                                VERIFY
+                                   │
+                                   ▼
+                                OUTPUT
+```
+
+Higher effort presumably gives this process **more opportunity to continue before committing**.
+
+But the exact implementation—whether that involves particular recurrent computations, search structures, latent reasoning passes, or other mechanisms—is not specified by OpenAI's public API documentation.
+
+---
+
+# 15. There is an important difference between “reasoning depth” and “agent depth”
+
+These are related but not identical.
+
+### Reasoning depth
+
+How much computational work is devoted to solving the problem.
+
+### Agent depth
+
+How many actual operations the agent performs in the environment.
+
+For example:
+
+```text
+Reasoning:
+"Which file should I modify?"
+
+Tool:
+open file
+
+Reasoning:
+"Now I understand the bug."
+
+Tool:
+edit file
+
+Reasoning:
+"Need to test."
+
+Tool:
+run program
+
+Reasoning:
+"Failure remains."
+
+Tool:
+inspect log
+
+...
+```
+
+A high-effort setting can help both sides because the model has more opportunity to decide what to do next.
+
+But **the environment also determines how much actual work can happen.**
+
+That's why the harness matters enormously.
+
+---
+
+# 16. This is especially relevant to the agent harness you're interested in
+
+Given your previous interest in **pi.dev-style harnesses, VS Code, local models, GUI-controlled software, and agents operating software**, this distinction matters a lot.
+
+A powerful reasoning model inside a weak harness might be:
+
+```text
+Great brain
++
+bad hands
+=
+limited agent
+```
+
+A powerful reasoning model inside a strong harness becomes:
+
+```text
+Great brain
++
+terminal
++
+filesystem
++
+browser
++
+GUI
++
+persistent state
++
+verification
+=
+much more capable agent
+```
+
+Astra's design is clearly aimed at the second category.
+
+OpenAI explicitly describes Astra as working across code, browsers, professional applications, and computer-use environments. ([OpenAI][4])
+
+---
+
+# 17. Extra depth can make Astra more autonomous
+
+OpenAI specifically describes Astra as better at maintaining orientation over an evolving task.
+
+Older models could sometimes interpret a new steering instruction as a completely new goal.
+
+Astra instead incorporates new requirements while retaining the broader objective. ([OpenAI][4])
+
+Imagine:
+
+> “Build this application.”
+
+Then 20 minutes later:
+
+> “Actually, make the interface dark.”
+
+Then:
+
+> “Also, the database needs to support multiple users.”
+
+Then:
+
+> “Don't rewrite the existing API.”
+
+A weaker agent might effectively reset.
+
+Astra can reason:
+
+```text
+Original objective
+     │
+     ├── UI requirement
+     ├── multi-user requirement
+     ├── API compatibility constraint
+     │
+     ▼
+Updated global plan
+```
+
+That's an important form of depth because it is **temporal consistency**.
+
+---
+
+# 18. Astra can also decide when NOT to ask you
+
+This is another aspect of its deeper task handling.
+
+OpenAI says Astra uses context to fill in routine gaps and asks focused questions when the answer could materially change the outcome. ([OpenAI][4])
+
+So it can conceptually distinguish:
+
+### Low consequence ambiguity
+
+> “Should I call this folder `src` or `source`?”
+
+Just decide.
+
+versus:
+
+### High consequence ambiguity
+
+> “Should I delete the existing production database?”
+
+Stop and ask.
+
+That is a form of **decision-theoretic depth**.
+
+The model isn't merely asking:
+
+> “Am I uncertain?”
+
+It's closer to:
+
+> “Does this uncertainty matter enough to interrupt the task?”
+
+That's extremely useful for autonomous agents.
+
+---
+
+# 19. Astra can reason asynchronously
+
+The API adds another capability called **async tool calling**.
+
+OpenAI says Astra can continue reasoning, call other tools, or work on independent parts of a task while an asynchronous tool is running. ([OpenAI][4])
+
+Conceptually:
+
+```text
+Task
+ │
+ ├── Task A → tool → waiting
+ │
+ ├── Task B → reason
+ │
+ ├── Task C → tool
+ │
+ └── Task D → reason
+```
+
+instead of:
+
+```text
+A
+↓
+wait
+↓
+B
+↓
+wait
+↓
+C
+```
+
+That's not exactly “more intelligence,” but it makes the **effective depth of an agent much larger** because waiting on external operations doesn't necessarily stop all useful computation.
+
+---
+
+# 20. Mid-turn steering is another huge change
+
+Astra also supports **mid-turn steering**.
+
+OpenAI describes a mechanism where you can send additional instructions while Astra is already working, and the system preserves completed work while incorporating the new direction. ([OpenAI][4])
+
+Imagine:
+
+```text
+Astra:
+I'm implementing the renderer...
+
+YOU:
+Don't use Vulkan. Use DX12.
+
+Astra:
+Understood.
+Existing work:
+- project structure inspected
+- shader pipeline identified
+- renderer abstraction located
+
+Updated plan:
+- preserve existing abstraction
+- replace backend
+...
+```
+
+Rather than:
+
+```text
+STOP
+forget everything
+start over
+```
+
+This is another reason Astra's “depth” isn't just a thinking timer.
+
+It's a model that can maintain a **persistent task state** while that task evolves.
+
+---
+
+# 21. You can even change reasoning effort during a conversation
+
+This is particularly interesting from an API perspective.
+
+OpenAI documents **changing reasoning mid-conversation while preserving the cache**.
+
+You can increase reasoning effort when the difficult part arrives and decrease it again for routine follow-ups. ([OpenAI][4])
+
+Conceptually:
+
+```text
+Planning
+   ↓
+Medium
+
+Implementation
+   ↓
+High
+
+Difficult bug
+   ↓
+Max
+
+Simple question
+   ↓
+Low
+
+Final verification
+   ↓
+XHigh
+```
+
+That's much more interesting than simply choosing “Max for the entire conversation.”
+
+It suggests reasoning effort can be treated as a **dynamic compute allocation mechanism**.
+
+---
+
+# 22. Think of reasoning effort like a CPU governor
+
+A useful analogy:
+
+Imagine the model is a CPU.
+
+### Low
+
+```text
+power-saving mode
+```
+
+### Medium
+
+```text
+normal operating mode
+```
+
+### High
+
+```text
+performance mode
+```
+
+### XHigh
+
+```text
+sustained heavy workload
+```
+
+### Max
+
+```text
+maximum computational allocation
+```
+
+The processor itself hasn't necessarily become five different CPUs.
+
+You're changing how aggressively it can use computation.
+
+That's roughly how I would conceptualize the reasoning setting.
+
+---
+
+# 23. Why Max can be expensive
+
+Astra's API pricing is currently:
+
+**$10 / million input tokens**
+
+**$50 / million output tokens**
+
+with cached input at $1 / million. ([OpenAI Developers][1])
+
+But there's another important point:
+
+**reasoning consumes usage even though the reasoning isn't necessarily exposed as ordinary output.**
+
+The API exposes `reasoning_tokens` in usage information. ([OpenAI Developers][5])
+
+So conceptually you can have:
+
+```text
+Input tokens
++
+Reasoning tokens
++
+Output tokens
+=
+computational workload
+```
+
+The user-visible response might be only 2,000 tokens while the actual task involved substantially more internal reasoning.
+
+---
+
+# 24. Why “Max” isn't the same thing as requesting a 128k answer
+
+This is worth emphasizing.
+
+Astra's maximum output is **128,000 tokens**. ([OpenAI Developers][1])
+
+But:
+
+```text
+Max reasoning
+≠
+128,000-token response
+```
+
+You could ask Max:
+
+> “What's 2+2?”
+
+and get:
+
+> 4
+
+The enormous reasoning capability doesn't imply an enormous answer.
+
+Likewise, a complex task might produce:
+
+> “Done. I found the bug in X, corrected it, ran the tests, and verified Y.”
+
+even if the agent performed a huge amount of internal work.
+
+---
+
+# 25. Where XHigh/Max matters most
+
+I'd divide tasks into roughly five categories.
+
+## Category A — trivial
+
+Examples:
+
+* spelling
+* basic arithmetic
+* simple definitions
+* straightforward transformations
+
+**Use: Low/Medium**
+
+Max is mostly wasteful.
+
+---
+
+## Category B — moderately difficult reasoning
+
+Examples:
+
+* normal programming
+* comparing several options
+* planning a small project
+* debugging an obvious problem
+
+**Use: Medium/High**
+
+---
+
+## Category C — difficult technical work
+
+Examples:
+
+* unfamiliar codebase
+* complicated bug
+* architecture design
+* reverse engineering
+* complicated mathematics
+* multi-file refactoring
+
+**Use: High/XHigh**
+
+This is where Astra starts becoming particularly interesting.
+
+---
+
+## Category D — long-horizon agent work
+
+Examples:
+
+* build a complete application
+* configure a development environment
+* investigate a large codebase
+* perform research and produce a finished artifact
+* operate multiple pieces of software
+
+**Use: XHigh/Max**
+
+Because the agent has to maintain a coherent plan over many steps.
+
+---
+
+## Category E — extremely difficult/open-ended work
+
+Examples:
+
+* novel scientific problems
+* extremely difficult mathematical reasoning
+* major engineering problems
+* large autonomous software projects
+* tasks where failure requires extensive backtracking
+
+**Use: Max**
+
+This is the intended territory for maximum effort.
+
+---
+
+# 26. Astra's scientific results show why this matters
+
+OpenAI reports Astra achieving **98% on FrontierMath Tier 4** and says Astra helped establish stronger results on longstanding prime-gap problems. ([OpenAI][4])
+
+That's not simply:
+
+> “It knows more math.”
+
+The interesting part is the ability to sustain a long chain of reasoning and experimentation.
+
+For a difficult mathematical problem, you might have:
+
+```text
+conjecture
+ ↓
+attempt proof
+ ↓
+counterexample
+ ↓
+revise conjecture
+ ↓
+new lemma
+ ↓
+test
+ ↓
+new construction
+ ↓
+proof attempt
+ ↓
+verification
+ ↓
+formalization
+```
+
+That is exactly the kind of problem where giving the model more room to explore can matter enormously.
+
+---
+
+# 27. The same phenomenon appears in coding
+
+Suppose Astra has to modify a 200,000-line project.
+
+A shallow agent might:
+
+```text
+search
+↓
+find relevant file
+↓
+edit
+↓
+done
+```
+
+A deeper agent can:
+
+```text
+understand architecture
+↓
+identify interfaces
+↓
+trace dependency graph
+↓
+inspect tests
+↓
+inspect call sites
+↓
+form hypothesis
+↓
+implement
+↓
+compile
+↓
+run tests
+↓
+inspect failures
+↓
+revise
+↓
+rerun
+↓
+check regressions
+↓
+review diff
+↓
+finalize
+```
+
+And OpenAI's own Astra coding evaluation explicitly notes that higher effort results in more iterations and more verification. ([OpenAI][2])
+
+---
+
+# 28. There is a fascinating tradeoff: reasoning versus tools
+
+Suppose you ask:
+
+> “Is this implementation correct?”
+
+A model can spend a huge amount of reasoning trying to predict whether it is correct.
+
+Or it can:
+
+```text
+run the program
+```
+
+and find out.
+
+That's why the combination of Astra + tools is so powerful.
+
+The optimal strategy is often:
+
+> **Don't reason about something you can cheaply test.**
+
+A deep agent can therefore become *less* verbose internally while becoming *more effective*.
+
+Instead of:
+
+```text
+I believe X is probably correct because...
+```
+
+it can:
+
+```text
+run X
+```
+
+then observe:
+
+```text
+X failed because Y
+```
+
+Now it knows.
+
+---
+
+# 29. This creates an “experiment loop”
+
+For hard tasks:
+
+```text
+             ┌─────────────┐
+             │   Hypothesis│
+             └──────┬──────┘
+                    ↓
+                Experiment
+                    ↓
+                 Observe
+                    ↓
+             ┌──────┴──────┐
+             │             │
+          confirmed     disproved
+             │             │
+             ↓             ↓
+          refine        new hypothesis
+             │             │
+             └──────┬──────┘
+                    ↓
+                Experiment
+                    ↓
+                   ...
+```
+
+This is a much better model for Astra's maximum-depth behavior than:
+
+> “It thinks harder.”
+
+It's **iterative problem solving**.
+
+---
+
+# 30. Astra's context preservation makes this much more powerful
+
+Consider an agent working for several hours.
+
+Without strong persistent context:
+
+```text
+Hour 1
+↓
+summary
+↓
+Hour 2
+↓
+summary
+↓
+Hour 3
+↓
+summary
+```
+
+Eventually the model has:
+
+> “We tried several things and some didn't work.”
+
+But it may no longer know **why**.
+
+Astra's Codex mechanism is explicitly designed to retain searchable earlier context instead of repeatedly reducing everything to a single summary. ([OpenAI][2])
+
+That gives you:
+
+```text
+Hour 1
+ ├── test A failed because X
+ ├── test B failed because Y
+ └── discovered constraint Z
+
+Hour 2
+ ├── search prior context
+ ├── recover X/Y/Z
+ └── build on them
+
+Hour 3
+ └── continue
+```
+
+That's essentially **longitudinal reasoning**.
+
+---
+
+# 31. Extra depth also interacts with memory of failed approaches
+
+This is one of the most useful properties for engineering.
+
+Suppose an agent tries:
+
+```text
+Approach A → failure
+Approach B → failure
+Approach C → partial success
+```
+
+A shallow system might accidentally revisit A.
+
+A sufficiently persistent agent can retain:
+
+```text
+A:
+Rejected because dependency conflicts.
+
+B:
+Rejected because architecture violates API constraint.
+
+C:
+Promising because...
+```
+
+Now future reasoning can search the accumulated history.
+
+That means deeper reasoning isn't necessarily:
+
+> “think about the problem harder.”
+
+It can become:
+
+> **“build an increasingly accurate model of the problem.”**
+
+---
+
+# 32. Why Astra's long-context performance matters
+
+OpenAI reports extremely high long-context retrieval results, including **100% on its MRCR v2 8-needle 256K–512K evaluation** and **96.3% at 512K–1M** in the comparison shown. ([OpenAI][4])
+
+That doesn't mean:
+
+> “Astra perfectly understands one million tokens.”
+
+It means that on that particular retrieval benchmark, it can locate relevant information at very large context lengths extremely effectively.
+
+That's different—but important.
+
+For an agent, large context + good retrieval means:
+
+```text
+huge project
+       ↓
+large history
+       ↓
+old requirement
+       ↓
+old test
+       ↓
+old decision
+       ↓
+recover relevant information
+```
+
+rather than throwing everything away.
+
+---
+
+# 33. What Max is *not*
+
+There are several misconceptions I'd avoid.
+
+### Max isn't:
+
+❌ a separate model
+
+### It isn't:
+
+❌ automatically smarter in every situation
+
+### It isn't:
+
+❌ guaranteed to solve anything
+
+### It isn't:
+
+❌ a command to output more words
+
+### It isn't:
+
+❌ equivalent to giving the model infinite compute
+
+### It isn't:
+
+❌ a guarantee that the model will use every available reasoning token
+
+### It isn't:
+
+❌ a replacement for missing information
+
+OpenAI specifically says that increasing reasoning effort **cannot compensate for missing files, permissions, context, or information**. ([OpenAI Help Center][3])
+
+---
+
+# 34. The last point is especially important
+
+Imagine:
+
+> “Determine why my application crashes.”
+
+but you don't give Astra:
+
+* the source code,
+* the error log,
+* the executable,
+* access to the machine,
+* or reproduction steps.
+
+Max can't magically solve the missing-information problem.
+
+You'd get:
+
+```text
+Max reasoning
++
+insufficient evidence
+=
+very sophisticated guessing
+```
+
+Instead:
+
+```text
+Max reasoning
++
+source
++
+logs
++
+execution
++
+browser
++
+tests
+=
+much more powerful investigation
+```
+
+That's why the harness matters so much.
+
+---
+
+# 35. Astra's “depth” is therefore multidimensional
+
+I'd summarize it as roughly:
+
+```text
+                 ASTRA DEPTH
+                     │
+       ┌─────────────┼──────────────┐
+       │             │              │
+       ▼             ▼              ▼
+   Internal      Planning       Verification
+   reasoning
+       │             │              │
+       ▼             ▼              ▼
+ alternatives    sequencing      testing
+       │             │              │
+       └─────────────┼──────────────┘
+                     │
+                     ▼
+                Tool use
+                     │
+                     ▼
+                observations
+                     │
+                     ▼
+                 correction
+                     │
+                     ▼
+                persistence
+                     │
+                     ▼
+              long-horizon work
+```
+
+That's the important conceptual shift.
+
+---
+
+# 36. And this is why Astra can look “much smarter” at Max
+
+Suppose the actual task has 10 meaningful decisions.
+
+At low effort:
+
+```text
+Decision 1 → likely
+Decision 2 → likely
+Decision 3 → likely
+...
+```
+
+If each decision is 90% reliable independently:
+
+**0.9¹⁰ ≈ 35%**
+
+chance that the entire chain is correct.
+
+Now suppose deeper reasoning allows the agent to verify and correct several of those decisions.
+
+You aren't just improving one answer.
+
+You're improving the **entire chain**.
+
+That produces a disproportionate improvement in end-to-end success.
+
+This is one reason agent benchmarks can show huge differences even when two models look similarly capable in ordinary conversation.
+
+---
+
+# 37. Why Astra is particularly suited to your agent use case
+
+Given the kind of system you've been discussing—agents that don't merely generate code but **actually operate the resulting software**—I'd put Astra's useful capabilities into this hierarchy:
+
+### Level 1 — Code generation
+
+```text
+"Write this program."
+```
+
+### Level 2 — Code reasoning
+
+```text
+"Understand this existing program and modify it."
+```
+
+### Level 3 — Code execution
+
+```text
+"Run it and fix whatever breaks."
+```
+
+### Level 4 — Environment interaction
+
+```text
+"Operate the program through the GUI."
+```
+
+### Level 5 — Closed-loop autonomy
+
+```text
+"Achieve this objective.
+Figure out the steps.
+Operate the software.
+Observe what happens.
+Adapt.
+Verify.
+Continue until done."
+```
+
+**Astra is explicitly being engineered toward Level 5.**
+
+That is much more significant than simply having a larger “thinking budget.”
+
+---
+
+# 38. One of the most interesting things: higher effort can cause different *behavior*
+
+This deserves its own section.
+
+Suppose:
+
+> “Build a webpage.”
+
+At Low:
+
+```text
+write HTML
+write CSS
+write JS
+return
+```
+
+At High:
+
+```text
+write
+↓
+run
+↓
+inspect
+↓
+fix
+↓
+run
+↓
+inspect
+↓
+fix
+```
+
+At XHigh/Max:
+
+Potentially:
+
+```text
+understand requirements
+↓
+inspect environment
+↓
+design architecture
+↓
+implement
+↓
+run
+↓
+inspect visual output
+↓
+identify layout problems
+↓
+fix
+↓
+run
+↓
+test interactions
+↓
+discover edge case
+↓
+fix
+↓
+test responsiveness
+↓
+verify requirements
+↓
+review final result
+```
+
+The **strategy itself changes**.
+
+That's why I wouldn't describe Astra's highest effort as merely “more thinking.”
+
+It's closer to:
+
+> **greater willingness and capacity to search, execute, verify, backtrack, and refine before declaring success.**
+
+That is the practical meaning of “extra depth.”
+
+---
+
+# 39. The relationship between Astra and GPT-5.6 Sol
+
+OpenAI currently describes Astra as its most capable model, while Sol is the previous flagship for complex professional work. ([OpenAI Developers][6])
+
+Interestingly, Astra at lower effort can sometimes outperform Sol at higher effort. OpenAI's usage guidance explicitly gives this as an example. ([OpenAI Help Center][3])
+
+That tells us something important:
+
+```text
+Model capability
+       +
+reasoning effort
+       +
+tools
+       +
+harness
+       +
+available information
+       =
+actual task performance
+```
+
+It's not:
+
+```text
+model name + effort = intelligence
+```
+
+---
+
+# 40. A useful practical matrix
+
+If I were choosing Astra effort for the kinds of tasks you tend to ask about:
+
+| Task                                     | Recommended |
+| ---------------------------------------- | ----------- |
+| Quick factual question                   | Low         |
+| Simple coding change                     | Medium      |
+| Normal debugging                         | High        |
+| Complex unfamiliar codebase              | XHigh       |
+| Large refactor                           | XHigh       |
+| Building software from scratch           | High/XHigh  |
+| Building + testing software autonomously | XHigh       |
+| Difficult reverse engineering            | XHigh/Max   |
+| Complex systems architecture             | XHigh       |
+| Huge multi-stage research task           | XHigh/Max   |
+| Novel mathematics                        | Max         |
+| Long autonomous computer-use task        | XHigh/Max   |
+| Critical final verification              | XHigh       |
+| Simple follow-up after complex work      | Low/Medium  |
+
+The important part is that **Max should be a scalpel, not a default setting**.
+
+---
+
+# 41. The most important distinction: “more depth” vs “more intelligence”
+
+Imagine Astra has a fixed underlying capability.
+
+Reasoning effort lets it spend more computational resources exploiting that capability.
+
+So:
+
+```text
+Capability
+───────────────
+"What can I potentially solve?"
+
+Reasoning effort
+───────────────
+"How much computation am I willing/allowed to spend solving it?"
+```
+
+This is why OpenAI's documentation explicitly treats **model choice and reasoning level as separate controls**. ([OpenAI Help Center][3])
+
+---
+
+# 42. My best conceptual model of Astra Max
+
+If I had to explain Astra Max in one diagram:
+
+```text
+                         YOUR OBJECTIVE
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ Understand goal   │
+                    │ + constraints     │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ Build task model  │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ Generate plans    │
+                    │ + alternatives    │
+                    └─────────┬─────────┘
+                              │
+                    ┌─────────┴─────────┐
+                    ▼                   ▼
+                Hypothesis A        Hypothesis B
+                    │                   │
+                    └─────────┬─────────┘
+                              ▼
+                           ACTION
+                              │
+                              ▼
+                          OBSERVE
+                              │
+                              ▼
+                         EVALUATE
+                              │
+                 ┌────────────┴────────────┐
+                 ▼                         ▼
+             SUCCESS                   FAILURE
+                 │                         │
+                 ▼                         ▼
+             VERIFY                   REPLAN
+                 │                         │
+                 │                         └──────────┐
+                 │                                    │
+                 └──────────────────────┐             │
+                                        ▼             │
+                                  MORE REASONING ◄────┘
+                                        │
+                                        ▼
+                                  MORE ACTION
+                                        │
+                                        ▼
+                                    VERIFY
+                                        │
+                                        ▼
+                                      DONE
+```
+
+**Low effort tends to constrain how much of that loop the model can afford to explore.**
+
+**High/XHigh/Max give it progressively more room to explore the loop when the task warrants it.**
+
+That is the closest useful mental model we can construct from the public information without pretending to know Astra's proprietary internals.
+
+---
+
+# 43. One thing I would *not* trust claims about
+
+You've probably seen people online claiming things like:
+
+> “Max gives Astra exactly 4× the reasoning tokens.”
+
+or:
+
+> “XHigh runs the model through 32 recursive passes.”
+
+or:
+
+> “Astra uses recurrent depth of N layers.”
+
+I would treat those claims very cautiously unless they come directly from OpenAI.
+
+The public documentation currently gives us:
+
+* five reasoning levels,
+* reasoning-token accounting,
+* higher effort consuming more allowance,
+* higher effort producing more iterations/verification in some workloads,
+* dynamic reasoning changes,
+* tool interaction,
+* long-context mechanisms,
+* and much stronger end-to-end benchmark results. ([OpenAI Developers][1])
+
+It **does not give us a complete internal algorithm for Max**.
+
+So there is a fairly hard boundary between:
+
+**documented fact**
+
+and
+
+**reasonable architectural interpretation**.
+
+---
+
+# 44. The really interesting takeaway
+
+I think the best way to understand GPT-6 Astra's extra depth is:
+
+> **It isn't primarily an “answer quality slider.” It's a computational-work slider for an agent.**
+
+The deeper settings become increasingly useful when there is something meaningful to *do* with that extra computation:
+
+```text
+more hypotheses
+       ↓
+more planning
+       ↓
+more tool calls
+       ↓
+more experiments
+       ↓
+more verification
+       ↓
+more correction
+       ↓
+better long-horizon execution
+```
+
+And Astra's architecture/harness is specifically designed to make those additional cycles useful.
+
+That is why the strongest evidence isn't simply that Astra gets better benchmark scores at higher effort. It's the observation from OpenAI's coding evaluation that **higher effort changes the agent's behavior toward more iterations, more browser verification, and more actual code execution**. ([OpenAI][2])
+
+So if you're thinking about Astra in terms of the **agent harness system you've been planning**, I'd characterize the levels this way:
+
+```text
+LOW
+"Figure this out."
+
+MEDIUM
+"Think about this carefully."
+
+HIGH
+"Work through this problem."
+
+XHIGH
+"Work through it, investigate alternatives,
+and verify your solution."
+
+MAX
+"Treat this as a difficult problem-solving job:
+plan, investigate, experiment, verify, backtrack,
+and continue until the evidence says the job is actually done."
+```
+
+That's not an official definition of the settings—it's my practical interpretation of the documented behavior—but I think it captures what **“extra depth” actually means operationally** much better than “the model thinks longer.” ([OpenAI Help Center][3])
+
+### One especially relevant consequence for you
+
+For the sort of **agentic software-development/GUI-control system you've been looking at**, I would expect the difference between **High and Max to be much more noticeable on a task like “build this application, run it, find the problems, fix them, test the UI, and keep going”** than on something like “write me a Python class.”
+
+That's because the former gives Astra a large **search/verification/action space** in which extra computation can actually be spent. The latter often has a relatively short path to a good answer.
+
+And that's ultimately what makes Astra's “extra depth” interesting: **the unit of intelligence is increasingly becoming the completed task rather than the individual response.**
+
+[1]: https://developers.openai.com/api/docs/models/gpt-6-astra?utm_source=chatgpt.com "GPT-6 Astra Model | OpenAI API"
+[2]: https://openai.com/index/gpt-6-astra/?utm_referrer%27a=0&utm_source=chatgpt.com "GPT-6 Astra: A new generation of intelligence | OpenAI"
+[3]: https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex.%202.%20The%20Codex%20lead%20already%20said%20compute%20cannot%20...?utm_source=chatgpt.com "Managing usage with GPT-6 Astra in Work and Codex | OpenAI Help Center"
+[4]: https://openai.com/index/gpt-6-astra/?utm_source=chatgpt.com "GPT-6 Astra: A new generation of intelligence | OpenAI"
+[5]: https://developers.openai.com/api/reference/python/resources/responses/methods/retrieve?utm_source=chatgpt.com "Get a model response | OpenAI API Reference"
+[6]: https://developers.openai.com/api/docs/models/compare?utm_source=chatgpt.com "Compare models | OpenAI API"

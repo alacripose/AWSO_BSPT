@@ -1,0 +1,24 @@
+habits.db
+habits.db-wal
+habits.db-shm
+__pycache__/
+*.pyc
+# local-model artifacts — training pairs derive from operator chat/SOS logs (privacy);
+# GGUF/router weights are per-device, multi-GB, and reproducible from the pipeline
+data/
+models/
+merged_hf/
+*.gguf
+# local ML training venv (torch etc.) — dev box only, never lands on device
+.venv-ml/
+
+# agentd runtime artifacts (session continuity for the one-shot agent)
+.agent_session_id
+.agent_prompt.txt
+# coverage
+.coverage
+workspace/helpers/
+bin/*.dll
+bin/*.exe
+bin/*.zip
+bin/llama-server*

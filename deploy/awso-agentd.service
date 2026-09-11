@@ -1,0 +1,21 @@
+[Unit]
+Description=AWSO_BSPT resident agent harness (agentd: chat, briefing, SOS, telemetry)
+After=network-online.target
+Wants=network-online.target
+After=awso-habit.service
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/awso/agentd.py --db /opt/awso/habits.db
+Restart=always
+RestartSec=15
+# Hardening for an internet-adjacent battery device (CIS / linux-hardening)
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/awso
+# agentd shells out to `hermes` — it needs PATH including the hermes bin dir
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:/opt/hermes/bin
+
+[Install]
+WantedBy=graphical.target

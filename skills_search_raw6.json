@@ -1,0 +1,545 @@
+{
+ "cprofile": [],
+ "memory leak": [
+  {
+   "name": "Phy Memory Leak Detector",
+   "identifier": "phy-memory-leak-detector",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Static memory leak pattern scanner for Node.js, Python, Go, and Java. Analyzes source files to detect event listener leaks (addEventListener without correspo..."
+  },
+  {
+   "name": "Alibabacloud Aes Sysom Os Diagnosis",
+   "identifier": "alibabacloud-aes-sysom-os-diagnosis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Perform SysOM deep OS-level diagnosis on Alibaba Cloud ECS instances to identify root causes of performance issues (CPU spikes, memory leaks, IO latency, etc..."
+  },
+  {
+   "name": "C",
+   "identifier": "c",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Avoid common C mistakes \u2014 memory leaks, buffer overflows, undefined behavior, and pointer traps."
+  },
+  {
+   "name": "C++",
+   "identifier": "cpp",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Avoid common C++ mistakes \u2014 memory leaks, dangling references, undefined behavior, and ownership confusion."
+  },
+  {
+   "name": "Combine Code Review",
+   "identifier": "combine-code-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Reviews Combine framework code for memory leaks, operator misuse, and error handling. Use when reviewing code with import Combine, AnyPublisher, @Published,..."
+  },
+  {
+   "name": "Debug Checklist - Evomap Asset",
+   "identifier": "debug-checklist-evomap",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Systematic debugging checklist for C/C++ that detects null pointers, memory leaks, race conditions, off-by-one errors, and uninitialized variables."
+  },
+  {
+   "name": "Debug Checklist - \u7cfb\u7edf\u5316 Debug \u68c0\u67e5\u6e05\u5355",
+   "identifier": "debug-checklist",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides a systematic checklist with automated checks for null pointers, memory leaks, race conditions, off-by-one errors, and uninitialized variables in C/C++."
+  },
+  {
+   "name": "NodeJS",
+   "identifier": "nodejs",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Avoid common Node.js mistakes \u2014 event loop blocking, async error handling, ESM gotchas, and memory leaks."
+  },
+  {
+   "name": "Performance Optimization",
+   "identifier": "fec-performance-optimization",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when diagnosing or improving frontend performance, Core Web Vitals, bundle size, runtime rendering cost, network waterfalls, memory leaks, long tasks, Li..."
+  },
+  {
+   "name": "Performance Profiler",
+   "identifier": "perf-profiler",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Profile and optimize application performance. Use when diagnosing slow code, measuring CPU/memory usage, generating flame graphs, benchmarking functions, load testing APIs, finding memory leaks, or optimizing database queries."
+  }
+ ],
+ "performance optimization python": [],
+ "speed up": [
+  {
+   "name": "flash-attention",
+   "identifier": "official/mlops/flash-attention",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Speed up long-sequence transformer training and inference."
+  },
+  {
+   "name": "doca-sha-offload-engine",
+   "identifier": "NVIDIA/skills/skills/doca-sha-offload-engine",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when wiring the DOCA SHA Offload Engine (an OpenSSL ENGINE) into an existing OpenSSL pipeline to offload one-shot SHA-1, SHA-256, or SHA-512 (EVP_Digest) onto DOCA SHA hardware without rewriting against doca-sha. Covers engine load mechanics (`openssl engine dynamic`, `set_pci_addr` ctrl, `-engine_impl`), the SHA-224 negative test that proves offload engaged, the message-size window where offload beats CPU SHA, and engine-vs-library selection. Trigger even when the user does not say \"DOCA SHA Offload Engine\" or \"OpenSSL ENGINE\" \u2014 typical implicit phrasings: \"speed up openssl SHA on BlueField\", \"offload SHA without code changes\", \"is openssl using the accelerator or falling back to software\", \"prove DOCA SHA actually ran\", \"openssl dgst hashed but I'm not sure it was offloaded\". Refuse and route elsewhere for new SHA pipelines (use doca-sha), MD5 / SHA-3 / SHA-224 / HMAC-SHA offload, incremental hashing via chained `EVP_DigestUpdate`, or OpenSSL PROVIDER authoring.\n"
+  },
+  {
+   "name": "Freqtrade Tools",
+   "identifier": "freqtrade-tools",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Shell aliases and helper commands for Freqtrade (cryptocurrency trading bot) that speed up common tasks. Use when setting up Freqtrade shortcuts, downloading..."
+  },
+  {
+   "name": "Langcache Semantic Caching for OpenClaw",
+   "identifier": "openclaw-langcache",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "This skill should be used when the user asks to \"enable semantic caching\", \"cache LLM responses\", \"reduce API costs\", \"speed up AI responses\", \"configure LangCache\", \"search the semantic cache\", \"store responses in cache\", or mentions Redis LangCache, semantic similarity caching, or LLM response caching. Provides integration with Redis LangCache managed service for semantic caching of prompts and responses."
+  },
+  {
+   "name": "Phy Video Bgm",
+   "identifier": "phy-video-bgm",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze a video's mood and add AI-generated BGM. Optionally speed up/slow down. Uses Gemini for video analysis and fal.ai Lyria2 for music generation. Trigge..."
+  },
+  {
+   "name": "Seven-Step Rigor",
+   "identifier": "seven-step-rigor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Enforces a strict seven-step improvement process: clarify goals, delete unnecessary parts, simplify, speed up cycles, automate stable tasks, prefer end testi..."
+  },
+  {
+   "name": "doca-sha-offload-engine",
+   "identifier": "doca-sha-offload-engine",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use this skill when wiring the DOCA SHA Offload Engine (an OpenSSL ENGINE) into an existing OpenSSL pipeline to offload one-shot SHA-1, SHA-256, or SHA-512 (EVP_Digest) onto DOCA SHA hardware without rewriting against doca-sha. Covers engine load mechanics (`openssl engine dynamic`, `set_pci_addr` ctrl, `-engine_impl`), the SHA-224 negative test that proves offload engaged, the message-size window where offload beats CPU SHA, and engine-vs-library selection. Trigger even when the user does not say \"DOCA SHA Offload Engine\" or \"OpenSSL ENGINE\" \u2014 typical implicit phrasings: \"speed up openssl SHA on BlueField\", \"offload SHA without code changes\", \"is openssl using the accelerator or falling back to software\", \"prove DOCA SHA actually ran\", \"openssl dgst hashed but I'm not sure it was offloaded\". Refuse and route elsewhere for new SHA pipelines (use doca-sha), MD5 / SHA-3 / SHA-224 / HMAC-SHA offload, incremental hashing via chained `EVP_DigestUpdate`, or OpenSSL PROVIDER authoring."
+  },
+  {
+   "name": "indexnow",
+   "identifier": "indexnow",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "When the user wants to implement IndexNow, notify search engines of new/updated URLs, or speed up Bing indexing. Also use when the user mentions \"IndexNow,\"..."
+  }
+ ],
+ "hot path": [
+  {
+   "name": "Golang Benchmark",
+   "identifier": "golang-benchmark",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Golang benchmarking, profiling, and performance measurement. Use when writing, running, or comparing Go benchmarks, profiling hot paths with pprof, interpret..."
+  }
+ ],
+ "cache": [
+  {
+   "name": "dynamo-troubleshoot",
+   "identifier": "NVIDIA/skills/skills/dynamo-troubleshoot",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Diagnose failed or unhealthy Dynamo deployments. Use when pods, model-cache jobs, PVCs, workers, frontend/router health, endpoints, or benchmark jobs fail; use recipe-runner/router-starter before this for normal bring-up."
+  },
+  {
+   "name": "hf-cli",
+   "identifier": "huggingface/skills/skills/hf-cli",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Hugging Face Hub CLI (`hf`) for downloading, uploading, and managing models, datasets, spaces, buckets, repos, papers, jobs, and more on the Hugging Face Hub. Use when: handling authentication; managing local cache; managing Hugging Face Buckets; running or scheduling jobs on Hugging Face infrastructure; managing Hugging Face repos; discussions and pull requests; browsing models, datasets and spaces; reading, searching, or browsing academic papers; managing collections; querying datasets; configuring spaces; setting up webhooks; or deploying and managing HF Inference Endpoints. Make sure to use this skill whenever the user mentions 'hf', 'huggingface', 'Hugging Face', 'huggingface-cli', or 'hugging face cli', or wants to do anything related to the Hugging Face ecosystem and to AI and ML in general. Also use for cloud storage needs like training checkpoints, data pipelines, or agent traces. Use even if the user doesn't explicitly ask for a CLI command. Replaces the deprecated `huggingface-cli`."
+  },
+  {
+   "name": "nemo-rl-brev-etiquette",
+   "identifier": "NVIDIA/skills/skills/nemo-rl-brev-etiquette",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Brev instance operating guidance for NeMo-RL agents working in /home/ubuntu/RL with limited workspace disk, a larger /ephemeral volume, and optional /home/ubuntu/RL/.env secrets. Use when running nemo-rl-auto-research campaigns, experiments, training jobs, model or dataset downloads, shared cache-heavy commands, log-producing runs, checkpoint generation, W&B or Hugging Face authenticated workflows, or any workflow that may create large files on Brev."
+  },
+  {
+   "name": "Cache",
+   "identifier": "cache",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage a local key-value cache store using bash and Python. Use when caching API responses, session data, or computed results with TTL support."
+  },
+  {
+   "name": "Cache Cleanup",
+   "identifier": "cache-cleanup",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u6e05\u7406\u8fc7\u671f\u7f13\u5b58\u6587\u4ef6\u3001auto-flush \u6587\u4ef6\u3001\u65e7\u65e5\u5fd7\uff0c\u91ca\u653e\u78c1\u76d8\u7a7a\u95f4\u3002"
+  },
+  {
+   "name": "Cache Layer",
+   "identifier": "cache-layer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Cache layers, TTLs, invalidation, and consistency. Use when speeding reads or debugging stale data."
+  },
+  {
+   "name": "Cache Migration",
+   "identifier": "cache-migration",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5c06 Windows \u7cfb\u7edf\u4e0a\u4efb\u610f\u5f00\u53d1\u5de5\u5177\uff08\u5982 VSCode\u3001Yarn\u3001npm\u3001pip\u3001Gradle\u3001Docker \u7b49\uff09\u7684\u7f13\u5b58\u3001\u63d2\u4ef6\u3001\u6570\u636e\u76ee\u5f55\u8fc1\u79fb\u5230\u6307\u5b9a\u76ee\u5f55\uff08\u5982 E/D \u76d8\uff09\uff0c\u901a\u8fc7 NTFS Junction \u5b9e\u73b0\u5bf9\u5e94\u7528\u5b8c\u5168\u900f\u660e\u7684\u91cd\u5b9a\u5411\u3002\u5f53\u7528\u6237\u8bf7\u6c42\"\u8fc1\u79fb\u5e94\u7528\u7684\u7f13\u5b58\u5230 X \u76d8\"\u3001\"\u5c06 XX \u7684\u6570\u636e\u76ee\u5f55\u79fb\u5230 D/E \u76d8\"..."
+  },
+  {
+   "name": "Cache Strategy Advisor",
+   "identifier": "cache-strategy-advisor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Design and optimize caching strategies for applications. Analyze data access patterns, recommend cache layers (browser, CDN, application, database), configur..."
+  },
+  {
+   "name": "cachelint",
+   "identifier": "cachelint",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Caching anti-pattern analyzer -- detects Redis/Memcached misuse, TTL problems, cache invalidation failures, stampedes, architecture issues, and security hygi..."
+  },
+  {
+   "name": "Ci Build Cache Advisor",
+   "identifier": "ci-build-cache-advisor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Optimize CI/CD build caching across GitHub Actions, GitLab CI, CircleCI, and Jenkins \u2014 analyze cache hit rates, recommend cache keys, and reduce build times."
+  }
+ ],
+ "benchmark python code": [],
+ "performance review": [
+  {
+   "name": "Performance Review",
+   "identifier": "performance-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u7ee9\u6548\u8bc4\u4f30\u52a9\u624b\u3002\u81ea\u8bc4\u3001\u4e0a\u7ea7\u8bc4\u8bed\u3001OKR\u590d\u76d8\u3001KPI\u5206\u6790\u3001\u6539\u8fdb\u8ba1\u5212\u3001SMART\u76ee\u6807\u8bbe\u5b9a\u3001360\u53cd\u9988\u64b0\u5199\u3002Performance review assistant with self-assessment, manager feedback, OKR review, SMART goals, 360 feedback..."
+  },
+  {
+   "name": "Performance Review Drafter",
+   "identifier": "performance-review-drafter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use this skill when a manager needs to draft an annual or mid-year performance review for a direct report. Guides structured evidence gathering and competenc..."
+  },
+  {
+   "name": "Performance Review Engine",
+   "identifier": "afrexai-performance-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI-powered system for creating structured, balanced performance reviews, self-assessments, 360\u00b0 feedback, and calibration notes across review cycles."
+  },
+  {
+   "name": "Ai Assisted Performance Review",
+   "identifier": "ai-assisted-performance-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Evaluate performance fairly when output is AI-assisted \u2014 what still measures the human, what now measures the tooling, and how to run the review conversation..."
+  },
+  {
+   "name": "Elixir Performance Review",
+   "identifier": "elixir-performance-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Reviews Elixir code for performance issues including GenServer bottlenecks, memory usage, and concurrency patterns. Use when reviewing high-throughput code o..."
+  },
+  {
+   "name": "KWDB Performance Review",
+   "identifier": "kwdb-performance-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Optimize SQL query performance for KaiwuDB time-series and relational engines. Covers: EXPLAIN analysis, time-series optimization, pagination, cross-model qu..."
+  },
+  {
+   "name": "Nm Pensive Performance Review",
+   "identifier": "nm-pensive-performance-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detects time and space complexity hotspots via AST scan"
+  },
+  {
+   "name": "Halo Effect",
+   "identifier": "halo-effect",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Activate when: user is conducting a performance review or hiring interview; someone says 'she's great across the board' or 'everything they do is excellent';..."
+  },
+  {
+   "name": "Hire",
+   "identifier": "hire",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Interactive hiring wizard to set up a new AI team member. Guides the user through role design via conversation, generates agent identity files, and optionally sets up performance reviews. Use when the user wants to hire, add, or set up a new AI agent, team member, or assistant. Triggers on phrases like \"hire\", \"add an agent\", \"I need help with X\" (implying a new role), or \"/hire\"."
+  },
+  {
+   "name": "Human Resources - Claude HR plugin as a skill",
+   "identifier": "human-resources",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Modified version of the Anthropic plugin. People-operations assistant covering the full employee lifecycle \u2014 recruiting, onboarding, performance reviews, compensation analysis, org planning, policy l..."
+  }
+ ],
+ "slow query": [
+  {
+   "name": "Byted Bytehouse Slow Query",
+   "identifier": "byted-bytehouse-slow-query",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "ByteHouse\u6162\u67e5\u8be2\u5206\u6790\u548c\u6027\u80fd\u4f18\u5316\u5de5\u5177\uff0c\u7528\u4e8e\u8bc6\u522b\u548c\u5206\u6790\u6162\u67e5\u8be2\u3001\u67e5\u8be2\u6027\u80fd\u4f18\u5316\u5efa\u8bae\u3001\u67e5\u770b\u67e5\u8be2\u6267\u884c\u8ba1\u5212\u3001\u5206\u6790\u67e5\u8be2\u5386\u53f2\u8d8b\u52bf\u3002\u5f53\u7528\u6237\u9700\u8981\u8bc6\u522b\u548c\u5206\u6790ByteHouse\u6570\u636e\u5e93\u4e2d\u7684\u6162\u67e5\u8be2\u3001\u67e5\u8be2\u6027\u80fd\u4f18\u5316\u5efa\u8bae\u3001\u67e5\u770b\u67e5\u8be2\u6267\u884c\u8ba1\u5212\u3001\u5206\u6790\u67e5\u8be2\u5386\u53f2\u8d8b\u52bf\u65f6\uff0c\u4f7f\u7528\u6b64Skill\u3002"
+  },
+  {
+   "name": "Hologres Slow Query Analysis",
+   "identifier": "hologres-slow-query-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Hologres slow query log analysis and diagnosis skill. Use for analyzing slow queries, failed queries, query performance diagnosis, and log management in Alib..."
+  },
+  {
+   "name": "MySQL Slow Query Analyzer",
+   "identifier": "mysql-slow-query-analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5e2e\u52a9\u5f00\u53d1\u8005\u89e3\u6790MySQL EXPLAIN\u548c\u6162\u67e5\u8be2\u65e5\u5fd7\uff0c\u5b9a\u4f4d\u6027\u80fd\u74f6\u9888\uff0c\u751f\u6210\u7d22\u5f15\u4e0eSQL\u91cd\u5199\u4f18\u5316\u5efa\u8bae\uff0c\u63d0\u5347\u67e5\u8be2\u6548\u7387\u3002"
+  },
+  {
+   "name": "Alibabacloud Analyticdb Mysql Copilot",
+   "identifier": "alibabacloud-analyticdb-mysql-copilot",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Alibaba Cloud AnalyticDB for MySQL Operations & Diagnosis Assistant. Supports cluster info queries, performance monitoring, slow query diagnosis, running SQL..."
+  },
+  {
+   "name": "WP Multitool \u2014 WordPress Optimization Toolkit",
+   "identifier": "wp-multi-tool",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "WordPress site health audit, performance optimization, database cleanup, autoload tuning, slow query detection, wp-config management, image size control, fro..."
+  }
+ ],
+ "python memory profiling": [],
+ "resource constrained": [],
+ "raspberry pi": [
+  {
+   "name": "Raspberry Pi",
+   "identifier": "raspberry",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Set up and maintain Raspberry Pi avoiding common hardware and configuration pitfalls."
+  },
+  {
+   "name": "Raspberry Pi I2C Sensor Development",
+   "identifier": "raspberry-pi-i2c",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u6811\u8393\u6d3e I2C \u4f20\u611f\u5668\u5f00\u53d1\u5b9e\u6218\u6307\u5357\u3002\u8986\u76d6 Raspberry Pi 4B / Zero \u7684 GPIO \u5f15\u811a\u5b9a\u4e49\u3001 \u6807\u51c6 I2C \u4e0e\u8f6f\u4ef6 I2C (bit-banging) \u7684\u9009\u578b\u4e0e\u9677\u9631\u3001gpiod \u5e93\u4f7f\u7528\u3001BMI270 6\u8f74 IMU \u548c MAX30205 \u6e29\u5ea6\u4f20\u611f\u5668\u7684\u9a71\u52a8\u5f00\u53d1\u7ecf\u9a8c\u3001\u6027\u80fd\u74f6\u9888\u5206\u6790\u4e0e\u5e38\u89c1\u6545\u969c\u6392\u67e5\u3002 \u6765..."
+  },
+  {
+   "name": "Raspberry Pi Manager",
+   "identifier": "raspberry-pi-manager",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Manage Raspberry Pi devices \u2014 GPIO control, system monitoring (CPU/temp/memory), service management, sensor data reading."
+  },
+  {
+   "name": "Bud Health Monitor",
+   "identifier": "bud-health-monitor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Monitor system health (RAM, disk, CPU, services). Auto-detect issues and attempt fixes. Essential for keeping Raspberry Pi running stable."
+  },
+  {
+   "name": "Daily Health Report",
+   "identifier": "daily-health-report",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generates and publishes a daily Raspberry Pi system health report including uptime, memory, swap, load, disk, and temperature metrics."
+  },
+  {
+   "name": "Hybrid Gateway",
+   "identifier": "hybrid-gateway",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Set up and troubleshoot a hybrid OpenClaw architecture where the gateway runs on a cloud VPS and a local machine (Mac Mini, desktop, Raspberry Pi, etc.) acts..."
+  },
+  {
+   "name": "MicroPython Skills",
+   "identifier": "micropython-skills",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Program and interact with embedded development boards (ESP32, ESP32-S3, ESP32-C3, ESP8266, NodeMCU, Raspberry Pi Pico, RP2040, STM32) through real-time REPL...."
+  },
+  {
+   "name": "Pi Admin",
+   "identifier": "pi-admin",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Raspberry Pi system administration. Monitor resources, manage services, perform updates and maintenance."
+  },
+  {
+   "name": "Pi Health",
+   "identifier": "pi-health",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Raspberry Pi health monitor. Check CPU temperature, throttling status, voltage levels, memory/disk usage, fan RPM, overclock detection, and power issues. Use when monitoring Pi health, diagnosing thermal throttling, checking for under-voltage, or verifying system stability on any Raspberry Pi (Pi 3/4/5, arm64/armhf)."
+  },
+  {
+   "name": "Pi Speaker",
+   "identifier": "pi-speaker",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Play TTS or audio on the Raspberry Pi (or gateway host) default speaker. Use when the user asks for an announcement, alarm, news summary, or \"say X on the Pi..."
+  }
+ ],
+ "arm linux": [],
+ "daemon performance": [],
+ "wsl": [
+  {
+   "name": "WSL Chrome CDP",
+   "identifier": "wsl-chrome-cdp",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u81ea\u52a8\u68c0\u6d4b\u5e76\u542f\u52a8 Windows Chrome \u8c03\u8bd5\u6a21\u5f0f\uff0c\u5b9e\u73b0 WSL2 \u73af\u5883\u4e0b\u5bf9 Chrome \u6d4f\u89c8\u5668\u7684\u65e0\u7f1d\u8fdc\u7a0b\u63a7\u5236\u3002"
+  },
+  {
+   "name": "WSL Proxy",
+   "identifier": "wsl-proxy",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "WSL2 HTTP proxy setup via Windows host. Automatically detects proxy running on Windows (Clash/V2Ray/SS/Surge etc.) and configures WSL2 environment variables...."
+  },
+  {
+   "name": "WSL Windows Bridge",
+   "identifier": "wsl-windows-bridge",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "WSL \u2194 Windows cross-system bridge for OpenClaw agents. Provides win-python / win-ps / win-cmd / win-copy / win-run-py / win-path to invoke Windows Python (An..."
+  },
+  {
+   "name": "WSL-PowerShell Controller",
+   "identifier": "wsl-powershell",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Control Windows PowerShell from WSL by executing commands and scripts on the Windows host using mounted Windows executables."
+  },
+  {
+   "name": "Wsl Service Deploy",
+   "identifier": "wsl-service-deploy",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "WSL Ubuntu \u670d\u52a1\u4e00\u952e\u90e8\u7f72\u3002\u901a\u8fc7 wsl.exe + su -c root + aptitude\uff0c\u65e0\u9700 SSH \u5373\u53ef\u5728 Windows \u5bbf\u4e3b\u673a\u4e0a\u5b89\u5168\u3001\u5feb\u901f\u5730\u5b89\u88c5\u548c\u7ba1\u7406\u540e\u7aef\u670d\u52a1\u3002 \u8986\u76d6 MySQL\u3001Redis\u3001Nginx\u3001PostgreSQL\u3001MongoDB \u7b49\u4efb\u610f aptitude \u53ef\u641c\u5230\u7684\u5305\u3002\u9002\u7528\u573a\u666f\uff1a..."
+  },
+  {
+   "name": "Wsl Shell Reliability",
+   "identifier": "wsl-shell-reliability",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Reliability-first shell selection policy for AI agents on Windows. Choose WSL or PowerShell based on execution risk, not preference."
+  },
+  {
+   "name": "Wsl2 Local Ai",
+   "identifier": "wsl2-local-ai",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "WSL2 Local AI \u2014 run LLMs on Windows via WSL2 with NVIDIA GPU passthrough. WSL2 AI development with Ollama, CUDA, and Docker. WSL2 Ollama fleet routing for Wi..."
+  },
+  {
+   "name": "wsl-path-converter",
+   "identifier": "wsl-path-converter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Convert Windows paths to WSL paths for file operations in WSL environment"
+  },
+  {
+   "name": "wsl-screenshot",
+   "identifier": "wsl-screenshot",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Capture screenshots from WSL by calling Windows PowerShell. Use when user wants to take a screenshot from WSL environment, or needs screenshot functionality..."
+  },
+  {
+   "name": "FastapiAdmin WSL \u81ea\u52a8\u90e8\u7f72",
+   "identifier": "faa-wsl",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u5c06 FastapiAdmin \u5728 Windows WSL2 Ubuntu \u73af\u5883\u4e0b\u81ea\u52a8\u90e8\u7f72\u3002\u5305\u62ec\u73af\u5883\u68c0\u67e5\u3001\u4f9d\u8d56\u5b89\u88c5\uff08pip/pnpm/MySQL/Redis/Nginx\uff09\u3001\u524d\u540e\u7aef\u4ee3\u7801\u514b\u9686\u4e0e\u6784\u5efa\u3001Nginx SPA \u8def\u7531\u4fee\u590d\uff08alias+try_files \u5faa\u73af\u95ee\u9898\uff09\u3001WSL2 \u7f51\u7edc\u8bbf\u95ee\uff08\u5bbf\u4e3b\u673a\u6d4f\u89c8\u5668\u8bbf\u95ee\uff09\u3001SSL..."
+  }
+ ],
+ "debian": [
+  {
+   "name": "holoscan-install-debian",
+   "identifier": "NVIDIA/skills/skills/holoscan-install-debian",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Install Holoscan SDK natively on Ubuntu via apt. Use for C++ installs on Ubuntu; pair with /holoscan-install-wheel for Python."
+  },
+  {
+   "name": "tao-setup-nvidia-gpu-host",
+   "identifier": "NVIDIA/skills/skills/tao-setup-nvidia-gpu-host",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Host setup for TAO GPU backends. Checks and, after user approval, installs NVIDIA driver branch 580, CUDA Toolkit 13.0, and NVIDIA Container Toolkit 1.19.0 for Docker/local-Docker and Kubernetes GPU worker hosts. The `--check-only` path works on any Linux distribution; `--install` automates debian-family (Ubuntu/Debian/Pop!_OS/Mint/Zorin/Raspbian), rhel-family (Fedora/RHEL/Rocky/AlmaLinux), and suse-family (openSUSE/SLES) hosts, and prints actionable manual-install steps for everything else. Use when the user asks to \"set up an NVIDIA GPU host\", \"check TAO Docker GPU runtime\", or prepare a Kubernetes GPU worker for TAO."
+  },
+  {
+   "name": "debian-linux-triage",
+   "identifier": "skills-sh/github/awesome-copilot/debian-linux-triage",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "Esxi Debian Deploy",
+   "identifier": "openbot-esxi",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Zero-touch Debian 13 VM deployment on VMware ESXi 8. Builds custom preseed ISO, creates NVMe+vmxnet3 VM with serial console, and runs unattended installation..."
+  },
+  {
+   "name": "holoscan-install-debian",
+   "identifier": "skills-sh/nvidia/skills/holoscan-install-debian",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from nvidia/skills"
+  },
+  {
+   "name": "holoscan-install-debian",
+   "identifier": "holoscan-install-debian",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Install Holoscan SDK natively on Ubuntu via apt. Use for C++ installs on Ubuntu; pair with /holoscan-install-wheel for Python."
+  },
+  {
+   "name": "Deploy Xray VLESS using 3X UI on your VPS",
+   "identifier": "3x-ui-vps",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deploy and manage 3X-UI on a root-managed Ubuntu or Debian VPS using Docker Compose, nginx, ACME certificates, SSH panel tunneling, UFW hardening, and Xray V..."
+  },
+  {
+   "name": "Linux Patcher",
+   "identifier": "linux-patcher",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Automated Linux server patching and Docker container updates. Use when the user asks to update, patch, or upgrade Linux servers, apply security updates, update Docker containers, check for system updates, or manage server maintenance across multiple hosts. Supports Ubuntu, Debian, RHEL, AlmaLinux, Rocky Linux, CentOS, Amazon Linux, and SUSE. Includes PatchMon integration for automatic host detection and intelligent Docker handling."
+  },
+  {
+   "name": "Os Update Checker",
+   "identifier": "os-update-checker",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Check for available OS package updates with per-package changelog summaries and risk classification. Supports apt (Debian/Ubuntu), dnf (Fedora/RHEL), yum (Ce..."
+  },
+  {
+   "name": "SetupOrion ByImpa",
+   "identifier": "setuporion-byimpa",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Setup completo de VPS Ubuntu/Debian para produ\u00e7\u00e3o com Docker Swarm, Traefik v3 (SSL/HTTPS autom\u00e1tico), Portainer CE e rede overlay. Baseado no SetupOrion v2.8.0. Executa todos os comandos automaticamente."
+  }
+ ]
+}

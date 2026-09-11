@@ -1,0 +1,1152 @@
+{
+ "semgrep": [
+  {
+   "name": "semgrep",
+   "identifier": "skills-sh/trailofbits/skills/semgrep",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "semgrep",
+   "identifier": "skills-sh/semgrep/skills/semgrep",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from semgrep/skills"
+  },
+  {
+   "name": "semgrep-rule-creator",
+   "identifier": "skills-sh/trailofbits/skills/semgrep-rule-creator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "semgrep-rule-variant-creator",
+   "identifier": "skills-sh/trailofbits/skills/semgrep-rule-variant-creator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "code-security",
+   "identifier": "skills-sh/semgrep/skills/code-security",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from semgrep/skills"
+  },
+  {
+   "name": "llm-security",
+   "identifier": "skills-sh/semgrep/skills/llm-security",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from semgrep/skills"
+  },
+  {
+   "name": "Aegis Audit",
+   "identifier": "aegis-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Deep behavioral security audit for AI agent skills and MCP tools. Performs deterministic static analysis (AST + Semgrep + 15 specialized scanners), cryptographic lockfile generation, and optional LLM-powered intent analysis. Use when installing, reviewing, or approving any skill, tool, plugin, or MCP server \u2014 especially before first use. Replaces basic safety summaries with full CWE-mapped, OWASP-tagged, line-referenced security reports."
+  },
+  {
+   "name": "Security Audit (Sona)",
+   "identifier": "sona-security-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Fail-closed security auditing for OpenClaw/ClawHub skills & repos: trufflehog secrets scanning, semgrep SAST, prompt-injection/persistence signals, and supply-chain hygiene checks before enabling or installing."
+  },
+  {
+   "name": "Vulnerability Analysis Hub",
+   "identifier": "vuln-analysis-hub",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u805a\u5408\u6f0f\u6d1e\u5206\u6790\u6280\u80fd\u4e2d\u5fc3\u3002\u6574\u5408 IDA Pro \u9006\u5411\u3001CVE \u67e5\u8be2\u3001\u9759\u6001\u4ee3\u7801\u5206\u6790\uff08CodeQL/Semgrep\uff09\u3001\u6545\u969c\u6839\u56e0\u5206\u6790\u3001\u4e8c\u8fdb\u5236\u6f0f\u6d1e\u5229\u7528\u5de5\u5177\u94fe\u3002\u5f53\u7528\u6237\u9700\u8981\u5206\u6790\u5df2\u77e5 CVE\u3001\u6316\u6398\u672a\u77e5\u6f0f\u6d1e\u3001\u9006\u5411\u4e8c\u8fdb\u5236\u3001\u6784\u5efa PoC\u3001\u5206\u6790\u6f0f\u6d1e\u94fe\u3001\u751f\u6210\u5b8c\u6574\u6f0f\u6d1e\u62a5\u544a\u65f6\u4f7f\u7528\u6b64\u6280\u80fd\u3002"
+  }
+ ],
+ "codeql": [
+  {
+   "name": "codeql",
+   "identifier": "skills-sh/trailofbits/skills/codeql",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from trailofbits/skills"
+  },
+  {
+   "name": "codeql",
+   "identifier": "skills-sh/github/awesome-copilot/codeql",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "codeql-skill",
+   "identifier": "codeql-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "CodeQL security audit pipeline: static scanning, SARIF triage, and QL query optimization. Trigger on: CodeQL, .ql, .sarif, taint tracking, source\u2192sink, LGTM,..."
+  },
+  {
+   "name": "Li_codeQL_LLM",
+   "identifier": "li-codeql-llm",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "CodeQL \u5b89\u5168\u626b\u63cf\u4e0e LLM \u667a\u80fd\u5206\u6790\u878d\u5408\u5de5\u5177\u3002\u81ea\u52a8\u68c0\u6d4b CodeQL \u5b89\u88c5\u3001\u626b\u63cf\u6307\u5b9a\u76ee\u5f55\u3001\u751f\u6210\u6f0f\u6d1e\u62a5\u544a\u3001LLM \u5206\u6790\u3001Jenkins \u96c6\u6210\u3001\u8f93\u51fa\u9a8c\u8bc1 Checklist\u3002"
+  },
+  {
+   "name": "Vulnerability Analysis Hub",
+   "identifier": "vuln-analysis-hub",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u805a\u5408\u6f0f\u6d1e\u5206\u6790\u6280\u80fd\u4e2d\u5fc3\u3002\u6574\u5408 IDA Pro \u9006\u5411\u3001CVE \u67e5\u8be2\u3001\u9759\u6001\u4ee3\u7801\u5206\u6790\uff08CodeQL/Semgrep\uff09\u3001\u6545\u969c\u6839\u56e0\u5206\u6790\u3001\u4e8c\u8fdb\u5236\u6f0f\u6d1e\u5229\u7528\u5de5\u5177\u94fe\u3002\u5f53\u7528\u6237\u9700\u8981\u5206\u6790\u5df2\u77e5 CVE\u3001\u6316\u6398\u672a\u77e5\u6f0f\u6d1e\u3001\u9006\u5411\u4e8c\u8fdb\u5236\u3001\u6784\u5efa PoC\u3001\u5206\u6790\u6f0f\u6d1e\u94fe\u3001\u751f\u6210\u5b8c\u6574\u6f0f\u6d1e\u62a5\u544a\u65f6\u4f7f\u7528\u6b64\u6280\u80fd\u3002"
+  }
+ ],
+ "injection": [
+  {
+   "name": "aspnet-core",
+   "identifier": "openai/skills/skills/.curated/aspnet-core",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Build, review, refactor, or architect ASP.NET Core web applications using current official guidance for .NET web development. Use when working on Blazor Web Apps, Razor Pages, MVC, Minimal APIs, controller-based Web APIs, SignalR, gRPC, middleware, dependency injection, configuration, authentication, authorization, testing, performance, deployment, or ASP.NET Core upgrades."
+  },
+  {
+   "name": "injection-checking",
+   "identifier": "skills-sh/yaklang/hack-skills/injection-checking",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from yaklang/hack-skills"
+  },
+  {
+   "name": "AI-Warden \u2014 Prompt Injection Protection",
+   "identifier": "ai-warden-setup",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Install, configure, and manage the AI-Warden prompt injection protection plugin for OpenClaw. Publisher: AI-Warden (ai-warden.io). Source: github.com/ai-ward..."
+  },
+  {
+   "name": "AOI Prompt Injection Sentinel",
+   "identifier": "aoi-prompt-injection-sentinel",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detects and scores prompt injection attempts in text, outputting severity, action, and matched rules without external calls or secret handling."
+  },
+  {
+   "name": "Armarius - Prompt Injection Blocker",
+   "identifier": "armarius",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "One click, always on. Zero extra API calls. Neutralizes prompt injection the moment it arrives. Never interrupts your work. No setup, no code required."
+  },
+  {
+   "name": "Detector of prompt  injection",
+   "identifier": "prompt-inspector",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detect prompt injection attacks and adversarial inputs in user text before passing it to your LLM. Use when you need to validate or screen user-provided text..."
+  },
+  {
+   "name": "Golang Dependency Injection",
+   "identifier": "golang-dependency-injection",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Comprehensive guide for dependency injection (DI) in Golang. Covers why DI matters (testability, loose coupling, separation of concerns, lifecycle management..."
+  },
+  {
+   "name": "Indirect Prompt Injection Defense",
+   "identifier": "indirect-prompt-injection",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detect and reject indirect prompt injection attacks when reading external content (social media posts, comments, documents, emails, web pages, user uploads). Use this skill BEFORE processing any untrusted external content to identify manipulation attempts that hijack goals, exfiltrate data, override instructions, or social engineer compliance. Includes 20+ detection patterns, homoglyph detection, and sanitization scripts."
+  },
+  {
+   "name": "PROMPT INJECTION PROTECTION",
+   "identifier": "prompt-injection-protection",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Protects against prompt injection attacks by sanitizing, validating, and securely processing untrusted external content from websites, emails, and documents."
+  },
+  {
+   "name": "Prompt Injection Defense",
+   "identifier": "prompt-injection-defense",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Harden agent sessions against prompt injection from untrusted content. Use when the agent reads web search results, emails, downloaded files, PDFs, or any ex..."
+  }
+ ],
+ "sandbox": [
+  {
+   "name": "antigravity-cli",
+   "identifier": "official/autonomous-ai-agents/antigravity-cli",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Operate the Antigravity CLI (agy): plugins, auth, sandbox."
+  },
+  {
+   "name": "Sandbox",
+   "identifier": "sandbox",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Sandbox reference tool. Use when working with sandbox in sysops contexts."
+  },
+  {
+   "name": "sandbox-agent",
+   "identifier": "skills-sh/rivet-dev/skills/sandbox-agent",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from rivet-dev/skills"
+  },
+  {
+   "name": "sandbox-escape-techniques",
+   "identifier": "skills-sh/yaklang/hack-skills/sandbox-escape-techniques",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from yaklang/hack-skills"
+  },
+  {
+   "name": "sandbox-guard",
+   "identifier": "skills-sh/useai-pro/openclaw-skills-security/sandbox-guard",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from useai-pro/openclaw-skills-security"
+  },
+  {
+   "name": "sandbox-npm-install",
+   "identifier": "skills-sh/github/awesome-copilot/sandbox-npm-install",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "sandbox-sdk",
+   "identifier": "skills-sh/cloudflare/skills/sandbox-sdk",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from cloudflare/skills"
+  },
+  {
+   "name": "Sandbox Manager",
+   "identifier": "sandbox-manager",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u767e\u5ea6 Agent Sandbox \u6c99\u7bb1\u7ba1\u7406\u3002\u89e6\u53d1\u8bcd:\u6c99\u7bb1/sandbox/\u521b\u5efa\u6c99\u7bb1/\u6c99\u7bb1\u5b9e\u4f8b/\u6c99\u7bb1\u6a21\u677f/code_test/browser_use/aio\u3002"
+  },
+  {
+   "name": "Sandbox Sdk",
+   "identifier": "sandbox-sdk",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Build sandboxed applications for secure code execution. Load when building AI code execution, code interpreters, CI/CD systems, interactive dev environments,..."
+  },
+  {
+   "name": "sandbox simulator",
+   "identifier": "sandbox-simulator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u6c99\u76d8\u63a8\u6f14\u7cfb\u7edf\uff1a\u6a21\u62df\u591a\u4eba\u7269\u793e\u4ea4\u5bf9\u8bdd\u4e92\u52a8\u3002\u57fa\u4e8e sessions_spawn \u80fd\u529b\u5b9e\u73b0\u5e76\u884c\u63a8\u6f14\uff0c \u652f\u630110+\u4eba\u7269\u30015\u4e2a\u5e76\u884csession\u3001\u5206\u6279\u8c03\u5ea6\u3002\u7528\u6237\u53ef\u4f5c\u4e3a\u5e72\u9884\u8005\u6682\u505c\u3001\u4fee\u6539\u72b6\u6001\u3001\u6ce8\u5165\u4e8b\u4ef6\u3002 \u6240\u6709\u6570\u636e\u4ee5 Markdown \u6587\u4ef6\u5b58\u50a8\uff0c\u652f\u6301\u547d\u4ee4\u548c\u81ea\u7136\u8bed\u8a00\u53cc\u6a21\u5f0f\u4ea4\u4e92\u3002"
+  }
+ ],
+ "query optimization": [
+  {
+   "name": "Knowledge Graph - Graph Query Optimization Assistant",
+   "identifier": "graph-query-optimization-assistant",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze graph queries and suggest optimizations to improve performance, reduce execution time, and ensure efficient traversal in graph databases."
+  },
+  {
+   "name": "Clickhouse for Developers",
+   "identifier": "clickhouse-developer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Comprehensive ClickHouse skill covering everything you need to work with a ClickHouse analytics database: schema design, query optimization, insert strategie..."
+  },
+  {
+   "name": "Database Engineering Mastery",
+   "identifier": "afrexai-database-engineer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Database Engineering Mastery covers schema design, indexing, query optimization, and migration for PostgreSQL, MySQL, SQLite, supporting OLTP/OLAP workloads."
+  },
+  {
+   "name": "Postgres Hardened",
+   "identifier": "postgres-hardened",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "PostgreSQL database patterns for query optimization, schema design, indexing, and security. Based on Supabase best practices."
+  },
+  {
+   "name": "Prisma ORM Patterns",
+   "identifier": "prisma-patterns",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use this skill when working with Prisma ORM in Node.js/TypeScript projects. Covers schema design, migrations, query optimization, relations, transactions, an..."
+  },
+  {
+   "name": "Prisma Schema Analyzer",
+   "identifier": "prisma-schema-analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze Prisma schemas for performance, relation design, index strategy, migration safety, and query optimization \u2014 audit schema.prisma for production readin..."
+  },
+  {
+   "name": "Sql Optimization Patterns",
+   "identifier": "sql-optimization-patterns",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when de..."
+  },
+  {
+   "name": "codeql-skill",
+   "identifier": "codeql-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "CodeQL security audit pipeline: static scanning, SARIF triage, and QL query optimization. Trigger on: CodeQL, .ql, .sarif, taint tracking, source\u2192sink, LGTM,..."
+  },
+  {
+   "name": "database-optimizer",
+   "identifier": "ah-database-optimizer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Expert database optimizer specializing in query optimization, performance tuning, and scalability across multiple database systems. Masters execution plan an..."
+  },
+  {
+   "name": "graphql-architect",
+   "identifier": "ah-graphql-architect",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "GraphQL schema architect designing efficient, scalable API graphs. Masters federation, subscriptions, and query optimization while ensuring type safety and d..."
+  }
+ ],
+ "indexing": [
+  {
+   "name": "indexing",
+   "identifier": "skills-sh/kostja94/marketing-skills/indexing",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from kostja94/marketing-skills"
+  },
+  {
+   "name": "indexing",
+   "identifier": "indexing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "When the user wants to fix indexing issues from Search Console, use noindex, or implement Google Indexing API. Also use when the user mentions \"fix indexing,..."
+  },
+  {
+   "name": "anydocs - Generic Documentation Indexing & Search",
+   "identifier": "anydocs",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generic Documentation Indexing & Search. Index any documentation site (SPA/static) and search it instantly."
+  },
+  {
+   "name": "database-indexing-strategy",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/database-indexing-strategy",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "sampling-and-indexing",
+   "identifier": "dynamic-object-aware-egomotion-sampling-and-indexing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Standardize video sampling and frame indexing so interval instructions and mask frames stay aligned with a valid key/index scheme."
+  },
+  {
+   "name": "AVM Memory",
+   "identifier": "avm",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI Virtual Memory enables multi-agent shared semantic memory with token-aware recall, topic indexing, lifecycle management, and decentralized discovery using..."
+  },
+  {
+   "name": "AetherCore v3.3",
+   "identifier": "aethercore",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AetherCore v3.3.4 - Security-focused final release. High-performance JSON optimization with universal smart indexing for all file types. All security review..."
+  },
+  {
+   "name": "Ariadne Thread",
+   "identifier": "ariadne-thread",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Guide creation of AI-friendly project structures with progressive disclosure indexing, modular architecture, and intent-oriented code. Use when starting a ne..."
+  },
+  {
+   "name": "Bing Webmaster Ronnie",
+   "identifier": "bing-webmaster-ronnie",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Bing Webmaster Tools API helper to submit URLs and fetch search traffic, keyword rankings, indexing status, and crawl issues without uploading verification f..."
+  },
+  {
+   "name": "Clawdgle",
+   "identifier": "clawdgle",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use Clawdgle API to search markdown content, fetch markdown by URL, request URL indexing, or access the donation link."
+  }
+ ],
+ "latency": [
+  {
+   "name": "pinecone",
+   "identifier": "official/mlops/pinecone",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Managed vector database for production AI applications. Fully managed, auto-scaling, with hybrid search (dense + sparse), metadata filtering, and namespaces. Low latency (<100ms p95). Use for producti"
+  },
+  {
+   "name": "tensorrt-llm",
+   "identifier": "official/mlops/tensorrt-llm",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Optimizes LLM inference with NVIDIA TensorRT for maximum throughput and lowest latency. Use for production deployment on NVIDIA GPUs (A100/H100), when you need 10-100x faster inference than PyTorch, o"
+  },
+  {
+   "name": "deepstream-sop",
+   "identifier": "NVIDIA/skills/skills/deepstream-sop",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when building, deploying, evaluating, debugging, or measuring latency for the DeepStream SOP Inference Microservice \u2014 a GPU-accelerated FastAPI service that detects whether operators perform assembly-line steps in order via event boundary detection (GEBD) plus VLM classification. Trigger even if the user does not name it: verify operator step sequence, detect missing or out-of-order SOP steps, score factory/work-cell video for procedure compliance, run VLM-based SOP checking on industrial cameras, or call /v1/chat/completions with a file, RTSP, or Basler camera. Also trigger for its internals: SOPVideoProcessor, DeepStream GEBD model (e.g. DDM) via Triton CAPI, nvds_custom_postprocess, Cosmos Reason 1/2 vLLM, SSE streaming, Kafka NvProto/JSON output, Basler/Pylon camera + emulation, Docker compose, chunk-level latency. Do NOT trigger for generic DeepStream pipelines, object detection/tracking, NIM imports, or video summarization.\n"
+  },
+  {
+   "name": "doca-bench",
+   "identifier": "NVIDIA/skills/skills/doca-bench",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is running `doca_bench` (DOCA \u2265 2.7.0) \u2014 the cross-library micro-benchmark harness \u2014 to measure throughput, bulk-latency, precision-latency, or max-bandwidth (the four `benchmark_mode` enum values the binary ships) of a DOCA library (RDMA, COMPRESS, AES-GCM, SHA, DMA, EC, ETH, Comch, GPUNetIO) on host or BlueField Arm, probe the granular- build query for which libraries the install exposes, capture a baseline four-tuple (command, version, device, environment), or diagnose a bench failure in the config-syntax, device-binding, library/workload-precondition, or measurement-soundness layer. Trigger even without the word \"doca_bench\" \u2014 typical implicit forms include \"how fast is compress on my BlueField\", \"what RDMA throughput can this NIC do\", \"measure AES-GCM latency\", or \"baseline before a firmware update\". Refuse and route elsewhere for application-level end-to-end timing, custom benchmark programs, DOCA install/upgrade, or patching the binary.\n"
+  },
+  {
+   "name": "doca-dpa-hl-tracer",
+   "identifier": "NVIDIA/skills/skills/doca-dpa-hl-tracer",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user runs doca_dpa_hl_tracer to capture/decode DPA-side traces at the programming-events layer (kernel entry/exit, sync points, comm primitive calls, RDMA WR submission, completion drain) \u2014 picking TRACE vs CRIT, tuning the JSON config (file-size limits + file_size_limit_policy, thread priorities/cores), decoding against the matching DPA-side ELF, or diagnosing empty/noisy captures. Trigger even when the user does not explicitly mention \"DOCA DPA tracer\" or \"high-level tracer\" \u2014 typical implicit phrasings include \"DPA kernel returns wrong result but host completions look clean\", \"kernel-entry to first-comm latency is huge\", \"RDMA WR to drain gap on the DPA\", \"trace file truncated mid-run\", \"TRACE doubled my DPA latency\", or \"tracer wrote a file but parser shows zero events\". Refuse and route elsewhere for writing DPA kernels, DPA-Comms/DPA-Verbs programming, raw per-cycle DPA profiling, host-side doca-dpa debugging, or production DPA telemetry \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "doca-flow-perf",
+   "identifier": "NVIDIA/skills/skills/doca-flow-perf",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is measuring the host or DPU-CPU control-plane rate of a DOCA Flow pipeline with doca_flow_perf \u2014 picking a JSON policy from configs/, choosing the DPDK or DOCA backend, running the single-iteration smoke then the iterative eval loop, interpreting per-iteration CPU cycles and num_pushed / num_failed, or capturing the four-tuple (DOCA version, BlueField/firmware, JSON policy, worker/queue/burst config) that makes a Kops/sec number defensible. Trigger even when the user does not explicitly mention \"doca-flow-perf\" \u2014 typical implicit phrasings include \"how many rules per second can my BlueField insert\", \"5-tuple hairpin rule rate\", \"Kops/sec for steering\", \"flow-perf number does not match release notes\", \"DPDK vs DOCA benchmark\", or \"rule-install variance too high\". Refuse and route elsewhere for optimizing a live Flow app (doca-flow-tune), the DPA-offloaded path (doca-flow-dpa-perf), dataplane throughput or latency, or library-internal pipe semantics \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "doca-flow-tune",
+   "identifier": "NVIDIA/skills/skills/doca-flow-tune",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is tuning a live or captured `doca-flow` pipeline with `doca_flow_tune` \u2014 snapshotting pipe / counter / KPI state, picking a tuning axis (rule placement, resource hints / table sizing, HW-offload mode) and a matching measurement (rule-install rate, lookup latency, hardware-counter delta), running offline or online (read-only or state-changing) modes, reading the dumper CSV / analyze JSON / visualize mermaid, or applying a recommendation back into the Flow program. Trigger even when the user does not explicitly mention \"doca_flow_tune\" \u2014 typical implicit phrasings include \"Flow rule-install rate is low on BlueField\", \"table sizing looks wrong for this pipe\", \"tune visualize step is empty\", \"before/after counters don't move\", or \"which doca-flow knob does this recommendation hit\". Refuse and route elsewhere for measuring baseline numbers (doca-flow-perf, doca-flow-dpa-perf), writing the doca-flow application, DOCA install, or streaming Flow telemetry \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "doca-gpunetio-ib-write-bw",
+   "identifier": "NVIDIA/skills/skills/doca-gpunetio-ib-write-bw",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is building, running, or interpreting the doca/tools/gpunetio_ib_write_bw client+server benchmark \u2014 a CUDA kernel on the server posts RDMA WRITE work requests through the doca-gpunetio device-side surface to measure sustained GPU-driven WRITE bandwidth on a GPU+IB-device pair. Trigger even when the user does not explicitly mention \"doca-gpunetio-ib-write-bw\" or \"GPUNetIO\" \u2014 typical implicit phrasings include \"measure WRITE BW when the GPU posts the WRs\", \"BW swings between runs on the same flags\", \"is the NIC saturated or am I CPU-bound on the CUDA kernel\", \"meson compile fails for the GPUNetIO bw tool\", \"nvidia_peermem isn't picking up my GPU buffer\", or \"GPU-initiated WRITE throughput vs CPU-initiated perftest\". Refuse and route elsewhere for general doca-gpunetio library work, DOCA install, the GPU-initiated WRITE latency analog, the CPU-initiated upstream perftest, or application-level end-to-end throughput \u2014 those belong to other skills.\n"
+  },
+  {
+   "name": "doca-gpunetio-ib-write-lat",
+   "identifier": "NVIDIA/skills/skills/doca-gpunetio-ib-write-lat",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is measuring GPU-kernel-initiated RDMA WRITE latency through doca-gpunetio \u2014 building and running the `gpunetio_ib_write_lat` client + server pair under `doca/tools/gpunetio_ib_write_lat/`, checking GPU-NIC pairing, reading the half-iter / full-iter / CUDA-side usec columns, characterizing median / p99 / jitter for a real-time control loop, picking GPUNetIO vs GPI vs CPU-initiated `perftest`, or weighing the latency-vs-batching trade-off. Trigger even without 'GPUNetIO' or 'ib_write_lat': 'GPU kernel RDMA latency benchmark', 'how fast can a CUDA kernel post a WRITE', 'p99 RDMA latency on H100 + ConnectX', 'kernel-launched WR tail latency', or 'compare GPU-init vs CPU-init perftest'. Route elsewhere for bandwidth runs (doca-gpunetio-ib-write-bw), the GPI surface (doca-gpi), library debugging (doca-gpunetio), or DOCA install.\n"
+  },
+  {
+   "name": "doca-spcx-cc",
+   "identifier": "NVIDIA/skills/skills/doca-spcx-cc",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when the user is invoking `doca_spcx_cc` (the host-side CLI under /opt/mellanox/doca/tools/) to load, parameterize, start, observe, or stop a Programmable Congestion Control (SPCX) algorithm on a BlueField with a DPA processor against a live RDMA / RoCE fabric, or picking SPCX vs the established `doca-pcc` surface. Trigger even when the user does not say \"DOCA SPCX\" or \"doca_spcx_cc\" \u2014 typical implicit phrasings include \"I want to write a custom RTT-based CC algorithm for my RoCE fabric\", \"my SPCX session loaded but throughput / latency didn't change\", \"doca_pcc status shows Active but factory CC seems to still be in charge\", \"DOCA_PCC_PS_ERROR on start\", \"is the programmable-CC surface available on my install\", or \"DPA-side algorithm image won't load\". Refuse and route elsewhere for DPA-side algorithm authoring detail, factory PCC firmware configuration, read-only PCC counter inspection, raw DPA cycle profiling, RDMA library programming, or general DOCA install \u2014 those belong to other skills.\n"
+  }
+ ],
+ "resource": [
+  {
+   "name": "fastmcp",
+   "identifier": "official/mcp/fastmcp",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Build, test, and deploy Python MCP servers."
+  },
+  {
+   "name": "resource-curator",
+   "identifier": "skills-sh/leonardomso/33-js-concepts/resource-curator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from leonardomso/33-js-concepts"
+  },
+  {
+   "name": "resource-scout",
+   "identifier": "skills-sh/nicepkg/ai-workflow/resource-scout",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from nicepkg/ai-workflow"
+  },
+  {
+   "name": "resources-page-generator",
+   "identifier": "skills-sh/kostja94/marketing-skills/resources-page-generator",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from kostja94/marketing-skills"
+  },
+  {
+   "name": "Resource 2 NAS",
+   "identifier": "resource-2-nas",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when a user asks to search for movie, TV, animation, or other media resources; provides a Quark/Baidu share link to save; wants to verify saved resources..."
+  },
+  {
+   "name": "Resource Hunter",
+   "identifier": "resource-hunter",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Find the best public route to pan links, magnets, torrents, and public video URLs for movies, TV, anime, music, software, and books. Uses layered success-fir..."
+  },
+  {
+   "name": "Resource Integration Hierarchy",
+   "identifier": "resource-integration-hierarchy",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Activate when: user says 'I feel stuck at a ceiling in my role,' 'what separates good managers from great ones,' 'why can't we solve this class of problem,'..."
+  },
+  {
+   "name": "Resource Leak",
+   "identifier": "resource-leak",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Files, sockets, subscriptions, or other finite resources are acquired without a guaranteed release path."
+  },
+  {
+   "name": "Resource Position Analysis",
+   "identifier": "resource-position-analysis",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze conversion funnel data for frontend resource positions (banners, cards, popups) from exposure, click, and business conversion dimensions. Decompose d..."
+  },
+  {
+   "name": "Resource-Time Compression",
+   "identifier": "resource-time-compression",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Activate when: user says 'this will take years', 'we need to build this from scratch', 'we don't have the resources to move faster', 'how do we compress our..."
+  }
+ ],
+ "embedded linux": [],
+ "systemd": [
+  {
+   "name": "doca-bare-metal-deployment",
+   "identifier": "NVIDIA/skills/skills/doca-bare-metal-deployment",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill for launching, supervising, debugging, OR platform lifecycle on a BlueField \u2014 BFB install, RShim/TMFIFO, host PF rebind, post-BFB recovery \u2014 taking a DOCA-linked binary to a healthy run directly on hardware (host x86 + BlueField NIC over PCIe, or BlueField Arm bare-metal). No container, no kubelet. Covers launch mode (direct, tmux, systemd), PCI/NUMA/ CPU/IRQ binding, co-tenant isolation (cgroup-v2/netns/numactl), a seven-layer error taxonomy, and a six-state BlueField lifecycle classifier. Trigger even when user does not say \"bare-metal\" \u2014 implicit phrasings include \"binary exits 1 right after launch\", \"systemd keeps restarting it\", \"no matching device on the BF\", \"bfb-install exited 0 but DPU is dead\", \"ping 192.168.100.2 works but ssh fails\", \"host PFs aren't showing netdevs\". Mutating-step meta-policy (firmware burn, mlxconfig set, kernel boot params) is doca-hardware-safety, loaded alongside; container deployment, library APIs, env prep, and binary build belong to other skills.\n"
+  },
+  {
+   "name": "Systemd",
+   "identifier": "systemd",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Systemd reference tool. Use when working with systemd in sysops contexts."
+  },
+  {
+   "name": "Systemd Unit Generator",
+   "identifier": "systemd-unit-generator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Generate, validate, and lint systemd unit files (.service, .timer, .socket, .mount) with hardening and best practices."
+  },
+  {
+   "name": "Securely interact with Bitwarden/Vaultwarden vaults using rbw CLI. Use when retrieving credentials, managing vault items, or integrating secrets into scripts/systemd services. Handles authentication, field access, and non-interactive operation patterns.",
+   "identifier": "rbw",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Securely interact with Bitwarden/Vaultwarden vaults using rbw CLI. Use when retrieving credentials, managing vault items, or integrating secrets into scripts..."
+  },
+  {
+   "name": "Admin Cli",
+   "identifier": "admin-cli",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Command-line tool for performing system updates, restarting systemd services, and checking OS status with elevated privileges."
+  },
+  {
+   "name": "Calibre Ebooks",
+   "identifier": "calibre-ebooks",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "calibre-ebooks is an OpenClaw skill for querying and operating a local Calibre library through a local Books API and helper scripts. It works only with books already available in the configured Calibre library and does not download, search, or add books from external sources. The project includes agent workflow guidance, a Python API client, a FastAPI server, semantic RAG support, systemd services, and local environment-based configuration."
+  },
+  {
+   "name": "Cloudflare Open WebUI Tunnel Operator",
+   "identifier": "cloudflare-openwebui-tunnel-operator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Create and maintain a Cloudflare Tunnel for Open WebUI using a 1Password-managed API token, Docker runtime, and optional systemd persistence. \u4f7f\u7528 1Password \u7ba1\u7406..."
+  },
+  {
+   "name": "Conflict Coordination",
+   "identifier": "conflict-coordination",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Mechanism conflict detection and coordination for AI assistant systems. Automatically detects crontab conflicts, systemd service conflicts, script overlaps,..."
+  },
+  {
+   "name": "Cron & Scheduling",
+   "identifier": "cron-scheduling",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Schedule and manage recurring tasks with cron and systemd timers. Use when setting up cron jobs, writing systemd timer units, handling timezone-aware scheduling, monitoring failed jobs, implementing retry patterns, or debugging why a scheduled task didn't run."
+  },
+  {
+   "name": "Cron \u8bc4\u4f30\u5668",
+   "identifier": "cron-evaluator-zh",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Cron \u8bc4\u4f30\u5668 \u2014 \u5206\u6790\u548c\u8bc4\u5206 cron \u4efb\u52a1\uff0c\u7528\u4e8e\u5065\u5eb7\u68c0\u67e5\u3001\u8d44\u6e90\u4f7f\u7528\u3001\u51b2\u7a81\u68c0\u6d4b\u548c\u5f39\u6027\u6539\u8fdb\u3002 \u4f7f\u7528\u573a\u666f\uff1a(1) \u5ba1\u8ba1 cron \u4efb\u52a1\uff0c(2) \u68c0\u6d4b\u65f6\u95f4\u51b2\u7a81\uff0c(3) \u4f18\u5316 cron \u6027\u80fd\uff0c(4) \u89c4\u5212 systemd \u8fc1\u79fb\u3002"
+  }
+ ],
+ "sql injection": [
+  {
+   "name": "SQL Injection Testing",
+   "identifier": "sql-injection-testing",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Perform authorized security tests to detect, exploit, and validate defenses against SQL injection vulnerabilities in web applications."
+  },
+  {
+   "name": "ClawSafe",
+   "identifier": "clawsafe",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Multi-layer security detector for AI agents. Blocks prompt injection, jailbreak, XSS, SQL injection, API key leaks, supply chain attacks, and deployment vuln..."
+  },
+  {
+   "name": "Firm Security Audit",
+   "identifier": "firm-security-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit de s\u00e9curit\u00e9 proactif des d\u00e9ploiements OpenClaw. D\u00e9tecte et rem\u00e9die aux 4 gaps critiques/hauts identifi\u00e9s dans openclaw/openclaw : SQL injection (C1), s..."
+  },
+  {
+   "name": "GI Security Audit",
+   "identifier": "gi-security-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit code for security issues - sensitive data exposure, dependency vulnerabilities, SQL injection, hardcoded secrets. Use when the user asks for security c..."
+  },
+  {
+   "name": "Security Auditor",
+   "identifier": "security-auditor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when reviewing code for security vulnerabilities, implementing authentication flows, auditing OWASP Top 10, configuring CORS/CSP headers, handling secrets, input validation, SQL injection prevention, XSS protection, or any security-related code review."
+  },
+  {
+   "name": "Vigil",
+   "identifier": "vigil",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI agent safety guardrails for tool calls. Use when (1) you want to validate agent tool calls before execution, (2) building agents that run shell commands, file operations, or API calls, (3) adding a safety layer to any MCP server or agent framework, (4) auditing what your agents are doing. Catches destructive commands, SSRF, SQL injection, path traversal, data exfiltration, prompt injection, and credential leaks. Zero dependencies, under 2ms."
+  }
+ ],
+ "code security": [
+  {
+   "name": "Code Security",
+   "identifier": "code-security",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Review code for security risks like injection, auth flaws, sensitive data leaks, and recommend precise, actionable fixes with risk levels and patches."
+  },
+  {
+   "name": "Code Security Audit",
+   "identifier": "code-security-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Comprehensive code security audit toolkit combining OWASP Top 10 vulnerability scanning, dependency analysis, secret detection, SSL/TLS verification, AI Agen..."
+  },
+  {
+   "name": "Code Security Auditor",
+   "identifier": "code-security-auditor",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Comprehensive code security audit with AI-powered vulnerability detection. Covers OWASP Top 10, dependency scanning, secret detection, SAST, and provides act..."
+  },
+  {
+   "name": "Code Security Check - \u4ee3\u7801\u4ed3\u5e93\u5b89\u5168\u5ba1\u8ba1",
+   "identifier": "code-security-check",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit the current project for sensitive information leaks before pushing to public repositories. This skill should be used when the user asks to check for se..."
+  },
+  {
+   "name": "Code Security Checks",
+   "identifier": "axodus-security-checks",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Perform security reviews of code to detect secrets exposure, auth issues, injection risks, unsafe dependencies, and improper execution paths."
+  },
+  {
+   "name": "Claude Code Security Scan",
+   "identifier": "claude-code-security-scan",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Audit Claude Code configuration for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Scans settings, MCP servers, hooks, a..."
+  },
+  {
+   "name": "Audit Code",
+   "identifier": "audit-code",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Security-focused code review for hardcoded secrets, dangerous calls, and common vulnerabilities"
+  },
+  {
+   "name": "Claude\u7ed9\u4e2d\u56fd\u7528\u6237\u7684\"\u6807\u8bb0\"\u626b\u63cf\u5668",
+   "identifier": "claude-code-unicode-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u68c0\u67e5\u672c\u673a Claude Code \u4e8c\u8fdb\u5236\u662f\u5426\u542b\u6709\u5411\u7cfb\u7edf\u63d0\u793a\u8bcd\u65e5\u671f\u884c\u6ce8\u5165\u8fd1\u4e0d\u53ef\u89c1 Unicode \u6487\u53f7\uff08U+2019/U+02BC/U+02B9\uff09\u7684\u9690\u5199\u6807\u8bb0\u4ee3\u7801\uff0c\u5e76\u5728\u53d7\u5f71\u54cd\u65f6\u5347\u7ea7\u5230\u5e72\u51c0\u7248\u672c\u3002\u53d7\u5f71\u54cd\u533a\u95f4 v2.1.193\u20132.1.196\uff0cv2.1.197 \u8d77\u5df2\u56de\u6eda\u3002"
+  },
+  {
+   "name": "Linux Firewall Hardening",
+   "identifier": "linux-firewall-hardening",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Safe Linux firewall hardening with backend detection, idempotent atomic rules, rollback protection, and AI-executable state-machine workflows. Covers ufw, fi..."
+  },
+  {
+   "name": "Otc Confirmation",
+   "identifier": "otc-confirmation",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "One-Time Confirmation code security mechanism for sensitive agent operations. Generates a cryptographically secure single-use code, delivers it via a private..."
+  }
+ ],
+ "secure python": [
+  {
+   "name": "Secure Python Code Sandbox",
+   "identifier": "secure-python-code-sandbox",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Secure Python Code Sandbox: Execute arbitrary Python code in an isolated sandbox with pre-installed libraries (requests, NumPy, pandas). Returns stdout, stde..."
+  },
+  {
+   "name": "Senior Python Developer",
+   "identifier": "senior-python-developer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Senior Python Developer operating in strict mode. Produces production-ready, statically typed, secure Python code for containerized architectures, microservi..."
+  }
+ ],
+ "python security": [
+  {
+   "name": "AI Code Review",
+   "identifier": "qf-code-review",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides detailed, prioritized code review feedback on security, performance, correctness, and maintainability issues for multiple major programming languages."
+  },
+  {
+   "name": "Argus Lite \u2014 Code Scanner (Free)",
+   "identifier": "argus-lite",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Argus Lite \u00e2\u0080\u0094 Code Scanner (Free). Scan a single Python file for the top 10 most critical security and bug patterns. A free preview of what Argus Pro does f..."
+  },
+  {
+   "name": "Argus Pro \u2014 Code Intelligence Scanner",
+   "identifier": "argus-pro",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Argus Pro \u00e2\u0080\u0094 Code Intelligence Scanner. Scan Python and JavaScript codebases with 40+ rules covering security, bugs, performance, and code quality. Get prio..."
+  },
+  {
+   "name": "Claw Code Suite (Python-Only Edition)",
+   "identifier": "claw-code-suite-clean",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Python-only integration of Claw Code harness engineering project with OpenClaw. Provides access to 184 tools and 200+ commands for security analysis, code qu..."
+  },
+  {
+   "name": "KlausNomi",
+   "identifier": "klausnomi",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Engage in conversations with Nomi AI companions via the bundled Python CLI."
+  },
+  {
+   "name": "Synapse Layer",
+   "identifier": "synapse-layer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides persistent, encrypted AI agent memory with a 4-layer security pipeline for storing, retrieving, sharing, and analyzing agent memories."
+  },
+  {
+   "name": "python-code-analyz",
+   "identifier": "python-code-analyz",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4e13\u4e1aPython\u4ee3\u7801\u5206\u6790\u4e0e\u4f18\u5316\uff0c\u652f\u6301\u8bed\u6cd5\u68c0\u67e5\u3001\u5b89\u5168\u626b\u63cf\u3001\u6027\u80fd\u8bc4\u4f30\u3001\u590d\u6742\u5ea6\u5206\u6790\u53ca\u91cd\u6784\u540e\u7684\u4f18\u5316\u4ee3\u7801\u751f\u6210\u3002"
+  }
+ ],
+ "flake": [
+  {
+   "name": "CI Flake Triage",
+   "identifier": "ci-flake-triage",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detect flaky tests from JUnit XML retries and emit a triage report with top unstable cases."
+  },
+  {
+   "name": "GitHub Actions Step Flake Audit",
+   "identifier": "github-actions-step-flake-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Detect flaky GitHub Actions job steps by finding mixed success/failure conclusions across runs."
+  },
+  {
+   "name": "Jarvis Ci Flake Hunter 01",
+   "identifier": "jarvis-ci-flake-hunter-01",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Track and reduce flaky tests with deterministic isolation. Use when handling development work that needs repeatable steps, quality gates, and practical outputs."
+  },
+  {
+   "name": "neo4j-snowflake-graph-analytics-skill",
+   "identifier": "skills-sh/neo4j-contrib/neo4j-skills/neo4j-snowflake-graph-analytics-skill",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from neo4j-contrib/neo4j-skills"
+  },
+  {
+   "name": "snowflake",
+   "identifier": "skills-sh/adobe/skills/snowflake",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from adobe/skills"
+  },
+  {
+   "name": "snowflake-dbt-airbnb-analytics",
+   "identifier": "skills-sh/aradotso/data-skills/snowflake-dbt-airbnb-analytics",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aradotso/data-skills"
+  },
+  {
+   "name": "snowflake-platform",
+   "identifier": "skills-sh/jezweb/claude-skills/snowflake-platform",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from jezweb/claude-skills"
+  },
+  {
+   "name": "snowflake-semanticview",
+   "identifier": "skills-sh/github/awesome-copilot/snowflake-semanticview",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from github/awesome-copilot"
+  },
+  {
+   "name": "streamlit-snowflake",
+   "identifier": "skills-sh/jezweb/claude-skills/streamlit-snowflake",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from jezweb/claude-skills"
+  },
+  {
+   "name": "triage-ci-flake",
+   "identifier": "skills-sh/payloadcms/payload/triage-ci-flake",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from payloadcms/payload"
+  }
+ ],
+ "pyright": [
+  {
+   "name": "algorithmic-art",
+   "identifier": "anthropics/skills/skills/algorithmic-art",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations."
+  },
+  {
+   "name": "canvas-design",
+   "identifier": "anthropics/skills/skills/canvas-design",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
+  },
+  {
+   "name": "AI Copyright Skill",
+   "identifier": "ai-copyright-skill",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "AI-native IP skill: generate patent applications, software copyright materials, or technical disclosures from AI project code/papers/docs, with direct Word a..."
+  },
+  {
+   "name": "Copyright",
+   "identifier": "copyright",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "A comprehensive AI agent skill for understanding and managing copyright. Helps creators protect their work, understand what copyright covers and what it does..."
+  },
+  {
+   "name": "Copyright Registration Helper",
+   "identifier": "copyright-registration-helper",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u9762\u5411\u4e2a\u4eba\u521b\u4f5c\u8005\u548c\u4e2d\u5c0f\u4f01\u4e1a\uff0c\u63d0\u4f9b\u8457\u4f5c\u6743\u767b\u8bb0\u7684\u5168\u6d41\u7a0b\u8f85\u52a9\u3002\u5224\u65ad\u4f5c\u54c1\u7c7b\u578b\uff08\u6587\u5b57/\u7f8e\u672f/\u6444\u5f71/\u97f3\u4e50/\u8f6f\u4ef6/\u89c6\u542c\u7b49\uff09\uff0c\u81ea\u52a8\u751f\u6210\u767b\u8bb0\u7533\u8bf7\u4e66\u3001\u4f5c\u54c1\u8bf4\u660e\u4e66\u3001\u6743\u5229\u4fdd\u8bc1\u4e66\u7b49\u6587\u4e66\uff0c\u63d0\u4f9b\u767b\u8bb0\u6d41\u7a0b\u3001\u8d39\u7528\u3001\u65f6\u95f4\u5468\u671f\u7b49\u6d41\u7a0b\u5bfc\u822a\u3002\u5f53\u7528\u6237\u63d0\u5230\u8457\u4f5c\u6743\u767b\u8bb0\u3001\u7248\u6743\u767b\u8bb0\u3001\u4f5c\u54c1\u767b\u8bb0\u3001\u7248\u6743\u6ce8\u518c\u3001\u8457\u4f5c\u6743\u7533\u8bf7\u3001\u4f5c\u54c1\u8457\u4f5c\u6743\u3001\u8f6f\u8457\u767b\u8bb0\u3001\u7248\u6743\u4fdd\u62a4\u7b49\u9700\u6c42\u65f6\u4f7f\u7528\u6b64\u6280\u80fd\u3002"
+  },
+  {
+   "name": "Software Copyright Cn",
+   "identifier": "software-copyright-cn",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4e2d\u56fd\u8ba1\u7b97\u673a\u8f6f\u4ef6\u8457\u4f5c\u6743\u767b\u8bb0\u7533\u8bf7\u6750\u6599\u751f\u6210\u5668\u3002\u7528\u4e8e\u751f\u6210\u8f6f\u8457\u7533\u8bf7\u6240\u9700\u7684\u5168\u90e8\u6750\u6599\uff0c\u5305\u62ec\u8f6f\u4ef6\u57fa\u672c\u4fe1\u606f\u8868\u5355\u586b\u5199\u3001\u7a0b\u5e8f\u9274\u522b\u6750\u6599PDF\uff08\u6e90\u4ee3\u7801\u8bed\u6cd5\u9ad8\u4eae\uff09\u3001\u6587\u6863\u9274\u522b\u6750\u6599PDF\uff08\u7528\u6237\u624b\u518c\uff09\u3002\u5f53\u7528\u6237\u63d0\u5230\"\u8f6f\u8457\"\u3001\"\u8f6f\u4ef6\u8457\u4f5c\u6743\"\u3001\"\u8457\u4f5c\u6743\u767b\u8bb0\"\u3001\"\u7248\u6743\u767b\u8bb0\"\u3001\"\u8f6f\u8457\u7533\u8bf7\"\u3001\"copyright registration\"\u65f6\u4f7f\u7528\u6b64\u6280\u80fd\u3002"
+  },
+  {
+   "name": "software-copyright",
+   "identifier": "software-copyright-doc-generator",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u7528\u4e8e\u751f\u6210\u8f6f\u4ef6\u8457\u4f5c\u6743\u7533\u8bf7\u76f8\u5173\u6587\u6863\u7684\u5de5\u5177\u3002\u5f53\u7528\u6237\u9700\u8981\u586b\u5199\u8f6f\u4ef6\u8457\u4f5c\u6743\u767b\u8bb0\u8868\u3001\u751f\u6210\u8f6f\u4ef6\u8bf4\u660e\u4e66\u3001\u521b\u5efa\u6280\u672f\u6587\u6863\u3001\u51c6\u5907\u8f6f\u8457\u7533\u8bf7\u6750\u6599\u65f6\u4f7f\u7528\u3002\u652f\u6301\u4e2d\u56fd\u8f6f\u4ef6\u8457\u4f5c\u6743\u767b\u8bb0\u6240\u9700\u7684\u5404\u7c7b\u6587\u6863\u6a21\u677f\u548c\u4fe1\u606f\u6536\u96c6\u3002"
+  },
+  {
+   "name": "CamScanner Add Watermark",
+   "identifier": "camscanner-watermark-image",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use CamScanner to add a tiled text watermark across an entire image. Triggers on \"add watermark to image\", \"watermark image\", \"add copyright text to image\",..."
+  },
+  {
+   "name": "Canvas Design",
+   "identifier": "canvas-design-2",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
+  },
+  {
+   "name": "CodeByteLens \u2014 \u4ee3\u7801\u667a\u80fd\u5206\u6790\u955c",
+   "identifier": "codebytelens",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4ee3\u7801\u667a\u80fd\u5206\u6790\u5de5\u5177\u7bb1\u3002\u53d7 Claude Code LSPTool \u8bbe\u8ba1\u6a21\u5f0f\u542f\u53d1\uff0c\u4f46\u4f7f\u7528 100% \u5f00\u6e90\u5de5\u5177\uff1aripgrep (\u641c\u7d22)\u3001pyright (Python \u7c7b\u578b\u68c0\u67e5)\u3001tree-sitter (AST \u89e3\u6790)\u3002\u4e0d\u9700\u8981 LSP \u670d\u52a1\u5668\uff0c\u5f00\u7bb1\u5373\u7528\u3002"
+  }
+ ],
+ "stress test": [
+  {
+   "name": "Firesale Stress Test",
+   "identifier": "firesale-stress-test",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u6267\u884c\u94f6\u884c\u7cfb\u7edf\u7ea7\u538b\u529b\u6d4b\u8bd5\uff0c\u57fa\u4e8eEBA 2018\u771f\u5b9e\u6570\u636e\u8ba1\u7b97CET1\u6bd4\u7387\u4e0e\u6760\u6746\u7387\uff0c\u6a21\u62dffiresale\u60c5\u666f\u4e0b\u8d44\u4ea7\u8d1f\u503a\u8868\u97e7\u6027\u3002"
+  },
+  {
+   "name": "AI Risk Assessment",
+   "identifier": "aigc-risk-assessment",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Provides portfolio risk metrics, stress testing, and position management advice using VaR, CVaR, volatility, Beta, Sharpe ratio, and Kelly formula."
+  },
+  {
+   "name": "Alibabacloud Pts Ops",
+   "identifier": "alibabacloud-pts-ops",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Alibaba Cloud PTS (Performance Testing Service) scenario-based skill for creating and managing stress testing scenarios. Supports both PTS native HTTP/HTTPS..."
+  },
+  {
+   "name": "Easy run test",
+   "identifier": "basjoofan",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Use when user needs to run api test, performance test, load test, stress test, http test etc. \u5f53\u7528\u6237\u9700\u8981\u8fd0\u884c\u63a5\u53e3\u6d4b\u8bd5\u3001\u6027\u80fd\u6d4b\u8bd5\u3001\u8d1f\u8f7d\u6d4b\u8bd5\u3001\u538b\u529b\u6d4b\u8bd5\u3001HTTP\u6d4b\u8bd5\u7b49\u65f6\u4f7f\u7528\u3002 \u89e6\u53d1\u8bcd: \u63a5\u53e3\u6d4b\u8bd5\u3001API\u6d4b\u8bd5\u3001\u6027\u80fd\u6d4b\u8bd5\u3001\u8d1f\u8f7d\u6d4b..."
+  },
+  {
+   "name": "Einstein Research \u2014 Portfolio Risk Analyzer",
+   "identifier": "einstein-research-portfolio-risk-dv",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Performs a comprehensive, portfolio-level risk analysis. Calculates VaR (Value at Risk), max drawdown, correlation matrix, stress tests against historical cr..."
+  },
+  {
+   "name": "Morgana Mordred Security Sandbox",
+   "identifier": "mordred-security-sandbox",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Performs semantic security analysis and stress testing of AI agents using vector embeddings and multi-node defense strategies."
+  },
+  {
+   "name": "Oraclaw Risk",
+   "identifier": "oraclaw-risk",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Risk assessment engine for AI agents. Value at Risk (VaR), CVaR, stress testing, and multi-factor risk scoring. Monte Carlo powered. Built for trading agents..."
+  },
+  {
+   "name": "Performance Testing Toolkit",
+   "identifier": "performance-testing-toolkit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "\u4f01\u4e1a\u7ea7\u6027\u80fd\u6d4b\u8bd5\u5de5\u5177\u5305\uff0c\u652f\u6301HTTP\u63a5\u53e3\u538b\u6d4b\u3001\u8d1f\u8f7d\u6d4b\u8bd5\u3001\u6027\u80fd\u57fa\u51c6\u6d4b\u8bd5\u548c\u62a5\u544a\u751f\u6210\u3002 Enterprise-grade performance testing toolkit supporting HTTP load testing, stress testing, benchmark testing and repo..."
+  },
+  {
+   "name": "Portfolio Risk Analyzer",
+   "identifier": "portfolio-risk-analyzer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyzes crypto portfolios across multiple chains for risk exposures, stress tests, and offers optimization advice with automated $BANKR buyback monetization."
+  },
+  {
+   "name": "Portfolio Risk Analyzer",
+   "identifier": "afrexai-portfolio-risk",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Analyze your portfolio to identify concentration risks, calculate Value at Risk, estimate drawdowns, beta, Sharpe ratio, income, run stress tests, and sugges..."
+  }
+ ],
+ "concurrency": [
+  {
+   "name": "concurrency-debugging",
+   "identifier": "skills-sh/mohitmishra786/low-level-dev-skills/concurrency-debugging",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from mohitmishra786/low-level-dev-skills"
+  },
+  {
+   "name": "concurrency-patterns",
+   "identifier": "skills-sh/aj-geddes/useful-ai-prompts/concurrency-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from aj-geddes/useful-ai-prompts"
+  },
+  {
+   "name": "concurrencyguard",
+   "identifier": "concurrencyguard",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Race condition & concurrency safety analyzer -- detects unprotected shared state, missing locks, TOCTOU vulnerabilities, async/await pitfalls, thread-unsafe..."
+  },
+  {
+   "name": "Async & Concurrency Reviewer",
+   "identifier": "async-concurrency-reviewer",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Reviews async and concurrency code for deadlocks, race conditions, missing cancellation, and misuse across multiple languages, returning detailed fix reports."
+  },
+  {
+   "name": "Go Concurrency Patterns",
+   "identifier": "go-concurrency-patterns",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Production Go concurrency patterns \u2014 goroutines, channels, sync primitives, context, worker pools, pipelines, and graceful shutdown. Use when building concurrent Go applications or debugging race conditions."
+  },
+  {
+   "name": "Go Concurrency Web",
+   "identifier": "go-concurrency-web",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Go concurrency patterns for high-throughput web applications including worker pools, rate limiting, race detection, and safe shared state management. Use whe..."
+  },
+  {
+   "name": "Golang Concurrency",
+   "identifier": "golang-concurrency",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Golang concurrency patterns. Use when writing or reviewing concurrent Go code involving goroutines, channels, select, locks, sync primitives, errgroup, singl..."
+  },
+  {
+   "name": "Phy Concurrency Audit",
+   "identifier": "phy-concurrency-audit",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Static concurrency and race-condition auditor for Go, Java, Python, Node.js/TypeScript. Detects shared-state mutations without locks (Go map races, Java non-..."
+  },
+  {
+   "name": "Swift Concurrency",
+   "identifier": "swift-concurrency",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Expert guidance on Swift Concurrency best practices, patterns, and implementation. Use when developers mention: (1) Swift Concurrency, async/await, actors, o..."
+  },
+  {
+   "name": "Swift Concurrency Expert",
+   "identifier": "swift-concurrency-expert",
+   "source": "clawhub",
+   "trust_level": "community",
+   "description": "Swift Concurrency review and remediation for Swift 6.2+. Use when asked to review Swift Concurrency usage, improve concurrency compliance, or fix Swift concurrency compiler errors in a feature or file."
+  }
+ ],
+ "async": [
+  {
+   "name": "decision-questionnaire",
+   "identifier": "official/productivity/decision-questionnaire",
+   "source": "official",
+   "trust_level": "builtin",
+   "description": "Turn an unanswerable decision into a questionnaire doc."
+  },
+  {
+   "name": "hf-cloud-sagemaker-deployment-planner",
+   "identifier": "huggingface/skills/skills/hf-cloud-sagemaker-deployment-planner",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Plan and coordinate the deployment of a model to Amazon SageMaker AI. Use this skill whenever the user wants to deploy, host, serve, or expose a model on SageMaker or AWS \u2014 including phrases like \"deploy a model\", \"host this LLM on AWS\", \"serve this embedding model\", \"deploy a reranker\", \"deploy a text-to-image / diffusion model\", \"host this for async inference\", \"create an endpoint\", \"serve my fine-tuned model\", or any request that involves making a model available for inference on AWS. Use this even when the user is vague (e.g. \"I just want to get this running on AWS, you figure it out\"). Works for text-generation LLMs, embedding models, rerankers, classifiers, text-to-image / diffusion models \u2014 picks the right serving stack and chooses between real-time and async inference. This is the entry-point skill for SageMaker deployment work \u2014 it asks clarifying questions, picks a deployment pathway, and coordinates the other deployment skills."
+  },
+  {
+   "name": "hf-cloud-sagemaker-production-defaults",
+   "identifier": "huggingface/skills/skills/hf-cloud-sagemaker-production-defaults",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Create a SageMaker endpoint (real-time or async) with autoscaling, CloudWatch alarms, and tagging enabled by default. Use this skill whenever about to create a SageMaker endpoint, write deployment code that calls `create_endpoint`, or finalize a deployment after the image URI and IAM role are known. Provides deploy.py for real-time endpoints and deploy_async.py for async endpoints (with genuine scale-to-zero support). This is the last step in the SageMaker deployment workflow. Never generate a bare `create_endpoint` call without these defaults \u2014 endpoints without autoscaling or alarms are demos, not deployments."
+  },
+  {
+   "name": "nemo-relay-instrument-context-isolation",
+   "identifier": "NVIDIA/skills/skills/nemo-relay-instrument-context-isolation",
+   "source": "github",
+   "trust_level": "trusted",
+   "description": "Use this skill when concurrent requests, async tasks, threads, workers, goroutines, or agents need independent NeMo Relay scope stacks and correct ancestry propagation."
+  },
+  {
+   "name": "async-io-model",
+   "identifier": "skills-sh/tursodatabase/turso/async-io-model",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from tursodatabase/turso"
+  },
+  {
+   "name": "async-pr-review",
+   "identifier": "skills-sh/google-gemini/gemini-cli/async-pr-review",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from google-gemini/gemini-cli"
+  },
+  {
+   "name": "async-programming",
+   "identifier": "skills-sh/martinholovsky/claude-skills-generator/async-programming",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from martinholovsky/claude-skills-generator"
+  },
+  {
+   "name": "async-python-patterns",
+   "identifier": "skills-sh/wshobson/agents/async-python-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from wshobson/agents"
+  },
+  {
+   "name": "async-python-patterns",
+   "identifier": "skills-sh/sickn33/antigravity-awesome-skills/async-python-patterns",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills"
+  },
+  {
+   "name": "async-repl-protocol",
+   "identifier": "skills-sh/parcadei/continuous-claude-v3/async-repl-protocol",
+   "source": "skills.sh",
+   "trust_level": "community",
+   "description": "Indexed by skills.sh from parcadei/continuous-claude-v3"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=AWSO_BSPT habit tracker (watch loop, GUI attach on display)
+After=network.target
+
+[Service]
+ExecStart=/opt/awso/habitctl watch
+Restart=on-failure
+RestartSec=10
+# Hardening for an internet-adjacent battery device
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ReadWritePaths=/opt/awso
+
+[Install]
+WantedBy=graphical.target
