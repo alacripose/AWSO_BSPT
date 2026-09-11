@@ -18,6 +18,16 @@ ApplicationWindow {
 
     // kiosk: fullscreen + screensaver; desktop: normal window
     property bool isKiosk: Bridge.kiosk
+    property int updatesNew: 0          // unviewed releases (badge on tab pill)
+    property var openHabit: null        // detail popup state: habit_detail dict
+    property var releasesData: []       // Updates tab: changelog bubbles
+    function releasesModel_newCount() {
+        // unviewed = rows flagged new by the core (above last-viewed)
+        var n = 0
+        for (var i = 0; i < releasesData.length; i++)
+            if (releasesData[i].new) n++
+        return n
+    }
 
     Component.onCompleted: {
         if (isKiosk) visibility = ApplicationWindow.FullScreen
@@ -68,15 +78,128 @@ ApplicationWindow {
         onPressed: function(mouse) { idleTimer.restart(); mouse.accepted = false }
     }
 
+    // Console verb runner — MUST live at root scope: QML resolves unqualified
+    // names against the root object + document ids only, so a function on an
+    // inner ColumnLayout is invisible to TextField/Button handlers.
+    function runCmd() {
+        if (!consoleIn.text) return
+        consoleOut.append("habitctl> " + consoleIn.text)
+        consoleOut.append(Bridge.runCommand(consoleIn.text))
+        consoleIn.clear()
+        refreshAll()
+    }
+
+    // ---------------- Task detail popup ----------------
+    // A task row click opens the full audit trail: description, checkins with
+    // source attribution (human vs agent:awso-agentd), related events.
+    Rectangle {
+        id: detailOverlay; z: 500
+        anchors.fill: parent; color: "#000000b0"; visible: openHabit !== null
+        MouseArea { anchors.fill: parent  // click backdrop to close
+            onClicked: openHabit = null }
+        Rectangle {
+            visible: openHabit !== null
+            width: Math.min(parent.width - 80, 640); height: Math.min(parent.height - 80, 520)
+            anchors.centerIn: parent; radius: 16; color: T.panel
+            border.color: T.border; border.width: 1
+            ColumnLayout {
+                anchors.fill: parent; anchors.margins: 20; spacing: 12
+                RowLayout { Layout.fillWidth: true; spacing: 10
+                    Text { text: openHabit ? openHabit.name : ""
+                        color: T.text; font.pixelSize: T.h2
+                        font.weight: Font.DemiBold; Layout.fillWidth: true
+                        elide: Text.ElideRight }
+                    Rectangle { radius: 14; color: T.card; border.color: T.border
+                        border.width: 1; Layout.preferredHeight: 28
+                        Layout.preferredWidth: streakLabel.implicitWidth + 24
+                        Text { id: streakLabel; anchors.centerIn: parent
+                            text: openHabit ? "🔥 " + openHabit.streak : ""
+                            color: T.accent; font.pixelSize: T.small
+                            font.weight: Font.Bold } }
+                    Button { text: "✕"; implicitWidth: 40; implicitHeight: 40
+                        background: Rectangle { radius: 20; color: T.card
+                            border.color: T.border; border.width: 1 }
+                        contentItem: Text { text: "✕"; color: T.text
+                            font.pixelSize: T.body; anchors.centerIn: parent }
+                        onClicked: openHabit = null }
+                }
+                Text { visible: openHabit && openHabit.description.length > 0
+                    text: openHabit ? openHabit.description : ""
+                    color: T.muted; font.pixelSize: T.small
+                    wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Text { visible: openHabit
+                    text: openHabit ? (openHabit.cadence + "  ·  " + openHabit.effort
+                        + " effort  ·  " + (openHabit.category || "no category")
+                        + "  ·  due: " + (openHabit.due ? "yes" : "no")) : ""
+                    color: T.muted; font.pixelSize: T.small }
+                Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 1
+                    color: T.border }
+                Text { text: "Check-in history — who did what"
+                    color: T.text; font.pixelSize: T.h3; font.weight: Font.DemiBold }
+                // ListView manages its own contentHeight — no parent/child
+                // size binding chain (those overflowed the JS stack when
+                // combined with the Updates-tab implicit sizes)
+                ListView {
+                    id: checkinList
+                    Layout.fillWidth: true; Layout.fillHeight: true
+                    clip: true; spacing: 8
+                    model: openHabit ? openHabit.checkins : []
+                    delegate: Rectangle {
+                        required property var modelData
+                        width: checkinList.width
+                        // fixed 2-state height: 64 normal, 84 with note
+                        height: modelData.note.length > 0 ? 84 : 64
+                        radius: 10
+                        color: modelData.source === "human"
+                            ? T.card : "#16324a"
+                        border.color: T.border; border.width: 1
+                        ColumnLayout { id: ciCol
+                            anchors.fill: parent; anchors.margins: 10
+                            spacing: 2
+                            RowLayout { spacing: 8; Layout.fillWidth: true
+                                Text { text: modelData.source === "human"
+                                        ? "👤" : "🤖"
+                                    font.pixelSize: T.small }
+                                Text {
+                                    // agent rows show their routine name
+                                    text: modelData.source
+                                    color: modelData.source === "human"
+                                        ? T.text : T.accent
+                                    font.pixelSize: T.small
+                                    font.weight: Font.DemiBold }
+                                Item { Layout.fillWidth: true }
+                                Text { text: modelData.ts.replace("T", " ")
+                                    color: T.muted; font.pixelSize: T.small }
+                            }
+                            Text { visible: modelData.note.length > 0
+                                text: modelData.note; color: T.muted
+                                font.pixelSize: T.small
+                                wrapMode: Text.WordWrap
+                                Layout.fillWidth: true }
+                        }
+                    }
+                    Text { visible: openHabit && openHabit.checkins.length === 0
+                        text: "No checkins yet."
+                        color: T.muted; font.pixelSize: T.small; padding: 8 }
+                }
+            }
+        }
+    }
+
     // ---------------- Data ----------------
     Connections { target: Bridge; function onDataChanged() { refreshAll() } }
     Connections { target: Bridge; function onChatChanged() { chatList.model = Bridge.chatModel() } }
-    Timer { interval: 15000; running: true; repeat: true; onTriggered: refreshAll() }
+    // refresh timer: drives refreshAll + presence re-evaluation.
+    // poll() emits dataChanged, which triggers refreshAll via onDataChanged —
+    // so poll must ONLY be called here (never inside refreshAll: recursion).
+    Timer { interval: 15000; running: true; repeat: true
+        onTriggered: { Bridge.poll() } }
     property var dueData: []
     property var deferredData: []
     property var habitsData: []
     property var statsData: []
     property var activityData: []
+    property var sosData: []
     function refreshAll() {
         dueData = Bridge.dueModel()
         deferredData = Bridge.deferredModel()
@@ -84,9 +207,16 @@ ApplicationWindow {
         statsData = Bridge.statsModel()
         eventLog.model = Bridge.activityModel()
         chatList.model = Bridge.chatModel()
-        modeLabel.text = Bridge.mode().toUpperCase()
-        modeLabel.color = T.modeColor(Bridge.mode())
+        sosData = Bridge.sosModel()
+        releasesData = Bridge.releasesModel()
+        updatesNew = releasesModel_newCount()
+        Bridge.syncMode()  // pick up external mode changes (agent CLI writes)
+        // NOTE: no Bridge.poll() here — it emits dataChanged -> refreshAll
+        // -> poll() -> infinite recursion. The refresh Timer calls poll().
+        modeLabel.text = Bridge.mode.toUpperCase()
+        modeLabel.color = T.modeColor(Bridge.mode)
         dueCount.text = String(dueData.length)
+        sosCount.text = sosData.length > 0 ? "🆘 " + sosData.length : ""
         idleTimer.restart()
     }
 
@@ -101,8 +231,26 @@ ApplicationWindow {
             ColumnLayout {
                 anchors.fill: parent; spacing: 0
                 Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 56; color: T.header
-                    Text { anchors.centerIn: parent; text: "💬 Agent"
-                        color: T.text; font.pixelSize: T.h3; font.weight: Font.DemiBold } }
+                    RowLayout { anchors.fill: parent; anchors.leftMargin: 14
+                        anchors.rightMargin: 14; spacing: 8
+                        Text { text: "💬 Agent"; color: T.text
+                            font.pixelSize: T.h3; font.weight: Font.DemiBold }
+                        Item { Layout.fillWidth: true }
+                        // presence: agentd (agentd.py) heartbeats into meta;
+                        // GUI stays a pure view and just reads the stamp
+                        Rectangle {
+                            radius: 12; Layout.preferredHeight: 24
+                            Layout.preferredWidth: statusText.implicitWidth + 20
+                            color: Bridge.agentOnline ? "#123a24" : "#3a2028"
+                            border.color: Bridge.agentOnline ? T.positive : "#e74c3c"
+                            border.width: 1
+                            Text { id: statusText
+                                anchors.centerIn: parent
+                                text: Bridge.agentOnline ? "● ONLINE" : "○ OFFLINE"
+                                color: Bridge.agentOnline ? T.positive : "#e74c3c"
+                                font.pixelSize: T.small; font.weight: Font.DemiBold }
+                        }
+                    } }
                 ListView {
                     id: chatList; Layout.fillWidth: true; Layout.fillHeight: true
                     clip: true; spacing: 6; Layout.margins: 8
@@ -153,59 +301,139 @@ ApplicationWindow {
             Rectangle {
                 Layout.fillWidth: true; Layout.preferredHeight: 64; color: T.header
                 RowLayout {
+                    id: headerRow
                     anchors.fill: parent; anchors.leftMargin: 20; anchors.rightMargin: 20
-                    spacing: 16
-                    Text { text: "AWSO Habit Kiosk"; color: T.text
-                        font.pixelSize: T.h3; font.weight: Font.DemiBold }
-                    Item { Layout.fillWidth: true }
+                    spacing: 12
+                    // Title yields space first (elides before pills ever squeeze)
+                    Text { id: headerTitle; text: "AWSO Habit Kiosk"; color: T.text
+                        font.pixelSize: T.h3; font.weight: Font.DemiBold
+                        elide: Text.ElideRight
+                        Layout.preferredWidth: headerTitle.implicitWidth
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: headerTitle.implicitWidth }
+                    Text {
+                        // build stamp: version + git hash (+• when tree dirty)
+                        text: Bridge.buildStamp; color: T.muted
+                        font.pixelSize: T.small; font.weight: Font.Medium
+                        font.family: T.monoFamily
+                        Layout.minimumWidth: implicitWidth }
+                    Item { Layout.preferredWidth: 12; Layout.fillWidth: true
+                        Layout.minimumWidth: 0 }
                     Repeater {
                         model: ["green", "yellow", "red"]
                         delegate: Button {
                             required property string modelData
                             required property int index
+                            id: modeBtn
                             text: ["🟢", "🟡", "🔴"][index] + " " + modelData.toUpperCase()
-                            implicitHeight: 44; implicitWidth: 110
+                            implicitHeight: 44
+                            implicitWidth: Math.max(84, modeBtn.implicitContentWidth + 28)
+                            Layout.preferredWidth: modeBtn.implicitWidth
                             background: Rectangle {
                                 radius: 22
-                                color: Bridge.mode() === modelData
+                                // Bridge.mode is a notify-property now —
+                                // re-evaluates on every setMode
+                                color: Bridge.mode === modelData
                                     ? T.modeColor(modelData) : T.card
                                 border.width: 1; border.color: T.border }
                             contentItem: Text { text: parent.text; color: "white"
                                 font.pixelSize: T.small; font.weight: Font.DemiBold
+                                horizontalAlignment: Text.AlignHCenter
                                 anchors.centerIn: parent }
                             onClicked: { Bridge.setMode(modelData); refreshAll() } } }
-                    Item { width: 12 }
+                    Item { Layout.preferredWidth: 12; Layout.minimumWidth: 12 }
                     Text { id: dueCount; color: T.accent; font.pixelSize: T.h2
-                        font.weight: Font.Bold }
+                        font.weight: Font.Bold
+                        Layout.minimumWidth: implicitWidth }
                     Text { text: "due"; color: T.muted; font.pixelSize: T.small
-                        font.weight: Font.Medium }
+                        font.weight: Font.Medium
+                        Layout.minimumWidth: implicitWidth }
+                    Text { id: sosCount; color: "#e74c3c"; font.pixelSize: T.body
+                        font.weight: Font.Bold
+                        Layout.maximumWidth: implicitWidth
+                        visible: text.length > 0 }
                 }
             }
 
-            // Tabs
+            // Tabs — custom pill bar (stock TabBar looked dated)
+            Rectangle {
+                id: tabBarBg
+                Layout.fillWidth: true; Layout.preferredHeight: 56
+                color: T.header
+                RowLayout {
+                    id: tabBarRow
+                    anchors.fill: parent
+                    anchors.leftMargin: 16; anchors.rightMargin: 16
+                    spacing: 8
+                    Repeater {
+                        id: tabRepeater
+                        model: ["Today", "Habits", "Telemetry", "Updates", "Console"]
+                        delegate: Rectangle {
+                            required property string modelData
+                            required property int index
+                            id: tabPill
+                            Layout.preferredHeight: 40
+                            Layout.preferredWidth: tabLabel.implicitWidth + 36
+                            radius: 20
+                            color: tabBar.currentIndex === tabPill.index
+                                ? T.accent
+                                : (tabHover.containsMouse ? T.hover : T.panel)
+                            border.width: tabBar.currentIndex === tabPill.index ? 0 : 1
+                            border.color: T.border
+                            Behavior on color { ColorAnimation { duration: 150 } }
+                            // NEW-release badge on the Updates tab
+                            Rectangle {
+                                visible: tabPill.index === 3 && updatesNew > 0
+                                width: badgeText.implicitWidth + 12; height: 18
+                                radius: 9; anchors.right: parent.right
+                                anchors.rightMargin: -6; anchors.top: parent.top
+                                anchors.topMargin: -6
+                                color: "#e74c3c"
+                                Text { id: badgeText
+                                    anchors.centerIn: parent
+                                    text: updatesNew; color: "white"
+                                    font.pixelSize: 11; font.weight: Font.Bold }
+                            }
+                            Text { id: tabLabel
+                                anchors.centerIn: parent
+                                text: tabPill.modelData
+                                color: tabBar.currentIndex === tabPill.index
+                                    ? "white" : T.muted
+                                font.pixelSize: T.small
+                                font.weight: tabBar.currentIndex === tabPill.index
+                                    ? Font.DemiBold : Font.Medium
+                                Behavior on color { ColorAnimation { duration: 150 } }
+                            }
+                            MouseArea {
+                                id: tabHover
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                // generous 40px target, whole pill clickable
+                                onClicked: tabBar.currentIndex = tabPill.index
+                            }
+                        }
+                    }
+                    Item { Layout.fillWidth: true }
+                }
+            }
+            // the logical tab bar the StackLayout binds to (custom pills above)
             TabBar {
-                id: tabbar; Layout.fillWidth: true
-                background: Rectangle { color: T.panel }
+                id: tabBar; visible: false; height: 0
                 Repeater {
-                    model: ["Today", "Habits", "Telemetry", "Console"]
-                    delegate: TabButton {
-                        required property string modelData
-                        text: modelData; implicitHeight: 48
-                        contentItem: Text { text: parent.text
-                            color: parent.checked ? T.accent : T.muted
-                            font.pixelSize: T.body
-                            font.weight: parent.checked ? Font.DemiBold : Font.Medium
-                            anchors.centerIn: parent } } }
+                    model: ["Today", "Habits", "Telemetry", "Updates", "Console"]
+                    delegate: TabButton { text: modelData }
+                }
             }
 
             StackLayout {
                 Layout.fillWidth: true; Layout.fillHeight: true
-                currentIndex: tabbar.currentIndex
+                currentIndex: tabBar.currentIndex
 
                 // ============ TODAY ============
                 ScrollView {
+                    id: todayScroll
                     GridLayout {
-                        width: Math.max(parent.width, 900)
+                        width: Math.max(todayScroll.width - 32, 900)
                         columns: 2; columnSpacing: 16; rowSpacing: 16
                         x: 16; y: 16
 
@@ -229,7 +457,14 @@ ApplicationWindow {
                                     clip: true; spacing: 8; model: dueData
                                     delegate: Rectangle {
                                         width: dueList.width; height: 76; radius: 10
-                                        color: T.bg; border.color: T.border; border.width: 1
+                                        color: dueHover.containsMouse ? T.card : T.bg
+                                        border.color: T.border; border.width: 1
+                                        // tap anywhere on the row (not the button)
+                                        // opens the audit-trail detail popup
+                                        MouseArea { id: dueHover
+                                            anchors.fill: parent; hoverEnabled: true
+                                            onClicked: openHabit = Bridge.habitDetail(modelData.id)
+                                            propagateComposedEvents: true }
                                         RowLayout { anchors.fill: parent
                                             anchors.margins: 10; spacing: 12
                                             Text { text: modelData.streak > 0
@@ -244,20 +479,23 @@ ApplicationWindow {
                                                         + modelData.effort
                                                     color: T.muted; font.pixelSize: T.small } }
                                             Button {
+                                                id: checkBtn
                                                 text: "✓ Check"; implicitWidth: 104
                                                 implicitHeight: 44
                                                 background: Rectangle { radius: 22
-                                                    color: pressed ? T.positive : T.accent }
+                                                    color: checkBtn.pressed ? T.positive : T.accent }
                                                 contentItem: Text { text: parent.text
                                                     color: "white"; font.pixelSize: T.small
                                                     font.weight: Font.DemiBold
                                                     anchors.centerIn: parent }
                                                 onClicked: { Bridge.check(modelData.id)
-                                                    refreshAll() } } } }
+                                                    refreshAll() } } }
                                     }
                                     Text { visible: dueList.count === 0
                                         text: "All clear — nothing due."
-                                        color: T.muted; font.pixelSize: T.body; padding: 12 }
+                                        color: T.muted; font.pixelSize: T.body
+                                        width: dueList.width - 24
+                                        wrapMode: Text.WordWrap; padding: 12 }
                                 }
                             }
                         }
@@ -290,7 +528,9 @@ ApplicationWindow {
                                             font.pixelSize: T.small } }
                                     Text { visible: eventLog.count === 0
                                         text: "No activity yet."; color: T.muted
-                                        font.pixelSize: T.small; padding: 12 } } }
+                                        font.pixelSize: T.small
+                                        width: eventLog.width - 24
+                                        wrapMode: Text.WordWrap; padding: 12 } } }
                         }
 
                         // Deferred habits strip
@@ -301,8 +541,14 @@ ApplicationWindow {
                             border.color: T.border; border.width: 1
                             ColumnLayout { anchors.fill: parent; anchors.margins: 16
                                 spacing: 8
-                                Text { text: "Deferred by capacity mode"; color: T.muted
-                                    font.pixelSize: T.body; font.weight: Font.DemiBold }
+                                RowLayout { spacing: 10; Layout.fillWidth: true
+                                    Text { text: "Deferred by capacity mode"; color: T.muted
+                                        font.pixelSize: T.body; font.weight: Font.DemiBold }
+                                    Item { Layout.fillWidth: true }
+                                    Text { visible: sosData.length > 0
+                                        text: "🆘 " + sosData.length + " SOS pending"
+                                        color: "#e74c3c"; font.pixelSize: T.small
+                                        font.weight: Font.Bold } }
                                 ListView {
                                     id: deferList; Layout.fillWidth: true
                                     Layout.preferredHeight: 66; clip: true
@@ -311,6 +557,8 @@ ApplicationWindow {
                                     delegate: Rectangle {
                                         width: 230; height: 60; radius: 10
                                         color: T.card; border.color: T.border
+                                        MouseArea { anchors.fill: parent
+                                            onClicked: openHabit = Bridge.habitDetail(modelData.id) }
                                         Column { anchors.centerIn: parent; spacing: 2
                                             Text { text: modelData.name; color: T.text
                                                 font.pixelSize: T.small
@@ -321,7 +569,9 @@ ApplicationWindow {
                                                 anchors.horizontalCenter: parent.horizontalCenter } } }
                                     Text { visible: deferList.count === 0
                                         text: "Nothing deferred."; color: T.muted
-                                        font.pixelSize: T.small; padding: 12 }
+                                        font.pixelSize: T.small
+                                        width: deferList.width - 24
+                                        wrapMode: Text.WordWrap; padding: 12 }
                                 }
                             }
                         }
@@ -337,7 +587,11 @@ ApplicationWindow {
                             model: habitsData
                             delegate: Rectangle {
                                 width: habitsList.width; height: 88; radius: 12
-                                color: T.card; border.color: T.border; border.width: 1
+                                color: habitsHover.containsMouse ? T.hover : T.card
+                                border.color: T.border; border.width: 1
+                                MouseArea { id: habitsHover
+                                    anchors.fill: parent; hoverEnabled: true
+                                    onClicked: openHabit = Bridge.habitDetail(modelData.id) }
                                 ColumnLayout { anchors.fill: parent
                                     anchors.margins: 12; spacing: 4
                                     RowLayout { spacing: 10; Layout.fillWidth: true
@@ -356,33 +610,45 @@ ApplicationWindow {
                                         color: T.muted; font.pixelSize: T.small } } }
                             Text { visible: habitsList.count === 0
                                 text: "No habits yet — add one below, or ask your agent to."
-                                color: T.muted; font.pixelSize: T.body; padding: 12 } }
-                        RowLayout { spacing: 12
-                            TextField { id: newName; Layout.fillWidth: true
-                                placeholderText: "New habit name…"; color: T.text
-                                font.pixelSize: T.body
+                                color: T.muted; font.pixelSize: T.body
+                                Layout.fillWidth: true
+                                wrapMode: Text.WordWrap; padding: 12 } }
+                        ColumnLayout { spacing: 8; Layout.fillWidth: true
+                            RowLayout { spacing: 12
+                                TextField { id: newName; Layout.fillWidth: true
+                                    placeholderText: "New habit name…"; color: T.text
+                                    font.pixelSize: T.body
+                                    background: Rectangle { radius: 8; color: T.card
+                                        border.color: T.border; border.width: 1 } }
+                                ComboBox { id: newCadence; implicitHeight: 44
+                                    model: ["daily", "weekdays", "weekly:7", "interval:6h"] }
+                                ComboBox { id: newEffort; implicitHeight: 44
+                                    model: ["green", "yellow", "red"] }
+                                Button { text: "＋ Add"; implicitHeight: 44
+                                    background: Rectangle { radius: 8; color: T.positive }
+                                    contentItem: Text { text: parent.text; color: "white"
+                                        font.pixelSize: T.body; font.weight: Font.DemiBold
+                                        anchors.centerIn: parent }
+                                    onClicked: {
+                                        Bridge.addHabit(newName.text, newCadence.currentText,
+                                            newEffort.currentText, "", newDesc.text)
+                                        newName.clear(); newDesc.clear(); refreshAll() } } }
+                            // description/annotation — stored with the habit so
+                            // backups carry the operator's notes
+                            TextField { id: newDesc; Layout.fillWidth: true
+                                placeholderText: "Notes / description (stored, shown in the task detail)…"
+                                color: T.text; font.pixelSize: T.small
                                 background: Rectangle { radius: 8; color: T.card
                                     border.color: T.border; border.width: 1 } }
-                            ComboBox { id: newCadence; implicitHeight: 44
-                                model: ["daily", "weekdays", "weekly:7", "interval:6h"] }
-                            ComboBox { id: newEffort; implicitHeight: 44
-                                model: ["green", "yellow", "red"] }
-                            Button { text: "＋ Add"; implicitHeight: 44
-                                background: Rectangle { radius: 8; color: T.positive }
-                                contentItem: Text { text: parent.text; color: "white"
-                                    font.pixelSize: T.body; font.weight: Font.DemiBold
-                                    anchors.centerIn: parent }
-                                onClicked: {
-                                    Bridge.addHabit(newName.text, newCadence.currentText,
-                                        newEffort.currentText, "", "")
-                                    newName.clear(); refreshAll() } } }
+                        }
                     }
                 }
 
                 // ============ TELEMETRY ============
                 ScrollView {
+                    id: telemetryScroll
                     GridLayout {
-                        width: Math.max(parent.width, 900)
+                        width: Math.max(telemetryScroll.width - 32, 900)
                         columns: 2; columnSpacing: 16; rowSpacing: 16
                         x: 16; y: 16
                         Repeater {
@@ -432,14 +698,95 @@ ApplicationWindow {
                         }
                         Text { visible: statsData.length === 0
                             text: "No telemetry yet — your agent logs readings via 'habitctl log-reading'."
-                            color: T.muted; font.pixelSize: T.body; padding: 16 } }
+                            color: T.muted; font.pixelSize: T.body
+                            Layout.columnSpan: 2
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap; padding: 16 } }
+                }
+
+                // ============ UPDATES (CI changelog) ============
+                Item {
+                    ColumnLayout { anchors.fill: parent; anchors.margins: 16; spacing: 12
+                        RowLayout { spacing: 10; Layout.fillWidth: true
+                            Text { text: "System updates"; color: T.text
+                                font.pixelSize: T.h2; font.weight: Font.DemiBold }
+                            Item { Layout.fillWidth: true }
+                            Text { text: "build " + Bridge.buildStamp
+                                color: T.muted; font.pixelSize: T.small
+                                font.family: T.monoFamily }
+                        }
+                        Text { visible: releasesData.length === 0
+                            text: "No releases recorded yet — agentd syncs git history into the update channel on every daily briefing; 'releases sync' does it on demand."
+                            color: T.muted; font.pixelSize: T.small
+                            Layout.fillWidth: true; wrapMode: Text.WordWrap }
+                        ListView {
+                            id: releasesList
+                            Layout.fillWidth: true; Layout.fillHeight: true
+                            clip: true; spacing: 10; model: releasesData
+                            delegate: Rectangle {
+                                width: releasesList.width; radius: 12
+                                // bubble grows when selected, shows the body
+                                // (deterministic 2-state height — no implicit
+                                // chains: they overflowed the binding stack)
+                                height: expanded ? 168 : 84
+                                property bool expanded: false
+                                color: modelData.new ? "#1c2a3f" : T.card
+                                border.color: modelData.new ? T.accent : T.border
+                                border.width: modelData.new ? 2 : 1
+                                MouseArea { anchors.fill: parent
+                                    onClicked: {
+                                        expanded = !expanded
+                                        Bridge.viewRelease(modelData.id)
+                                        updatesNew = releasesModel_newCount()
+                                    } }
+                                ColumnLayout { id: relCol
+                                    anchors.fill: parent; anchors.margins: 12
+                                    spacing: 6
+                                    RowLayout { id: relTop
+                                        spacing: 10; Layout.fillWidth: true
+                                        Rectangle { visible: modelData.new
+                                            radius: 9; color: "#e74c3c"
+                                            Layout.preferredHeight: 18
+                                            Layout.preferredWidth: newTag.implicitWidth + 12
+                                            Text { id: newTag; anchors.centerIn: parent
+                                                text: "NEW"; color: "white"
+                                                font.pixelSize: 11
+                                                font.weight: Font.Bold } }
+                                        Text { text: modelData.subject
+                                            color: T.text; font.pixelSize: T.body
+                                            font.weight: Font.Medium
+                                            Layout.fillWidth: true
+                                            elide: Text.ElideRight }
+                                    }
+                                    RowLayout { spacing: 10; Layout.fillWidth: true
+                                        Text { text: modelData.hash
+                                            color: T.accent; font.pixelSize: T.small
+                                            font.family: T.monoFamily
+                                            font.weight: Font.Medium }
+                                        Text { text: modelData.ts.substring(0, 10)
+                                            color: T.muted; font.pixelSize: T.small }
+                                        Item { Layout.fillWidth: true }
+                                        Text { text: modelData.author
+                                            color: T.muted; font.pixelSize: T.small }
+                                    }
+                                    Text { visible: expanded && modelData.body.length > 0
+                                        text: modelData.body
+                                        color: T.text; font.pixelSize: T.small
+                                        wrapMode: Text.WordWrap
+                                        Layout.fillWidth: true }
+                                }
+                            }
+                        }
+                    }
                 }
 
                 // ============ CONSOLE ============
                 Item {
                     ColumnLayout { anchors.fill: parent; anchors.margins: 16; spacing: 12
-                        Text { text: "Command line — same verbs your agent uses (add, due, check 1, mode yellow, …)"
-                            color: T.muted; font.pixelSize: T.small }
+                        Text { text: "Command line — same verbs your agent uses. Type 'help' for the list; 'watch'/'gui' are daemon-only and blocked here."
+                            color: T.muted; font.pixelSize: T.small
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap }
                         ScrollView {
                             Layout.fillWidth: true; Layout.fillHeight: true
                             TextArea {
@@ -451,7 +798,7 @@ ApplicationWindow {
                         }
                         RowLayout { spacing: 12
                             TextField { id: consoleIn; Layout.fillWidth: true
-                                placeholderText: "command (e.g. status, due --json)"
+                                placeholderText: "command — type 'help' for the verb list"
                                 color: T.text; font.family: T.monoFamily
                                 font.pixelSize: T.small
                                 background: Rectangle { radius: 8; color: T.card
@@ -464,14 +811,9 @@ ApplicationWindow {
                                     anchors.centerIn: parent }
                                 onClicked: runCmd() }
                         }
-                        function runCmd() {
-                            if (!consoleIn.text) return
-                            consoleOut.append("habitctl> " + consoleIn.text)
-                            consoleOut.append(Bridge.runCommand(consoleIn.text))
-                            consoleIn.clear(); refreshAll()
-                        }
                     }
                 }
-            }
-        }
-    }
+            } // StackLayout
+        } // main ColumnLayout
+    } // RowLayout
+} // ApplicationWindow
