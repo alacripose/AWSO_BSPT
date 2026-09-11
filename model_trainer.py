@@ -29,32 +29,43 @@ def prepare_training_data(db_path: Path, out_path: Path, limit: int = 2000) -> i
     conn = core.connect(str(db_path))
     pairs = []
 
-    # 1. Chat mailbox: human message → agent reply
+    # 1. Chat mailbox: human message → agent reply. Only pair when the
+    # immediately-next row is the agent's answer to THIS message (a run of
+    # human messages means the agent answered the last one, not each).
     human_msgs = conn.execute(
         "SELECT id, text FROM chat WHERE sender='human' ORDER BY id DESC LIMIT ?",
         (limit // 3,),
     ).fetchall()
     for row in human_msgs:
         agent_reply = conn.execute(
-            "SELECT text FROM chat WHERE sender='agent:awso-agentd' AND id > ? ORDER BY id LIMIT 1",
+            "SELECT text FROM chat WHERE id > ? AND sender='agent:awso-agentd'"
+            " ORDER BY id LIMIT 1",
             (row["id"],),
         ).fetchone()
-        if agent_reply and agent_reply["text"].strip():
-            pairs.append(
-                {
-                    "prompt": f"<|im_start|>user\n{row['text']}<|im_end|>\n<|im_start|>assistant\n",
-                    "completion": f"{agent_reply['text']}<|im_end|>",
-                }
-            )
+        if not agent_reply or not agent_reply["text"].strip():
+            continue
+        next_row = conn.execute(
+            "SELECT sender FROM chat WHERE id > ? ORDER BY id LIMIT 1",
+            (row["id"],),
+        ).fetchone()
+        if next_row and next_row["sender"] != "agent:awso-agentd":
+            continue  # swallowed by a follow-up human message
+        pairs.append(
+            {
+                "prompt": f"<|im_start|>user\n{row['text']}<|im_end|>\n<|im_start|>assistant\n",
+                "completion": f"{agent_reply['text']}<|im_end|>",
+            }
+        )
 
-    # 2. SOS triage: sos context → agent action summary
+    # 2. SOS triage: sos context → agent action summary (ack by SOS ROW id —
+    # what the CLI actually takes, not the fingerprint tail)
     sos_rows = conn.execute(
-        "SELECT code, message, fingerprint FROM sos WHERE status='acked' ORDER BY id DESC LIMIT ?",
+        "SELECT id, code, message FROM sos WHERE status='acked' ORDER BY id DESC LIMIT ?",
         (limit // 4,),
     ).fetchall()
     for row in sos_rows:
         prompt = f"<|im_start|>user\nSOS [{row['code']}]: {row['message']}\nWhat action should agentd take?<|im_end|>\n<|im_start|>assistant\n"
-        completion = f'sos ack {row["fingerprint"].split(":")[-1]} --note "Triaged {row["code"]}" --by agent:awso-agentd<|im_end|>'
+        completion = f'sos ack {row["id"]} --note "Triaged {row["code"]}" --by agent:awso-agentd<|im_end|>'
         pairs.append({"prompt": prompt, "completion": completion})
 
     # 3. Synthetic: habitctl verb help → example invocation
@@ -63,7 +74,7 @@ def prepare_training_data(db_path: Path, out_path: Path, limit: int = 2000) -> i
             continue
         help_text = core.help_text()
         verb_lines = [
-            l for l in help_text.splitlines() if l.strip().startswith(f"  {verb}")
+            l for l in help_text.splitlines() if l.strip().startswith(f"{verb} ")
         ]
         if verb_lines:
             pairs.append(
@@ -351,19 +362,17 @@ def export_gguf(
 
     # Convert to GGUF
     print(f"Converting to GGUF ({quant})...")
-    convert_script = Path.home() / "llama.cpp" / "convert_hf_to_gguf.py"
-    if not convert_script.exists():
-        # Try common locations
-        for p in [
-            Path("/opt/llama.cpp/convert_hf_to_gguf.py"),
-            Path("/usr/local/llama.cpp/convert_hf_to_gguf.py"),
-        ]:
-            if p.exists():
-                convert_script = p
-                break
-    if not convert_script.exists():
+    candidates = [
+        Path(__file__).parent / "bin" / "convert_hf_to_gguf.py",
+        Path.home() / "llama.cpp" / "convert_hf_to_gguf.py",
+        Path("/opt/llama.cpp/convert_hf_to_gguf.py"),
+        Path("/usr/local/llama.cpp/convert_hf_to_gguf.py"),
+    ]
+    convert_script = next((p for p in candidates if p.exists()), None)
+    if convert_script is None:
         raise FileNotFoundError(
-            "llama.cpp convert_hf_to_gguf.py not found. Clone llama.cpp and set path."
+            "llama.cpp convert_hf_to_gguf.py not found (expected bin/, "
+            "~/llama.cpp/, /opt/llama.cpp/, or /usr/local/llama.cpp/)."
         )
 
     gguf_out = out_path.with_suffix(".gguf")
@@ -383,8 +392,14 @@ def export_gguf(
 
     # Quantize (if not already done by convert)
     if quant != "f16":
-        quant_bin = convert_script.parent / "llama-quantize"
-        if quant_bin.exists():
+        quant_candidates = [
+            Path(__file__).parent / "bin" / (
+                "llama-quantize.exe" if os.name == "nt" else "llama-quantize"
+            ),
+            convert_script.parent / "llama-quantize",
+        ]
+        quant_bin = next((p for p in quant_candidates if p.exists()), None)
+        if quant_bin:
             final_out = out_path
             subprocess.run(
                 [str(quant_bin), str(gguf_out), str(final_out), quant], check=True
@@ -392,6 +407,10 @@ def export_gguf(
             gguf_out.unlink()
             print(f"Quantized model: {final_out}")
             return final_out
+        print(
+            "llama-quantize not found — keeping the converter's output "
+            f"({gguf_out.name}); convert --outtype {quant} already quantized."
+        )
     return gguf_out
 
 
