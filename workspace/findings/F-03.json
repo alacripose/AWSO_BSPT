@@ -1,0 +1,89 @@
+{
+ "id": "F-03",
+ "title": "SOS fingerprint is code + free-text habit name (or telemetry key), not a stable subject id \u2014 duplicate names silently suppress alerts, and renames can permanently evade escalation",
+ "severity": "medium",
+ "code_paths": [
+  "habit_core.py:566",
+  "habit_core.py:564",
+  "habit_core.py:577"
+ ],
+ "description": "sos_scan() builds each SOS fingerprint as f\"{code}:{subject}\" where subject is the habit NAME (habit_core.py:525-528, 542-546) for missed_daily/streak_broken, or the telemetry key for telemetry_stale (habit_core.py:559) \u2014 habit_core.py:566 `fp = f\"{code}:{subject}\"`. Habit names are free text with no uniqueness constraint (habits table has no UNIQUE on name, and add_habit accepts duplicates \u2014 verified by execution: two habits both named 'Water the plants' both overdue yields exactly ONE pending SOS, not two). The partial unique index `idx_sos_open_fp ON sos(fingerprint) WHERE status='pending'` (habit_core.py:79) then dedupes on that weak key, with the IntegrityError swallowed by a bare except (habit_core.py:575-576). Two real consequences on the designed trust path: (1) two distinct overdue habits sharing a name (e.g. an agent-influenced duplicate add, or a deliberate rename of one habit to another's name) collapse to a single alert \u2014 the second failing habit is invisible to the operator and to the cron responder until the first is acked (verified: after acking and rescanning, the still-broken second habit re-filed the first habit's fingerprint only; the second habit never alerted within the scan, and in a one-shot-scan pattern such as the cron monitor, the suppression window persists until the next scan+ack cycle). (2) A subject renaming itself between scans changes the fingerprint, letting the same recurring incident re-file as 'new' indefinitely \u2014 but the inverse is the alert-suppression direction an attacker-chosen name enables. The system's core safety property ('one pending row per failing condition, operator sees it after ack') silently breaks whenever names collide. Fix shape: fingerprint on code + habit_id (or readings key as a whitelisted identifier, not a free-form sensor name), and log the swallowed IntegrityError instead of a bare pass.",
+ "repro_hints": "Repro harness: C:/Users/ala/AppData/Local/Temp/mantis_repro/repro.py section 'F-01 SOS dedupe keyed on habit NAME' \u2014 add two habits with the same name, backdate both 5 days, sos_scan() files exactly 1 SOS (expected 2); ack it, rescan: the second overdue habit still never gets its own row. Temp DB only, no repo files touched.",
+ "status": "FIXED",
+ "reasoning": "SOS fingerprint now keys on the immutable subject id (habit:<id> / key:<name>) instead of the free-text habit name. Duplicate-named overdue habits file distinct SOS rows, and renaming cannot evade or suppress a pending row. Verified by test_sos_fingerprint_keyed_on_stable_id_not_name and test_sos_rename_cannot_evade_pending_row; 59/59 green.",
+ "triage_checklist": {
+  "ignore_hypothetical_misuse": {
+   "outcome": "PASS"
+  },
+  "ignore_missing_hygiene": {
+   "outcome": "PASS"
+  },
+  "require_strict_reproducibility": {
+   "outcome": "PASS"
+  },
+  "avoid_pedantic_linting": {
+   "outcome": "PASS"
+  },
+  "no_security_flaw_stretching": {
+   "outcome": "PASS"
+  },
+  "evaluate_questionable_file_paths": {
+   "outcome": "PASS"
+  },
+  "ignore_resource_exhaustion_dos": {
+   "outcome": "PASS"
+  },
+  "intrinsic_security_flaws": {
+   "outcome": "PASS"
+  },
+  "verify_mitigations_pragmatically": {
+   "outcome": "PASS"
+  },
+  "refine_code_paths_strictly": {
+   "outcome": "PASS"
+  },
+  "ignore_simd_vector_padding": {
+   "outcome": "PASS"
+  },
+  "ensure_source_code_coherence": {
+   "outcome": "PASS"
+  },
+  "verify_attacker_control_of_source": {
+   "outcome": "PASS"
+  }
+ },
+ "history": [
+  {
+   "stage": "reviewer",
+   "action": "reviewed",
+   "details": "Determined status as VALID because Code-pattern verified in current tree: SOS fingerprint is built as f'{code}:{subject}' where subject is the free-text ha",
+   "pass_number": 1,
+   "snapshot": "",
+   "timestamp": "2026-09-10T22:06:46.064242+00:00"
+  },
+  {
+   "stage": "reviewer",
+   "action": "reassessed",
+   "details": "agentd's SOS dedup uses the pending-id set, not the fingerprint \u2014 ids are unique, so agentd's dispatch loop is not affected by the weak fingerprint. Verdict VALID stands (core-side alert collapse unfixed); agentd neither worsens nor masks it.",
+   "pass_number": 3,
+   "snapshot": "",
+   "timestamp": "2026-09-11T00:34:16.935973+00:00"
+  },
+  {
+   "stage": "reviewer",
+   "action": "reassessed",
+   "details": "Pre-alpha review: no core-side SOS fingerprint change in the alpha tree. Verdict VALID, unfixed \u2014 deferred past alpha.",
+   "pass_number": 4,
+   "snapshot": "pre-alpha-commit working tree vs d0ed517",
+   "timestamp": "2026-09-11T02:50:33.426238+00:00"
+  },
+  {
+   "stage": "reviewer",
+   "action": "fix_validated",
+   "details": "SOS fingerprint now keys on the immutable subject id (habit:<id> / key:<name>) instead of the free-text habit name. Duplicate-named overdue habits file distinct SOS rows, and renaming cannot evade or suppress a pending row. Verified by test_sos_fingerprint_keyed_on_stable_id_not_name and test_sos_re",
+   "pass_number": 5,
+   "snapshot": "pre-alpha working tree, post-fix",
+   "timestamp": "2026-09-11T06:50:20.372298+00:00"
+  }
+ ]
+}

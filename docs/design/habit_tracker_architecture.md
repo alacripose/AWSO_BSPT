@@ -13,6 +13,11 @@ same core:
 3. **CLI surface** (`python3 habit_core.py …` / `habitctl` shim) — the control
    surface for humans and subagents alike. Every GUI mutation routes through
    the same core functions, so GUI and agents share one truth.
+4. **Resident agent harness** (`agentd.py`) — the always-on agent: heartbeats
+   presence into meta (GUI shows ONLINE/OFFLINE), polls the chat mailbox and
+   answers via one-shot Hermes subagents, posts a daily briefing, sweeps SOS
+   and stale telemetry. Deployed as `deploy/awso-agentd.service`. The GUI is a
+   pure view and never spawns agents (agent-operated-apps architecture).
 
 The fork deletes the parent's entire window-manager chassis (drag/dock/split
 panes, taskbar, 10 sample apps, ~2,300 lines). "As few apps as possible" is a
