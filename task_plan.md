@@ -45,11 +45,12 @@ review stdout in session log.
   _step_reporter → live agent_status (R5 loaders); trace → events audit.
 - test_agentd.py (6 tests).
 
-### Phase 5 — Gates [in progress]
-- ruff + pytest-cov on all touched files; semgrep on new trust boundary
-  (model output → HabitctlTools → core.cli array-form); Mantis principles
-  applied manually (advise.py absent at skill path — noted in log).
-- Early gate run on Phase 3/4 files done before trainer work.
+### Phase 5 — Gates [complete]
+- ruff + format clean (9 files); pytest 59/59; selftest + QML selfcheck green
+- semgrep (python/sql/command-injection rulesets): 0 findings
+- Mantis F-01..F-05 all closed with regression tests (see workspace/findings/)
+- Branch feat/sos-escalation-and-agent-harness pushed to github.com/alacripose/AWSO_BSPT — PR #1
+- Mantis advise stage applied manually (advise.py absent at skill path — noted in log).
 
 ### Phase 6 — Training pipeline [in progress]
 - model_trainer.py: prepare_training_data (pair types A/B in EXACT runtime
